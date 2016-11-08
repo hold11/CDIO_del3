@@ -7,7 +7,7 @@ import static org.junit.Assert.*;
 /**
  * Created by awo on 08/11/16.
  */
-public class AppTest {
+public class MainTest {
     @Before
     public void setUp() throws Exception {
 
@@ -20,7 +20,7 @@ public class AppTest {
 
     @Test
     public void testBool() throws Exception {
-        assertTrue(App.testBool());
+        assertTrue(Main.testBool());
     }
 
 }
