@@ -8,7 +8,7 @@ Description for the game.
 
 ## Teamlead
 
-For this project, XXX is teamlead, meaning that XXX is the only team member accepting / rejecting pull-requests.
+For this project, Anders is teamlead, meaning that Anders is the only team member accepting / rejecting pull-requests.
 
 ## License
 
