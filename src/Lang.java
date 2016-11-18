@@ -1,7 +1,7 @@
 /*
            ,                                             |
-          /#\         _         _     _    ___   ___     | Projekt: Black Darkness 3 - CDIO_del2
-         /###\       | |__   _ | | __| |  /_  | /_  |    | Version: v1.0.0
+          /#\         _         _     _    ___   ___     | Projekt: Landlordopoly - CDIO_del3
+         /###\       | |__   _ | | __| |  /_  | /_  |    |
         /#####\      | '_ \ / \| |/ _  |    | |   | |    |
        /##,-,##\     | | | | O | | ( | |   _| |_ _| |_   | Anders Wiberg Olsen (s165241), Emil Johan Høg (s152282),
       /##(   )##\    |_| |_|\_/|_|\__,_|  |_____|_____|  | Iman Chelhi (s165228), Troels Just Christoffersen (s120052)
