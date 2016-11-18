@@ -3,7 +3,7 @@
 master: [![Build Status](https://travis-ci.org/hold11/CDIO_del3.svg?branch=master)](https://travis-ci.org/hold11/CDIO_del3)
 develop: [![Build Status](https://travis-ci.org/hold11/CDIO_del3.svg?branch=develop)](https://travis-ci.org/hold11/CDIO_del3)
 ```
-_      __    _      ___   _     ___   ___   ___   ___   ___   ___   _     _    
+ _      __    _      ___   _     ___   ___   ___   ___   ___   ___   _     _    
 | |    / /\  | |\ | | | \ | |   / / \ | |_) | | \ / / \ | |_) / / \ | |   \ \_/
 |_|__ /_/--\ |_| \| |_|_/ |_|__ \_\_/ |_| \ |_|_/ \_\_/ |_|   \_\_/ |_|__  |_|  
 ```
