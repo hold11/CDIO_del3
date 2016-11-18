@@ -1,6 +1,7 @@
 # CDIO_del3
 
-![Build Succession](https://travis-ci.org/hold11/CDIO_del3.svg)
+master: [![Build Status](https://travis-ci.org/hold11/CDIO_del3.svg?branch=master)](https://travis-ci.org/hold11/CDIO_del3)
+develop: [![Build Status](https://travis-ci.org/hold11/CDIO_del3.svg?branch=develop)](https://travis-ci.org/hold11/CDIO_del3)
 
 ASCII-Art here.
 
