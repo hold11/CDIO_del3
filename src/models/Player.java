@@ -1,4 +1,4 @@
-/*
+package models;/*
            ,                                             |
           /#\         _         _     _    ___   ___     | Projekt: Black Darkness 3 - CDIO_del2
          /###\       | |__   _ | | __| |  /_  | /_  |    | Version: v1.0.0
@@ -27,7 +27,7 @@ public class Player {
     private static List<Player> players = new ArrayList<Player>();
 
     public Player() {
-        this.playerName = String.format("Player %s", playerCount);
+        this.playerName = String.format("models.Player %s", playerCount);
         this.playerID = playerCount;
 
         this.playerAccount = new BankAccount(STARTING_BALANCE);
