@@ -8,7 +8,22 @@ import models.Player;
 public class Tax extends Field
 {
     private int taxAmount;
-    private int taxRate = -1;
+    private double taxRate = -1;       // should be 10% of total assets.
+
+    public Tax(String fieldName, int taxAmount)
+    {
+        this.fieldName = fieldName;
+        this.taxAmount = taxAmount;
+        this.taxRate = taxRate;
+    }
+
+    public Tax(String fieldName, int taxAmount, double taxRate)
+    {
+        this.fieldName = fieldName;
+        this.taxAmount = taxAmount;
+        this.taxRate = taxRate;
+    }
+
     @Override
     public void landOnField(Player player) {
 

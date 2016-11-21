@@ -10,6 +10,7 @@ package models;/*
  */
 
 import java.lang.reflect.Array;
+import fields.*;
 
 /**
  * This Class creates 21 game fields.
@@ -17,30 +18,30 @@ import java.lang.reflect.Array;
 
 public class GameBoard
 {
-    private String[] fields = new String[20];    //Initializes String array containing 21 elements.
+    private Field[] fields = new Field[21];    //Initializes String array containing 21 elements.
 
     public void fieldsList()
     {
-        fields[0] = "Tribe Encampment";
-        fields[1] = "Crater";
-        fields[2] = "Mountain";
-        fields[3] = "Cold Desert";
-        fields[4] = "Black Cave";
-        fields[5] = "The Werewall";
-        fields[6] = "Mountain Village";
-        fields[7] = "South Citadel";
-        fields[8] = "Palace Gates";
-        fields[9] = "Tower";
-        fields[10] = "Castle";
-        fields[11] = "Walled City";
-        fields[12] = "Monastery";
-        fields[13] = "Huts in the Mountain";
-        fields[14] = "The Pit";
-        fields[15] = "Gold Mine";
-        fields[16] = "Caravan";
-        fields[17] = "Second Sail";
-        fields[18] = "Sea Grover";
-        fields[19] = "The Buccaneers";
-        fields[20] = "Privateer Armada";
+        fields[0] = new Territory("Tribe Encampment", 100, 1000, null);     // TODO: Delete all nulls
+        fields[1] = new Territory("Crater", 300, 1500, null);
+        fields[2] = new Territory("Mountain", 500, 2000, null);
+        fields[3] = new Territory("Cold Desert", 700, 3000, null);
+        fields[4] = new Territory("Black Cave", 1000, 4000, null);
+        fields[5] = new Territory("The Werewall", 1300, 4300, null);
+        fields[6] = new Territory("Mountain Village", 1600, 4750, null);
+        fields[7] = new Territory("South Citadel", 2000, 5000, null);
+        fields[8] = new Territory("Palace Gates", 2600, 5500, null);
+        fields[9] = new Territory("Tower", 3200, 6000, null);
+        fields[10] = new Territory("Castle", 4000, 8000, null);
+        fields[11] = new Refuge("Walled City", 5000);
+        fields[12] = new Refuge("Monastery", 500);
+        fields[13] = new LaborCamp("Huts in the Mountain", 2500);   // (fieldName, price)
+        fields[14] = new LaborCamp("The Pit", 2500);                 // same
+        fields[15] = new Tax("Gold Mine", 2000);                    // Pay 2000
+        fields[16] = new Tax("Caravan", 4000, 0.1);                 // Pay 4000 or 10% of total assets
+        fields[17] = new Fleet("Second Sail");      // Pay 500-4000
+        fields[18] = new Fleet("Sea Grover");       // Pay 500-4000
+        fields[19] = new Fleet("The Buccaneers");   // Pay 500-4000
+        fields[20] = new Fleet("Privateer Armada"); // Pay 500-4000
     }
 }
