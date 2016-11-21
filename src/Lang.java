@@ -16,7 +16,8 @@ import java.util.ResourceBundle;
  * This class handles localization of all strings in the game
  * @version 1.0.0
  */
-public class Lang {
+public class Lang
+{
     private static String lang;
     private static String country;
     private static Locale locale;
@@ -25,7 +26,8 @@ public class Lang {
 
     public static String msg(String message) { return resourceBundle.getString(message); }
 
-    public static void setLanguage(String[] args) {
+    public static void setLanguage(String[] args)
+    {
         if (args.length != 2) {
             lang    = "en";
             country = "US";
