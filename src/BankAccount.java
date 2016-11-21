@@ -14,13 +14,15 @@
  * @version 1.0.2
  */
 
-public class BankAccount {
+public class BankAccount
+{
     private int balance;
     private int id = 0;
     
     private static int idCount;
 
-    public BankAccount(int balance) {
+    public BankAccount(int balance)
+    {
         this.balance = balance;
         id = idCount;
         idCount++;
@@ -34,16 +36,18 @@ public class BankAccount {
         return balance;
     }
 
-    public void deposit(int value) {
+    public void deposit(int value)
+    {
         if (value > 0)
             this.balance += value;
     }
 
-    public void withdraw(int value) {
+    public void withdraw(int value)
+    {
         if (value > 0)
             this.balance -= value;
         if (balance < 0){
             balance = 0;
-        };
+        }
     }
 }

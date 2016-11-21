@@ -15,25 +15,29 @@ import java.util.*;
  * This class is a die that returns a random value.
  * @version 1.0.2
  */
-public class Die {
+public class Die
+{
     private int faceCount;
     private int result;
 
     private static Random rand;
 
-    public Die() {
+    public Die()
+    {
         this.faceCount = 6;
         result         = 0;
         rand           = new Random();
     }
 
-    public Die(int faceCount) {
+    public Die(int faceCount)
+    {
         this.faceCount = faceCount;
         result         = 0;
         rand           = new Random();
     }
 
-    public int getRolledDieResult() {
+    public int getRolledDieResult()
+    {
         roll();
         return this.result;
     }
