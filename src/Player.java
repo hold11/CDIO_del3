@@ -20,8 +20,8 @@ public class Player {
     private int playerID;
     private String playerName;
     private BankAccount playerAccount;
-    private Field currentField;
-    private final int STARTING_BALANCE = 1000;
+    private GameBoard currentField;
+    private final int STARTING_BALANCE = 30000;
 
     private static int playerCount = 1;
     private static List<Player> players = new ArrayList<Player>();
@@ -60,11 +60,11 @@ public class Player {
         return playerName;
     }
 
-    public Field getCurrentField() {
+    public GameBoard getCurrentField() {
         return this.currentField;
     }
 
-    public void setCurrentField(Field f) {
+    public void setCurrentField(GameBoard f) {
         this.currentField = f;
     }
 
