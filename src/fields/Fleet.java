@@ -33,9 +33,8 @@ public class Fleet extends Ownable
         {
             if (ownable == o)   // Check if field is owned by someone.
                 return true;
-            else
-                return false;
         }
+        return false;
     }
 
     /**
@@ -49,8 +48,7 @@ public class Fleet extends Ownable
             return;
 
         int ownedFleetCount = 0;
-        //this.ownedFleets.add(this);     // Adds fleet to list of owned fleets by Player. 'this' refers to the fleet the Player landed on.
-        this.ownedOwnables.add(this);
+        this.ownedOwnables.add(this);       // Adds fleet to list of owned ownables by Player. 'this' refers to the fleet the Player landed on.
         for (Fleet f : ownedFleets)
         {
             if (f.owner == player)
