@@ -21,6 +21,7 @@ public class Territory extends Ownable
         this.fieldName = fieldName;
         this.rent = rent;
         this.price = price;
+        this.owner = null;
     }
 
     /**
@@ -41,9 +42,14 @@ public class Territory extends Ownable
     @Override
     public void purchaseField(Player player)
     {
+        if (isOwned(this))              // Checks if field is owned. If it is, exit method.
+            return;
+
+        this.ownedOwnables.add(this);       // Adds fleet to list of owned ownables by Player. 'this' refers to the fleet the Player landed on.
         this.owner = player;                                // Sets fields owner to player.
         player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
+
 
     @Override
     public int getRent() {
