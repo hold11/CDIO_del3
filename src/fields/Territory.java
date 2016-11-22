@@ -16,12 +16,11 @@ public class Territory extends Ownable
      * @param price     Price of field
      * @param owner     Owner of field
      */
-    public Territory(String fieldName, int rent, int price, Player owner)
+    public Territory(String fieldName, int rent, int price)
     {
         this.fieldName = fieldName;
         this.rent = rent;
         this.price = price;
-        this.owner = owner;
     }
 
     @Override
