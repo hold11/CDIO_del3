@@ -47,14 +47,10 @@ public class PlayerTest {
     }
 
     @Test
-    public void getCurrentField() throws Exception {
-      //  testPlayer1.setCurrentField();
-
-    }
-
-    @Test
     public void setCurrentField() throws Exception {
-
+        GameBoard testBoard = new GameBoard();
+        testPlayer1.setCurrentField(testBoard.getFields()[2]);
+        assertEquals(testBoard.getFields()[2], testPlayer1.getCurrentField());
     }
 
     @Test
