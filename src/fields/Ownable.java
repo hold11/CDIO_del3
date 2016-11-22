@@ -13,5 +13,5 @@ public abstract class Ownable extends Field
     protected Player owner;
     public abstract int getRent();
     public abstract void purchaseField(Player player);
-    protected static List<Ownable> ownedOwnables = new ArrayList<>();
+    protected static List<Ownable> ownedOwnables = new ArrayList<>();   // List of fields that are owned by someone.
 }
