@@ -14,7 +14,7 @@ public class Tax extends Field
     {
         this.fieldName = fieldName;
         this.taxAmount = taxAmount;
-        this.taxRate = taxRate;
+        this.taxRate = taxRate; // TODO: DO we need to delete this.
     }
 
     public Tax(String fieldName, int taxAmount, double taxRate)

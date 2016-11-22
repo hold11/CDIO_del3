@@ -11,6 +11,7 @@ package models;/*
 
 import java.util.ArrayList;
 import java.util.List;
+import fields.*;
 
 /**
  * This class is the player class.
@@ -20,30 +21,28 @@ public class Player {
     private int playerID;
     private String playerName;
     private BankAccount playerAccount;
-    private GameBoard currentField;
+    private Field currentField;
     private final int STARTING_BALANCE = 30000;
 
-    private static int playerCount = 1;
+    private static int nextPlayerID = 1;
     private static List<Player> players = new ArrayList<Player>();
 
     public Player() {
-        this.playerName = String.format("models.Player %s", playerCount);
-        this.playerID = playerCount;
+        this.playerName = String.format("models.Player %s", nextPlayerID);
+        this.playerID = nextPlayerID;
 
         this.playerAccount = new BankAccount(STARTING_BALANCE);
-
-        playerCount++;
-
+        nextPlayerID++;
         players.add(this);
     }
 
     public Player(String playerName) {
         this.playerName = playerName;
-        this.playerID = playerCount;
+        this.playerID = nextPlayerID;
 
         this.playerAccount = new BankAccount(STARTING_BALANCE);
 
-        playerCount++;
+        nextPlayerID++;
 
         players.add(this);
     }
@@ -60,11 +59,11 @@ public class Player {
         return playerName;
     }
 
-    public GameBoard getCurrentField() {
+    public Field getCurrentField() {
         return this.currentField;
     }
 
-    public void setCurrentField(GameBoard f) {
+    public void setCurrentField(Field f) {
         this.currentField = f;
     }
 
@@ -81,7 +80,7 @@ public class Player {
     }
 
     public static void reset() {
-        playerCount = 1;
+        nextPlayerID = 1;
         players.clear();
     }
 }

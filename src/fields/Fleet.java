@@ -20,6 +20,22 @@ public class Fleet extends Ownable
     {
         this.fieldName = fieldName;
         this.price = 4000;
+        this.owner = null; // TODO: Do this need to be here?
+    }
+
+    /**
+     * Checks if field is owned by some player.
+     * @param ownable
+     * @return
+     */
+    public static boolean isOwned(Ownable ownable)
+    {
+        for (Ownable o : ownedOwnables)
+        {
+            if (ownable == o)   // Check if field is owned by someone.
+                return true;
+        }
+        return false;
     }
 
     /**
@@ -29,22 +45,23 @@ public class Fleet extends Ownable
      */
     public void purchaseField(Player player)
     {
+        if (isOwned(this))              // Checks if field is owned. If it is, exit method.
+            return;
+
         int ownedFleetCount = 0;
-        this.ownedFleets.add(this);     // Adds fleet to list of owned fleets by Player. 'this' refers to the fleet the Player landed on.
-        for (Fleet f : ownedFleets)
+        this.ownedOwnables.add(this);       // Adds fleet to list of owned ownables by Player. 'this' refers to the fleet the Player landed on.
+        for (Ownable o : ownedOwnables)
         {
-            if (f.owner == player)
+            if (o.owner == player)
             {
-                ownedFleetCount++;
-                f.setMultiplier(ownedFleetCount);   // Sets multiplier for the fleet that the player already owns.
+                if (o instanceof Fleet)
+                    ownedFleetCount++;
+                multiplier = ownedFleetCount;   // Sets multiplier for the fleet that the player already owns.
             }
         }
-        this.multiplier = ownedFleetCount;
-    }
-
-    public void setMultiplier(int multiplier)       // Setter method - HAHA @ Anders
-    {
-        this.multiplier = multiplier;
+        this.multiplier = ownedFleetCount;                  // Sets multiplier to ownedFleetCount
+        this.owner = player;                                // Sets fields owner to player.
+        player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
 
     @Override
