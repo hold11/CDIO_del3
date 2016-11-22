@@ -23,26 +23,25 @@ public class Player {
     private GameBoard currentField;
     private final int STARTING_BALANCE = 30000;
 
-    private static int playerCount = 0;
+    private static int nextPlayerID = 1;
     private static List<Player> players = new ArrayList<Player>();
 
     public Player() {
-        playerCount++;
-        this.playerName = String.format("models.Player %s", playerCount);
-        this.playerID = playerCount;
+        this.playerName = String.format("models.Player %s", nextPlayerID);
+        this.playerID = nextPlayerID;
 
         this.playerAccount = new BankAccount(STARTING_BALANCE);
-
+        nextPlayerID++;
         players.add(this);
     }
 
     public Player(String playerName) {
         this.playerName = playerName;
-        this.playerID = playerCount;
+        this.playerID = nextPlayerID;
 
         this.playerAccount = new BankAccount(STARTING_BALANCE);
 
-        playerCount++;
+        nextPlayerID++;
 
         players.add(this);
     }
@@ -80,7 +79,7 @@ public class Player {
     }
 
     public static void reset() {
-        playerCount = 1;
+        nextPlayerID = 1;
         players.clear();
     }
 }
