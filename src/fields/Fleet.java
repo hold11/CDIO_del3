@@ -39,7 +39,9 @@ public class Fleet extends Ownable
                 f.setMultiplier(ownedFleetCount);   // Sets multiplier for the fleet that the player already owns.
             }
         }
-        this.multiplier = ownedFleetCount;
+        this.multiplier = ownedFleetCount;                  // Sets multiplier to ownedFleetCount
+        this.owner = player;                                // Sets fields owner to player.
+        player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
 
     public void setMultiplier(int multiplier)       // Setter method - HAHA @ Anders
