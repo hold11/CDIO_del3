@@ -1,4 +1,4 @@
-package GUI.desktop_board;
+package GUI.board;
 
 import java.awt.Color;
 import java.awt.Point;
@@ -14,12 +14,12 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import GUI.desktop_codebehind.Car;
-import GUI.desktop_codebehind.FieldFactory;
-import GUI.desktop_codebehind.Player;
-import GUI.desktop_fields.Field;
-import GUI.desktop_fields.Ownable;
-import GUI.desktop_fields.Street;
+import GUI.backend.Car;
+import GUI.backend.FieldFactory;
+import GUI.backend.Player;
+import GUI.fields.Field;
+import GUI.fields.Ownable;
+import GUI.fields.Street;
 
 /**
  * Provides access to GUI

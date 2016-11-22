@@ -1,10 +1,10 @@
-package GUI.desktop_fields;
+package GUI.fields;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import GUI.desktop_board.Center;
-import GUI.desktop_codebehind.SwingComponentFactory;
+import GUI.board.Center;
+import GUI.backend.SwingComponentFactory;
 
 public final class Brewery extends Ownable {
     private static final int TOPHEIGHT = 31;
@@ -57,7 +57,7 @@ public final class Brewery extends Ownable {
         
         if ("default".equalsIgnoreCase(picture)) {
             int p = (picCounter++ % 2) + 1;
-            this.icon = this.factory.createIcon("/GUI/desktop_resources/pics/Brewery" + p + ".jpg");
+            this.icon = this.factory.createIcon("/GUI/resources/pics/Brewery" + p + ".jpg");
         } else {
             try {
                 this.icon = new ImageIcon(picture);

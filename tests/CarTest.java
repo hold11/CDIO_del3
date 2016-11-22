@@ -1,6 +1,6 @@
 import java.awt.Color;
-import GUI.desktop_codebehind.Car;
-import GUI.desktop_resources.GUI;
+import GUI.backend.Car;
+import GUI.resources.GUI;
 
 public class CarTest {
     

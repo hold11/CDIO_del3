@@ -1,12 +1,12 @@
-package GUI.desktop_fields;
+package GUI.fields;
 
 import java.awt.Color;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
-import GUI.desktop_board.Center;
-import GUI.desktop_codebehind.SwingComponentFactory;
+import GUI.board.Center;
+import GUI.backend.SwingComponentFactory;
 
 public final class Street extends Ownable {
     private static final int TITLEHEIGHT = 24;
@@ -81,14 +81,14 @@ public final class Street extends Ownable {
         if (houseCount != 0) {
             icon =
                 new ImageIcon(getClass().getResource(
-                    "/GUI/desktop_resources/buildings/" + houseCount + "House.png"));
+                    "/GUI/resources/buildings/" + houseCount + "House.png"));
         }
         this.houseLabel.setIcon(icon);
     }
     public void setHotel(boolean hasHotel) {
         Icon icon =
             hasHotel ? new ImageIcon(getClass().getResource(
-                "/GUI/desktop_resources/buildings/Hotel.png")) : null;
+                    "/GUI/resources/buildings/Hotel.png")) : null;
         this.houseLabel.setIcon(icon);
     }
     @Override

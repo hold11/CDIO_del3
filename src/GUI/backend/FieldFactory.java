@@ -1,4 +1,4 @@
-package GUI.desktop_codebehind;
+package GUI.backend;
 
 import java.awt.Color;
 import java.io.BufferedReader;
@@ -9,15 +9,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import GUI.desktop_fields.Brewery;
-import GUI.desktop_fields.Chance;
-import GUI.desktop_fields.Field;
-import GUI.desktop_fields.Jail;
-import GUI.desktop_fields.Refuge;
-import GUI.desktop_fields.Shipping;
-import GUI.desktop_fields.Start;
-import GUI.desktop_fields.Street;
-import GUI.desktop_fields.Tax;
+import GUI.fields.Brewery;
+import GUI.fields.Chance;
+import GUI.fields.Field;
+import GUI.fields.Jail;
+import GUI.fields.Refuge;
+import GUI.fields.Shipping;
+import GUI.fields.Start;
+import GUI.fields.Street;
+import GUI.fields.Tax;
 
 /**
  * Creates all the fields

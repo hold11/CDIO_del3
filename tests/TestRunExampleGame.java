@@ -1,5 +1,4 @@
-import java.awt.Color;
-import GUI.desktop_resources.GUI;
+import GUI.resources.GUI;
 
 
 /**

@@ -1,10 +1,10 @@
-package GUI.desktop_fields;
+package GUI.fields;
 
 import java.awt.Color;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import GUI.desktop_board.Center;
-import GUI.desktop_codebehind.SwingComponentFactory;
+import GUI.board.Center;
+import GUI.backend.SwingComponentFactory;
 
 public final class Refuge extends Field {
     private static final int TOPHEIGHT = 47;
@@ -51,7 +51,7 @@ public final class Refuge extends Field {
         super(bgColor, fgColor, title, subText, description);
         
         if ("default".equalsIgnoreCase(picture)) {
-            this.icon = this.factory.createIcon("/GUI/desktop_resources/pics/Cones.jpg");
+            this.icon = this.factory.createIcon("/GUI/resources/pics/Cones.jpg");
         } else {
             try {
                 this.icon = new ImageIcon(picture);

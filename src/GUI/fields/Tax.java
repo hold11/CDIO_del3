@@ -1,29 +1,31 @@
-package GUI.desktop_fields;
+package GUI.fields;
 
 import java.awt.Color;
-import java.awt.Font;
 import javax.swing.JLabel;
-import GUI.desktop_board.Center;
-import GUI.desktop_codebehind.SwingComponentFactory;
+import GUI.board.Center;
+import GUI.backend.SwingComponentFactory;
 
-public final class Start extends Field {
+public final class Tax extends Field {
     private static final int TITLEHEIGHT = 47;
     private static final int SUBTEXTHEIGHT = 14;
-    
     private SwingComponentFactory factory = new SwingComponentFactory();
     
-    public static class Builder extends Field.Builder<Start.Builder> implements
+    public static class Builder extends Field.Builder<Tax.Builder> implements
         iBuilder {
         public Builder() {
-            this.title = "Start";
-            this.bgColor = Color.RED;
+            this.title = "Tax";
+            this.bgColor = new Color(153, 153, 153);
         }
         
         @Override
         @SuppressWarnings("synthetic-access")
-        public Start build() {
-            return new Start(this.bgColor, this.fgColor, this.title,
-                this.subText, this.description);
+        public Tax build() {
+            return new Tax(this.description, this.title,
+                this.subText, this.bgColor, this.fgColor);
+        }
+        public Builder setDescription(String description) {
+            this.description = description;
+            return this;
         }
         public Builder setTitle(String title) {
             this.title = title;
@@ -33,14 +35,10 @@ public final class Start extends Field {
             this.subText = subText;
             return this;
         }
-        public Builder setDescription(String description) {
-            this.description = description;
-            return this;
-        }
     }
     
-    private Start(Color bgColor, Color fgColor, String title,
-        String subText, String description) {
+    private Tax(String title, String subText, String description,
+        Color bgColor, Color fgColor) {
         super(bgColor, fgColor, title, subText, description);
         this.titleLabel = makeTitleLabel(this.title);
         this.subTextLabel = makeSubTextLabel(this.subText);
@@ -49,23 +47,21 @@ public final class Start extends Field {
         this.layered.add(this.subTextLabel,
             this.factory.createGridBagConstraints(0, 1));
     }
-    private JLabel makeTitleLabel(String titleStart) {
+    private JLabel makeTitleLabel(String titleTax) {
         JLabel l = makeLabel(TITLEHEIGHT);
-        l.setText(titleStart);
-        l.setFont(new Font(l.getFont().getName(), Font.BOLD, 18));
+        l.setText(titleTax);
         return l;
     }
-    private JLabel makeSubTextLabel(String subTextStart) {
+    private JLabel makeSubTextLabel(String subTextTax) {
         JLabel l = makeLabel(SUBTEXTHEIGHT);
-        l.setText(subTextStart);
+        l.setText(subTextTax);
         return l;
     }
     @Override
     public void displayOnCenter() {
         super.displayOnCenter();
-        Center.label[1].setText(this.title.replace("<html><center>", ""));
-        Center.label[2].setText("__________________________");
-        Center.label[3].setText(this.description);
+        Center.label[1].setText("__________________________");
+        Center.label[2].setText(this.description);
         super.displayCarOnCenter();
     }
 }

@@ -1,4 +1,4 @@
-package GUI.desktop_codebehind;
+package GUI.backend;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;

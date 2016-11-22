@@ -1,9 +1,9 @@
-package GUI.desktop_fields;
+package GUI.fields;
 
 import java.awt.Color;
 import javax.swing.JLabel;
-import GUI.desktop_board.Center;
-import GUI.desktop_codebehind.SwingComponentFactory;
+import GUI.board.Center;
+import GUI.backend.SwingComponentFactory;
 
 public final class Chance extends Field {
     private static final int TITLEHEIGHT = 47;
@@ -51,7 +51,7 @@ public final class Chance extends Field {
     public void displayOnCenter() {
         super.displayOnCenter();
         Center.label[1].setIcon(this.factory
-            .createIcon("/GUI/desktop_resources/pics/Prøv lykken small.png"));
+            .createIcon("/GUI/resources/pics/Prøv lykken small.png"));
         Center.label[2].setText("__________________________");
         Center.label[3].setText(this.description);
         super.displayCarOnCenter();

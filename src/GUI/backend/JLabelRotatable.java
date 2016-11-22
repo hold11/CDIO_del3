@@ -1,4 +1,4 @@
-package GUI.desktop_codebehind;
+package GUI.backend;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;

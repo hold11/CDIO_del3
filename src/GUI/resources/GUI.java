@@ -1,12 +1,12 @@
-package GUI.desktop_resources;
+package GUI.resources;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import GUI.desktop_board.Board;
-import GUI.desktop_board.BoardController;
-import GUI.desktop_codebehind.Car;
-import GUI.desktop_codebehind.FieldFactory;
-import GUI.desktop_fields.Field;
+import GUI.board.Board;
+import GUI.board.BoardController;
+import GUI.backend.Car;
+import GUI.backend.FieldFactory;
+import GUI.fields.Field;
 
 /**
  * Provides easy access to the GUI features.

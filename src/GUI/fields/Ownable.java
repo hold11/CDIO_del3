@@ -1,11 +1,11 @@
-package GUI.desktop_fields;
+package GUI.fields;
 
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
-import GUI.desktop_board.Center;
-import GUI.desktop_codebehind.Player;
-import GUI.desktop_codebehind.SwingComponentFactory;
+import GUI.board.Center;
+import GUI.backend.Player;
+import GUI.backend.SwingComponentFactory;
 
 public abstract class Ownable extends Field{
 	public static final String OWNABLELABEL = "Ejes af: ";

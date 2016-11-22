@@ -1,4 +1,4 @@
-package GUI.desktop_board;
+package GUI.board;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -9,10 +9,10 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import GUI.desktop_codebehind.CenterMouseListener;
-import GUI.desktop_codebehind.Player;
-import GUI.desktop_codebehind.SwingComponentFactory;
-import GUI.desktop_fields.Field;
+import GUI.backend.CenterMouseListener;
+import GUI.backend.Player;
+import GUI.backend.SwingComponentFactory;
+import GUI.fields.Field;
 
 public final class Center{
 	private static Center center;
@@ -89,7 +89,7 @@ public final class Center{
 	public void displayDefault(){
 		centerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK, 3));
 		clearLabels();
-		label[0].setIcon(new ImageIcon(getClass().getResource("/GUI/desktop_resources/pics/Prøv lykken.png")));
+		label[0].setIcon(new ImageIcon(getClass().getResource("/GUI/resources/pics/Prøv lykken.png")));
 		label[0].setText(" ");
 		label[0].setFont(new Font(label[1].getFont().getName(), Font.BOLD, 20));
 		label[0].setVerticalTextPosition(SwingConstants.TOP);

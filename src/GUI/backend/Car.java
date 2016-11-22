@@ -1,4 +1,4 @@
-package GUI.desktop_codebehind;
+package GUI.backend;
 
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -317,15 +317,15 @@ public final class Car {
             new HashMap<Pattern, String>();
         static {
             patternImages.put(Pattern.DIAGONAL_DUAL_COLOR,
-                "/GUI/desktop_resources/structures/Diag_dual.png");
-            patternImages.put(Pattern.DOTTED, "/GUI/desktop_resources/structures/Dotted.png");
-            patternImages.put(Pattern.CHECKERED, "/GUI/desktop_resources/structures/Checkered.png");
-            patternImages.put(Pattern.ZEBRA, "/GUI/desktop_resources/structures/Zebra.png");
+                    "/GUI/resources/structures/Diag_dual.png");
+            patternImages.put(Pattern.DOTTED, "/GUI/resources/structures/Dotted.png");
+            patternImages.put(Pattern.CHECKERED, "/GUI/resources/structures/Checkered.png");
+            patternImages.put(Pattern.ZEBRA, "/GUI/resources/structures/Zebra.png");
         }
     }
     
     // Constants
     private static final int WIDTH = 40;
     private static final int HEIGHT = 21;
-    private static final String PATH = "/GUI/desktop_resources/pics/cars.png";
+    private static final String PATH = "/GUI/resources/pics/cars.png";
 }

@@ -1,8 +1,8 @@
 import java.awt.Color;
 import java.util.ArrayList;
-import GUI.desktop_codebehind.Car;
-import GUI.desktop_fields.*;
-import GUI.desktop_resources.GUI;
+import GUI.backend.Car;
+import GUI.fields.*;
+import GUI.resources.GUI;
 
 public class TestCreate {
     

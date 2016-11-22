@@ -1,7 +1,7 @@
-package GUI.desktop_fields;
+package GUI.fields;
 
 import java.awt.Color;
-import GUI.desktop_board.Board;
+import GUI.board.Board;
 
 public class Empty extends Field {
     

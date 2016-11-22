@@ -1,4 +1,4 @@
-package GUI.desktop_fields;
+package GUI.fields;
 
 public interface iBuilder {
     

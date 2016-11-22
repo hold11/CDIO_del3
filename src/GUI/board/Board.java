@@ -1,4 +1,4 @@
-package GUI.desktop_board;
+package GUI.board;
 
 import java.awt.Color;
 import java.awt.Component;
@@ -14,12 +14,12 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
-import GUI.desktop_codebehind.Car;
-import GUI.desktop_codebehind.FieldFactory;
-import GUI.desktop_codebehind.JLabelRotatable;
-import GUI.desktop_codebehind.Player;
-import GUI.desktop_codebehind.SwingComponentFactory;
-import GUI.desktop_fields.Field;
+import GUI.backend.Car;
+import GUI.backend.FieldFactory;
+import GUI.backend.JLabelRotatable;
+import GUI.backend.Player;
+import GUI.backend.SwingComponentFactory;
+import GUI.fields.Field;
 
 /**
  * The board
@@ -84,7 +84,7 @@ public final class Board extends javax.swing.JFrame {
 	 */
 	private void makeDice() {
 		try {
-			BufferedImage image = ImageIO.read(getClass().getResource("/GUI/desktop_resources/pics/Dice.png"));
+			BufferedImage image = ImageIO.read(getClass().getResource("/GUI/resources/pics/Dice.png"));
 			for(int value = 0; value < 6; value++) {
 				int x = 0;
 				int y = 55 * value;
