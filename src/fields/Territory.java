@@ -23,6 +23,21 @@ public class Territory extends Ownable
         this.price = price;
     }
 
+    /**
+     * Checks if field is owned by some player.
+     * @param ownable
+     * @return
+     */
+    public static boolean isOwned(Ownable ownable)
+    {
+        for (Ownable o : ownedOwnables)
+        {
+            if (ownable == o)   // Check if field is owned by someone.
+                return true;
+        }
+        return false;
+    }
+
     @Override
     public void purchaseField(Player player) {
 
