@@ -20,6 +20,7 @@ public class Fleet extends Ownable
     {
         this.fieldName = fieldName;
         this.price = 4000;
+        this.owner = null; // TODO: Do this need to be here?
     }
 
     /**

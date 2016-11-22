@@ -14,6 +14,7 @@ public class LaborCamp extends Ownable
         this.fieldName = fieldName;
         this.baseRent = 0;
         this.price = price;
+        this.owner = null;  // TODO: Do this need to be here?
     }
 
     /**
