@@ -44,4 +44,6 @@ public class GameBoard
         fields[19] = new Fleet("The Buccaneers");                   // Pay 500-4000
         fields[20] = new Fleet("Privateer Armada");                 // Pay 500-4000
     }
+
+    public Field[] getFields(){ return this.fields; }
 }
