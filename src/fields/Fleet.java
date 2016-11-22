@@ -64,13 +64,25 @@ public class Fleet extends Ownable
         player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
 
+    /**
+     * getRent returns rent amount depending on number of Fleet fields tha the owner owns.
+     * @return int
+     */
     @Override
     public int getRent() {
         return BASERENT * (int) Math.pow(2, multiplier);
     }
 
+    /**
+     * landOnField. When player lands on field, if field is owned by other player withdraw rent.
+     * @param player
+     */
     @Override
-    public void landOnField(Player player) {
-
+    public void landOnField(Player player)
+    {
+        if (isOwned(this) && this.owner != player)      // If field is owned by other player, withdraw rent.
+        {
+            player.getPlayerAccount().withdraw(this.getRent());
+        }
     }
 }
