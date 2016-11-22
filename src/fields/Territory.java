@@ -51,14 +51,25 @@ public class Territory extends Ownable
     }
 
 
+    /**
+     * getRent
+     * @return
+     */
     @Override
     public int getRent() {
         return this.rent;
     }
 
+    /**
+     * landOnField. When player lands on field, if field is owned by other player withdraw rent.
+     * @param player
+     */
     @Override
     public void landOnField(Player player)
     {
-
+        if (isOwned(this) && this.owner != player)      // If field is owned by other player, withdraw rent.
+        {
+            player.getPlayerAccount().withdraw(this.rent);
+        }
     }
 }
