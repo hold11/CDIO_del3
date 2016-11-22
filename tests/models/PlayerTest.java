@@ -55,17 +55,6 @@ public class PlayerTest {
 
     @Test
     public void findPlayer() throws Exception {
-
+        assertEquals(testPlayer1, Player.findPlayer(1));
     }
-
-    @Test
-    public void getPlayersList() throws Exception {
-
-    }
-
-    @Test
-    public void reset() throws Exception {
-
-    }
-
 }
