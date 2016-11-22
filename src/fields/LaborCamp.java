@@ -49,6 +49,12 @@ public class LaborCamp extends Ownable
         return totalResult * 100;       // Amount to pay when landing on LaborCamp field.
     }
 
+    @Override
+    public int getRent()
+    {
+        throw new IllegalArgumentException("Instead of using getRent(), use getRent(DiceCup).");
+    }
+
     /**
      * landOnField. When player lands on field, if field is owned by other player withdraw rent.
      * @param player
@@ -60,5 +66,5 @@ public class LaborCamp extends Ownable
         {
             player.getPlayerAccount().withdraw(this.getRent());
         }
-    }}
+    }
 }
