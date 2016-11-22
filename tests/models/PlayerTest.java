@@ -38,7 +38,7 @@ public class PlayerTest {
         assertEquals(2, testPlayer2.getPlayerID());
         assertEquals(2, Player.getPlayersList().size());
     }
-
+        assertFalse("bobdylan" == testPlayer1.getPlayerName());
     @Test
     public void getPlayerName() throws Exception {
         Player testPlayer3 = new Player("bobdylan");

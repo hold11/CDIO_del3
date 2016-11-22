@@ -28,7 +28,6 @@ public class FleetTest {
 
     @Test
     public void purchaseField() throws Exception {
-        Field testFleet = gameBoard.getFields()[17];
 
     }
 
