@@ -23,16 +23,15 @@ public class Player {
     private GameBoard currentField;
     private final int STARTING_BALANCE = 30000;
 
-    private static int playerCount = 1;
+    private static int playerCount = 0;
     private static List<Player> players = new ArrayList<Player>();
 
     public Player() {
+        playerCount++;
         this.playerName = String.format("models.Player %s", playerCount);
         this.playerID = playerCount;
 
         this.playerAccount = new BankAccount(STARTING_BALANCE);
-
-        playerCount++;
 
         players.add(this);
     }
