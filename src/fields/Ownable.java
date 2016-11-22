@@ -10,4 +10,5 @@ public abstract class Ownable extends Field
     protected Player owner;
     public abstract int getRent();
     public abstract void purchaseField(Player player);
+
 }
