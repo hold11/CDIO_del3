@@ -6,5 +6,6 @@ import models.Player;
  */
 public abstract class Field
 {
+    protected String fieldName;
     public abstract void landOnField(Player player);
 }
