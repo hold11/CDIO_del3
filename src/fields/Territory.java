@@ -39,8 +39,10 @@ public class Territory extends Ownable
     }
 
     @Override
-    public void purchaseField(Player player) {
-
+    public void purchaseField(Player player)
+    {
+        this.owner = player;                                // Sets fields owner to player.
+        player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
 
     @Override
@@ -49,7 +51,8 @@ public class Territory extends Ownable
     }
 
     @Override
-    public void landOnField(Player player) {
+    public void landOnField(Player player)
+    {
 
     }
 }

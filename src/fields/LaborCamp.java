@@ -34,7 +34,8 @@ public class LaborCamp extends Ownable
     @Override
     public void purchaseField(Player player)
     {
-
+        this.owner = player;                                // Sets fields owner to player.
+        player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
 
     @Override
