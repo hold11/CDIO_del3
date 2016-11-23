@@ -20,7 +20,7 @@ public class GameBoard
 {
     private Field[] fields = new Field[21];    //Initializes String array containing 21 elements.
 
-    public void fieldsList()
+    public GameBoard()
     {
         fields[0] = new Territory("Tribe Encampment", 100, 1000);   // (fieldName, rent, price)
         fields[1] = new Territory("Crater", 300, 1500);
