@@ -46,6 +46,10 @@ public abstract class Ownable extends Field
         player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
 
+    public int getPrice() {
+        return this.price;
+    }
+
     public static void reset()
     {
         ownedOwnables.clear();
