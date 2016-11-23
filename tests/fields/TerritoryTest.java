@@ -28,22 +28,21 @@ public class TerritoryTest {
     }
 
     @Test
-    public void getRent() throws Exception {
-        assertEquals(100,((Territory) testBoard.getFields()[0]).getRent());
-    }
-
-    @Test
     public void landOnField() throws Exception {
         int startBalance1 = testPlayer1.getPlayerAccount().getBalance();
         int startBalance2 = testPlayer2.getPlayerAccount().getBalance();
         Territory currentTerritory1 = (Territory) testBoard.getFields()[0];
-        Territory currentTerritory2 = (Territory) testBoard.getFields()[5];
-        Territory currentTerritory3 = (Territory) testBoard.getFields()[6];
+
+        //section tests that you don't pay for landing on an unowned territory.
         currentTerritory1.landOnField(testPlayer1);
         assertEquals(startBalance1, testPlayer1.getPlayerAccount().getBalance());
+
+        //section tests that the owner doesn't pay for landing on his own fields.
         currentTerritory1.purchaseField(testPlayer1);
         currentTerritory1.landOnField(testPlayer1);
         assertEquals(startBalance1 - currentTerritory1.getPrice(), testPlayer1.getPlayerAccount().getBalance());
+
+        //section tests that player2 pays for landing on a field owned by player1
         currentTerritory1.landOnField(testPlayer2);
         assertEquals(startBalance2-currentTerritory1.getRent(), testPlayer2.getPlayerAccount().getBalance());
     }
