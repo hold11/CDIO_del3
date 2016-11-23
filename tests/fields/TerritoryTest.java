@@ -34,14 +34,18 @@ public class TerritoryTest {
 
     @Test
     public void landOnField() throws Exception {
-        int startbalance1 = testPlayer1.getPlayerAccount().getBalance();
-        int startbalance2 = testPlayer2.getPlayerAccount().getBalance();
-        Territory currentTerritory = (Territory) testBoard.getFields()[0];
-        currentTerritory.landOnField(testPlayer1);
-        assertEquals(startbalance1, testPlayer1.getPlayerAccount().getBalance());
-
-
-
+        int startBalance1 = testPlayer1.getPlayerAccount().getBalance();
+        int startBalance2 = testPlayer2.getPlayerAccount().getBalance();
+        Territory currentTerritory1 = (Territory) testBoard.getFields()[0];
+        Territory currentTerritory2 = (Territory) testBoard.getFields()[5];
+        Territory currentTerritory3 = (Territory) testBoard.getFields()[6];
+        currentTerritory1.landOnField(testPlayer1);
+        assertEquals(startBalance1, testPlayer1.getPlayerAccount().getBalance());
+        currentTerritory1.purchaseField(testPlayer1);
+        currentTerritory1.landOnField(testPlayer1);
+        assertEquals(startBalance1 - currentTerritory1.getPrice(), testPlayer1.getPlayerAccount().getBalance());
+        currentTerritory1.landOnField(testPlayer2);
+        assertEquals(startBalance2-currentTerritory1.getRent(), testPlayer2.getPlayerAccount().getBalance());
     }
 
     @Test // Tests if the right amount is withdrawn, also tests isOwned, if another player can buy an owned field, and if the owner can buy it multiple times.
@@ -57,6 +61,7 @@ public class TerritoryTest {
         assertEquals(testPlayer2.getPlayerAccount().getBalance(), startbalance2);
         currentTerritory.purchaseField(testPlayer1);
         assertEquals(testPlayer1.getPlayerAccount().getBalance(), startbalance1-currentTerritory.getPrice());
+        assertTrue(Ownable.isOwned(currentTerritory));
     }
 
 }
