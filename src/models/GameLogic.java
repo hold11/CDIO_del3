@@ -1,5 +1,7 @@
 package models;
 
+import fields.Field;
+
 import java.util.Collection;
 
 /**
@@ -13,25 +15,37 @@ public class GameLogic
 
     public GameLogic()
     {
-        DiceCup = new diceCup();    // Creates the default dicecup with 2 dice with 6 sides.
+        diceCup = new DiceCup();    // Creates the default diceCup with 2 dice with 6 sides.
 
     }
 
     /**
      * playTurn
      */
-    public void playTurn(Player)
+    public void playTurn(Player player)
     {
+        // TODO: This is method from CDIO_2, has to get rewritten.
+/*        if (hasWon(getCurrentPlayer())) {
+            return;
+        }
+        diceCup.roll();
 
+
+        getCurrentPlayer().setCurrentField(Field.values()[getTotalEyes(diceCup)-2]);
+        if (currentPlayer.getCurrentField().getScoreValue() < 0) {
+            currentPlayer.getPlayerAccount().withdraw(currentPlayer.getCurrentField().getScoreValue());
+        } else {
+            currentPlayer.getPlayerAccount().deposit(currentPlayer.getCurrentField().getScoreValue());
+        }*/
     }
 
     /**
      * hasWon checks if player has won.
      * @return
      */
-    public boolean hasWon(Player)
+    public boolean hasWon(Player player)
     {
-
+        return true;        // TODO: return actual winning player.
     }
 
     /**
@@ -39,7 +53,10 @@ public class GameLogic
      */
     public void nextPlayer()
     {
-
+        if (playerTurn < players.size())
+            playerTurn++;
+        else
+            playerTurn = 1;
     }
 
     /**
@@ -48,7 +65,7 @@ public class GameLogic
      */
     public int getPlayerTurn()
     {
-
+        return playerTurn;
     }
 
     /**
@@ -57,7 +74,7 @@ public class GameLogic
      */
     public Player getCurrentPlayer()
     {
-
+        return Player.findPlayer(playerTurn);
     }
 
     /**
@@ -66,15 +83,19 @@ public class GameLogic
      */
     public DiceCup getDiceCup()
     {
-
+        return diceCup;
     }
 
     /**
      * getTotalEyes returns the total number of eyes of the rolled dice.
      * @return
      */
-    public int getTotalEyes(DiceCup)
+    public int getTotalEyes(DiceCup diceCup)
     {
+        int total = 0;
 
+        for (int i: diceCup.getResults())
+            total += i;
+        return total;
     }
 }
