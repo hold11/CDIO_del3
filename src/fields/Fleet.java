@@ -20,21 +20,7 @@ public class Fleet extends Ownable
     {
         this.fieldName = fieldName;
         this.price = 4000;
-    }
-
-    /**
-     * Checks if field is owned by some player.
-     * @param ownable
-     * @return
-     */
-    public static boolean isOwned(Ownable ownable)
-    {
-        for (Ownable o : ownedOwnables)
-        {
-            if (ownable == o)   // Check if field is owned by someone.
-                return true;
-        }
-        return false;
+        this.owner = null; // TODO: Do this need to be here?
     }
 
     /**
@@ -42,6 +28,7 @@ public class Fleet extends Ownable
      * and sets multiplier to ownedFleetCount.
      * @param player
      */
+    @Override
     public void purchaseField(Player player)
     {
         if (isOwned(this))              // Checks if field is owned. If it is, exit method.
@@ -63,13 +50,25 @@ public class Fleet extends Ownable
         player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
 
+    /**
+     * getRent returns rent amount depending on number of Fleet fields tha the owner owns.
+     * @return int
+     */
     @Override
     public int getRent() {
         return BASERENT * (int) Math.pow(2, multiplier);
     }
 
+    /**
+     * landOnField. When player lands on field, if field is owned by other player withdraw rent.
+     * @param player
+     */
     @Override
-    public void landOnField(Player player) {
-
+    public void landOnField(Player player)
+    {
+        if (isOwned(this) && this.owner != player)      // If field is owned by other player, withdraw rent.
+        {
+            player.getPlayerAccount().withdraw(this.getRent());
+        }
     }
 }
