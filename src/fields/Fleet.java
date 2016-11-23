@@ -24,25 +24,11 @@ public class Fleet extends Ownable
     }
 
     /**
-     * Checks if field is owned by some player.
-     * @param ownable
-     * @return
-     */
-    public static boolean isOwned(Ownable ownable)
-    {
-        for (Ownable o : ownedOwnables)
-        {
-            if (ownable == o)   // Check if field is owned by someone.
-                return true;
-        }
-        return false;
-    }
-
-    /**
      * Checks if the player purchasing a fleet already owns a fleet,
      * and sets multiplier to ownedFleetCount.
      * @param player
      */
+    @Override
     public void purchaseField(Player player)
     {
         if (isOwned(this))              // Checks if field is owned. If it is, exit method.
