@@ -29,24 +29,11 @@ public class TerritoryTest {
 
     @Test
     public void getRent() throws Exception {
-        assertEquals(100,((Territory) testBoard.getFields()[0]).getRent()); 
+        assertEquals(100,((Territory) testBoard.getFields()[0]).getRent());
     }
 
     @Test
     public void landOnField() throws Exception {
-
-        testBoard.getFields()[0].isOwned
-        testBoard.getFields()[0].landOnField(testPlayer1);
-
-    }
-
-    @Test
-    public void getRent1() throws Exception {
-
-    }
-
-    @Test
-    public void getRent2() throws Exception {
 
     }
 
@@ -57,7 +44,7 @@ public class TerritoryTest {
 
     @Test
     public void purchaseField() throws Exception {
-
+    
     }
 
     @Test
