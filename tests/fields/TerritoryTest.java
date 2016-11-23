@@ -49,7 +49,7 @@ public class TerritoryTest {
         assertEquals(testPlayer1, currentTerritory.getOwner());
         currentTerritory.purchaseField(testPlayer2);
         assertEquals(testPlayer1, currentTerritory.getOwner());
-        
+        assertEquals(testPlayer2.getPlayerAccount().getBalance(), startbalance2);
 
 
 
