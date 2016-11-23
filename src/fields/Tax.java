@@ -14,7 +14,6 @@ public class Tax extends Field
     {
         this.fieldName = fieldName;
         this.taxAmount = taxAmount;
-        this.taxRate = taxRate; // TODO: DO we need to delete this.
     }
 
     public Tax(String fieldName, int taxAmount, double taxRate)
@@ -25,8 +24,21 @@ public class Tax extends Field
     }
 
     @Override
-    public void landOnField(Player player) 
+    public void landOnField(Player player)
     {
-        player.getPlayerAccount().withdraw(this.taxAmount);
+        if (this.taxRate == -1)
+        {
+            player.getPlayerAccount().withdraw(this.taxAmount);
+        }
+        else
+        {
+           if (player.getPlayerAccount().getBalance() * this.taxRate > this.taxAmount)
+           {
+               player.getPlayerAccount().withdraw(this.taxAmount);
+           }
+           else
+           {
+           }
+        }
     }
 }
