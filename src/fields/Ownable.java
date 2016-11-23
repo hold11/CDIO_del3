@@ -54,4 +54,7 @@ public abstract class Ownable extends Field
     {
         ownedOwnables.clear();
     }
+    public Player getOwner(){
+        return this.owner;
+    }
 }
