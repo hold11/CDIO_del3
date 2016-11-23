@@ -35,6 +35,9 @@ public class TerritoryTest {
     @Test
     public void landOnField() throws Exception {
 
+        testBoard.getFields()[0].isOwned
+        testBoard.getFields()[0].landOnField(testPlayer1);
+
     }
 
     @Test
