@@ -54,7 +54,7 @@ public class Fleet extends Ownable
 
     /**
      * setMultiplier to ownedFleetCount = number of Fleets owned by player.
-     * @param ownedFleetCount
+     * @param ownedFleetCount int
      */
     public void setMultiplier(int ownedFleetCount)
     {
@@ -76,7 +76,7 @@ public class Fleet extends Ownable
 
     /**
      * landOnField. When player lands on field, if field is owned by other player withdraw rent.
-     * @param player
+     * @param player Player
      */
     @Override
     public void landOnField(Player player)
