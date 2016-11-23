@@ -47,7 +47,7 @@ public class TerritoryTest {
         int startbalance = testPlayer1.getPlayerAccount().getBalance();
         Territory currentTerritory = (Territory) testBoard.getFields()[0];
         currentTerritory.purchaseField(testPlayer1);
-        assertEquals(testPlayer1.getPlayerAccount().getBalance(), startbalance-currentTerritory.get  );
+        assertEquals(testPlayer1.getPlayerAccount().getBalance(), startbalance-currentTerritory.getPrice());
 
     }
 
