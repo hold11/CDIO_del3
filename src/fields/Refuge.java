@@ -17,7 +17,8 @@ public class Refuge extends Field
     }
 
     @Override
-    public void landOnField(Player player) {
-
+    public void landOnField(Player player)
+    {
+        player.getPlayerAccount().deposit(this.receive);
     }
 }
