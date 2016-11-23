@@ -29,7 +29,7 @@ public class TerritoryTest {
 
     @Test
     public void getRent() throws Exception {
-        assertEquals(100,((Territory) testBoard.getFields()[0]).getRent());
+        assertEquals(100,((Territory) testBoard.getFields()[0]).getRent()); 
     }
 
     @Test
