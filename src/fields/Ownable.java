@@ -45,4 +45,13 @@ public abstract class Ownable extends Field
         this.owner = player;                                // Sets fields owner to player.
         player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
+
+    public int getPrice() {
+        return this.price;
+    }
+
+    public static void reset()
+    {
+        ownedOwnables.clear();
+    }
 }
