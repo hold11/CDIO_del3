@@ -37,16 +37,12 @@ public class Fleet extends Ownable
         int ownedFleetCount = 0;
         this.ownedOwnables.add(this);       // Adds fleet to list of owned ownables by Player. 'this' refers to the fleet the Player landed on.
         for (Ownable o : ownedOwnables)
-        {
-            if (o.owner == player)
-            {
-                if (o instanceof Fleet)
-                {
-                    ownedFleetCount++;
-                    ((Fleet) o).setMultiplier(ownedFleetCount);     // Sets multiplier for the fleet that the player already owns.
-                }
-            }
-        }
+            if (o.owner == player && o instanceof Fleet)
+                ownedFleetCount++;
+
+        for (Ownable o : ownedOwnables)
+            ((Fleet) o).setMultiplier(ownedFleetCount);     // Sets multiplier for the fleet that the player already owns.
+
         this.multiplier = ownedFleetCount;                  // Sets multiplier to ownedFleetCount
         this.owner = player;                                // Sets fields owner to player.
         player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
