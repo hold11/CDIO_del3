@@ -25,7 +25,8 @@ public class Tax extends Field
     }
 
     @Override
-    public void landOnField(Player player) {
-
+    public void landOnField(Player player) 
+    {
+        player.getPlayerAccount().withdraw(this.taxAmount);
     }
 }
