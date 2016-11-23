@@ -41,8 +41,10 @@ public class Fleet extends Ownable
             if (o.owner == player)
             {
                 if (o instanceof Fleet)
+                {
                     ownedFleetCount++;
-                multiplier = ownedFleetCount;   // Sets multiplier for the fleet that the player already owns.
+                    ((Fleet) o).setMultiplier(ownedFleetCount);     // Sets multiplier for the fleet that the player already owns.
+                }
             }
         }
         this.multiplier = ownedFleetCount;                  // Sets multiplier to ownedFleetCount
@@ -50,13 +52,22 @@ public class Fleet extends Ownable
         player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
 
+    public void setMultiplier(int ownedFleetCount)
+    {
+        this.multiplier = ownedFleetCount;
+    }
+
     /**
      * getRent returns rent amount depending on number of Fleet fields tha the owner owns.
      * @return int
      */
     @Override
-    public int getRent() {
-        return BASERENT * (int) Math.pow(2, multiplier);
+    public int getRent()
+    {
+        if (isOwned(this))
+            return BASERENT * (int) Math.pow(2, multiplier);    // Rent if field is owned
+        else
+            return 0;       // Rent is 0 if field is not owned.
     }
 
     /**
