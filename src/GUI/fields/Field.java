@@ -58,6 +58,7 @@ public abstract class Field {
         protected String description = "description";
         protected String picture = "default";
         protected String rent = "Rent";
+		protected String tax = "Tax";
         protected Color bgColor = Color.LIGHT_GRAY;
         protected Color fgColor = Color.BLACK;
         
@@ -93,7 +94,7 @@ public abstract class Field {
 		this.layered.setForeground(fgColor);
 		this.layered.setOpaque(true);
 		this.layered.setBorder(border);
-		this.factory.setSize(this.layered, 1 * FIELDWIDTH, 1 * FIELDHEIGHT);
+		this.factory.setSize(this.layered, FIELDWIDTH, FIELDHEIGHT);
 		this.layered.addMouseListener(new FieldMouseListener(this));
 		this.layered.setLayout(new GridBagLayout());
 	}

@@ -1,3 +1,5 @@
+package GUI;
+
 import java.awt.Color;
 import java.util.ArrayList;
 import GUI.backend.Car;
