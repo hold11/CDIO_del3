@@ -55,8 +55,12 @@ public class Fleet extends Ownable
      * @return int
      */
     @Override
-    public int getRent() {
-        return BASERENT * (int) Math.pow(2, multiplier);
+    public int getRent()
+    {
+        if (isOwned(this))
+            return BASERENT * (int) Math.pow(2, multiplier);    // Rent if field is owned
+        else
+            return 0;       // Rent is 0 if field is not owned.
     }
 
     /**
