@@ -52,6 +52,10 @@ public class Fleet extends Ownable
         player.getPlayerAccount().withdraw(this.price);     // Withdraws field price from player account
     }
 
+    /**
+     * setMultiplier to ownedFleetCount = number of Fleets owned by player.
+     * @param ownedFleetCount
+     */
     public void setMultiplier(int ownedFleetCount)
     {
         this.multiplier = ownedFleetCount;
