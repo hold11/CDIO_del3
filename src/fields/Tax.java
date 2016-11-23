@@ -38,6 +38,7 @@ public class Tax extends Field
            }
            else
            {
+               player.getPlayerAccount().withdraw((int) Math.round(player.getPlayerAccount().getBalance() * this.taxRate));
            }
         }
     }
