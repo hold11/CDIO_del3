@@ -15,7 +15,7 @@ import fields.Field;
 
 /**
  * This class is the player class.
- * @version 1.3.7
+ * @version 1.4
  */
 public class Player
 {
@@ -25,7 +25,7 @@ public class Player
     private Field currentField;
     private final int STARTING_BALANCE = 30000;
 
-    private static int nextPlayerID = 1;
+    private static int nextPlayerID = 1; // This variable is used to specify the next ID for the next player that gets constructed
     private static List<Player> players = new ArrayList<Player>();
 
     public Player()
