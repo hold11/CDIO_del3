@@ -30,9 +30,9 @@ public abstract class Field {
 	protected String title;
 	protected String subText;
 	protected String description;
-	private boolean[] hasCars = new boolean[Board.MAX_PLAYER_COUNT];
+	private boolean[] hasMovers = new boolean[Board.MAX_PLAYER_COUNT];
 	private SwingComponentFactory factory = new SwingComponentFactory();
-	private JLabel[] cars;
+	private JLabel[] Movers;
 	private static Point[] points = new Point[40];
     private static int nextPoint = 0;
     
@@ -107,17 +107,17 @@ public abstract class Field {
 		this.subTextLabel.setHorizontalTextPosition(SwingConstants.CENTER);
 		this.subTextLabel.setText(this.subText);
 	}
-	public boolean hasCar(String name) {
+	public boolean hasMover(String name) {
 		Player p = Board.getInstance().getPlayer(name);
-		return this.hasCars[p.getNumber()];
+		return this.hasMovers[p.getNumber()];
 	}
-	public void setCar(String name, boolean hasCar) {
+	public void setMover(String name, boolean hasMover) {
 		Board board = Board.getInstance();
 		Player p = board.getPlayer(name);
 		if(p != null) {
-			this.hasCars[p.getNumber()] = hasCar;
-			this.cars[p.getNumber()].setIcon(new ImageIcon(p.getImage()));
-			this.cars[p.getNumber()].setVisible(hasCar);
+			this.hasMovers[p.getNumber()] = hasMover;
+			this.Movers[p.getNumber()].setIcon(new ImageIcon(p.getImage()));
+			this.Movers[p.getNumber()].setVisible(hasMover);
 		}
 	}
 	/**
@@ -159,8 +159,8 @@ public abstract class Field {
 			this.description = description;
 		}
 	}
-	public void setCarIcons(JLabel[] cars) {
-		this.cars = cars;
+	public void setMoverIcons(JLabel[] Movers) {
+		this.Movers = Movers;
 	}
 	/**
 	 * Each type of field displays information on the center
@@ -175,15 +175,15 @@ public abstract class Field {
 		}
 		Center.label[0].setText(""+this.number);
 	}
-	protected void displayCarOnCenter() {
+	protected void displayMoverOnCenter() {
 		for(int i = 0; i < Board.MAX_PLAYER_COUNT; i++) {
 			Player p = Board.playerList[i];
-			if(p != null && hasCar(p.getName())) {
-				Center.cars[i].setIcon(new ImageIcon(p.getImage()));
-				Center.cars[i].setVisible(true);
+			if(p != null && hasMover(p.getName())) {
+				Center.Movers[i].setIcon(new ImageIcon(p.getImage()));
+				Center.Movers[i].setVisible(true);
 			} else {
-				Center.cars[i].setIcon(null);
-				Center.cars[i].setVisible(false);
+				Center.Movers[i].setIcon(null);
+				Center.Movers[i].setVisible(false);
 			}
 		}
 	}

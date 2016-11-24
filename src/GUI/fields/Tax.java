@@ -88,6 +88,6 @@ public final class Tax extends NotOwnable {
         Center.label[2].setText(this.description);
         Center.label[4].setText(this.subText);
         Center.label[5].setText(getBonus());
-        super.displayCarOnCenter();
+        super.displayMoverOnCenter();
     }
 }

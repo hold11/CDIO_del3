@@ -20,7 +20,7 @@ import GUI.fields.LaborCamp;
 public final class FieldFactory {
     public static String path = null;
     private enum Type {
-        BREWERY, CHANCE, JAIL, REFUGE, SHIPPING, START, STREET, TAX
+        BREWERY, CHANCE, REFUGE, SHIPPING, START, STREET, TAX
     }
     public static ArrayList<Field> fields = null;
     
@@ -64,9 +64,6 @@ public final class FieldFactory {
                     break;
                 case CHANCE:
                     createChance(/* attributes */);
-                    break;
-                case JAIL:
-                    createJail(attributes);
                     break;
                 case REFUGE:
                     createRefuge(attributes);
@@ -139,19 +136,6 @@ public final class FieldFactory {
     }
     private void createChance() {
         Field f = new Chance.Builder().build();
-        fields.add(f);
-    }
-    private void createJail(String[] attributes) {
-        String picture = valueOf("picture", attributes);
-        String title = valueOf("title", attributes);
-        String subText = valueOf("subText", attributes);
-        String description = valueOf("description", attributes);
-        Field f = new Jail.Builder()
-            .setPicture(picture)
-            .setTitle(title)
-            .setSubText(subText)
-            .setDescription(description)
-            .build();
         fields.add(f);
     }
     private void createRefuge(String[] attributes) {

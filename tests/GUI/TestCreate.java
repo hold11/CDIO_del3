@@ -2,7 +2,7 @@ package GUI;
 
 import java.awt.Color;
 import java.util.ArrayList;
-import GUI.backend.Car;
+import GUI.backend.Mover;
 import GUI.fields.*;
 import GUI.resources.GUI;
 
@@ -16,7 +16,6 @@ public class TestCreate {
         list.add(new Territory.Builder().build());
         list.add(new Fleet.Builder().build());
         list.add(new Refuge.Builder().build());
-        list.add(new Jail.Builder().build());
         list.add(new Chance.Builder().build());
         list.add(new Empty.Builder().build());
         list.add(new Empty.Builder().setBgColor(Color.MAGENTA).build());
@@ -27,7 +26,7 @@ public class TestCreate {
         for(int i = 0; i < fields.length; i++) fields[i] = list.get(i);
       
         GUI.create(fields);
-        Car car = new Car.Builder()
+        Mover car = new Mover.Builder()
             .typeRacecar()
             .primaryColor(Color.BLUE)
             .secondaryColor(Color.RED)

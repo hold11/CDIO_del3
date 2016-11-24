@@ -81,6 +81,6 @@ public final class Refuge extends NotOwnable {
         Center.label[3].setText("__________________________");
         Center.label[4].setText(this.description);
         Center.label[5].setText(getBonus());
-        super.displayCarOnCenter();
+        super.displayMoverOnCenter();
     }
 }

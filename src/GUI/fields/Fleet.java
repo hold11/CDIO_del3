@@ -13,7 +13,6 @@ public final class Fleet extends Ownable {
 	private JLabel topLabel;
 	private ImageIcon icon;
 	private SwingComponentFactory factory = new SwingComponentFactory();
-	private static int picCounter = 0;
 	
 	public static class Builder extends Field.Builder<Fleet.Builder> implements iBuilder{
 
@@ -103,6 +102,6 @@ public final class Fleet extends Ownable {
 		} else {
 			Center.label[5].setText(getPrice());
 		}
-		super.displayCarOnCenter();
+		super.displayMoverOnCenter();
 	}
 }

@@ -12,15 +12,15 @@ public class Player{
 	private String name;
 	private int balance;
 	
-	private Car car;
+	private Mover mover;
 	public static final int ICON_WIDTH = 41;
 	public static final int ICON_HEIGHT = 22;
 
-	public Player(int number, String name, int balance, Car car){
+	public Player(int number, String name, int balance, Mover mover){
 		this.number = number;
 		this.name = name;
 		this.balance = balance;
-		this.car = car;
+		this.mover = mover;
 		
 	}
 	public int getNumber(){
@@ -36,10 +36,10 @@ public class Player{
 		this.balance = balance;
 	}
 	public Color getPrimaryColor(){
-		return this.car.getPrimaryColor();
+		return this.mover.getPrimaryColor();
 	}
 	public Color getSecondaryColor(){
-		return this.car.getSecondaryColor();
+		return this.mover.getSecondaryColor();
 	}
 	@Override
 	public int hashCode() {
@@ -71,6 +71,6 @@ public class Player{
 		return true;
 	}
 	public BufferedImage getImage() {
-		return this.car.getImage();
+		return this.mover.getImage();
 	}
 }

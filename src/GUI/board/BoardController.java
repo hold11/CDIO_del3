@@ -14,12 +14,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-import GUI.backend.Car;
+import GUI.backend.Mover;
 import GUI.backend.FieldFactory;
 import GUI.backend.Player;
 import GUI.fields.Field;
 import GUI.fields.Ownable;
-import GUI.fields.Territory;
 
 /**
  * Provides access to GUI
@@ -289,8 +288,8 @@ public final class BoardController {
 		Field f = FieldFactory.fields.get(fieldNumber - 1);
 		f.setDescription(description);
 	}
-	public void addPlayer(String name, int balance, Car car) {
-		this.board.addPlayer(name, balance, car);
+	public void addPlayer(String name, int balance, Mover mover) {
+		this.board.addPlayer(name, balance, mover);
 	}
 	/**
 	 * Adds a player to the board.<br>
@@ -351,7 +350,7 @@ public final class BoardController {
 	 *        (If a faceValue is out of bounds nothing will happen!)
 	 */
 	public void setDice(int faceValue1, int rotation1, int faceValue2, int rotation2) {
-		// Make an accepted locations for a dice
+		// Make an accepted location for a dice
 		List<Point> dicePlaces = new ArrayList<Point>();
 		for(int x = 1; x < 10; x++) {
 			for(int y = 1; y < 10; y++) {
@@ -434,40 +433,40 @@ public final class BoardController {
         Center.getInstance().displayChanceCard();
     }
 	/**
-	 * Places a car on the field.<br>
-	 * All cars can be placed on the same field.<br>
-	 * A car can only be placed if the corresponding player has been added.<br>
-	 * If a car is placed on the same field multiple times, nothing more happens.<br>
-	 * A car can not be placed on multiple fields simultaneously.
+	 * Places a mover on the field.<br>
+	 * All movers can be placed on the same field.<br>
+	 * A mover can only be placed if the corresponding player has been added.<br>
+	 * If a mover is placed on the same field multiple times, nothing more happens.<br>
+	 * A mover can not be placed on multiple fields simultaneously.
 	 * @param fieldNumber : int [1:40]
 	 * @param name The name of the player
 	 */
-	public void setCar(int fieldNumber, String name) {
-		// removeCar(name);
+	public void setMover(int fieldNumber, String name) {
+		// removeMover(name);
 		Field f = FieldFactory.fields.get(fieldNumber - 1);
 		if(this.board.getPlayer(name) != null) {
-			f.setCar(name, true);
+			f.setMover(name, true);
 		}
 	}
 	/**
-	 * Removes a car from the board.<br>
-	 * If the car is not on the board, nothing happens.<br>
+	 * Removes a mover from the board.<br>
+	 * If the mover is not on the board, nothing happens.<br>
 	 * @param fieldNumber : int [1:40]
 	 * @param name The name of the player
 	 */
-	public void removeCar(int fieldNumber, String name) {
+	public void removeMover(int fieldNumber, String name) {
 		Field f = FieldFactory.fields.get(fieldNumber - 1);
-		f.setCar(name, false);
+		f.setMover(name, false);
 		Center.getInstance().displayDefault();
 	}
 	/**
-	 * Removes all the players cars from the board.<br>
-	 * If the car is not on the board, nothing happens.<br>
+	 * Removes all the players movers from the board.<br>
+	 * If the mover is not on the board, nothing happens.<br>
 	 * @param name The name of the player
 	 */
-	public void removeAllCars(String name) {
+	public void removeAllMovers(String name) {
 		for(Field f : FieldFactory.fields) {
-			f.setCar(name, false);
+			f.setMover(name, false);
 		}
 		Center.getInstance().displayDefault();
 	}
@@ -497,33 +496,4 @@ public final class BoardController {
 			((Ownable) f).setOwner(null);
 		}
 	}
-//	/**
-//	 * Sets houses from the street, and removes the hotel if one is present.<br>
-//	 * If houseCount is out of bounds, nothing happens.<br>
-//	 * If the field is not a street, nothing happens.<br>
-//	 * @param fieldNumber : int [1:40]
-//	 * @param houseCount : int [0:4]
-//	 */
-//	public void setHouses(int fieldNumber, int houseCount) {
-//		if(houseCount >= 0 && houseCount < 5) {
-//			Field f = FieldFactory.fields.get(fieldNumber - 1);
-//			if(f instanceof Territory) {
-//				Territory s = ((Territory) f);
-//				s.setHouses(houseCount);
-//			}
-//		}
-//	}
-//	/**
-//	 * Sets whether or not a hotel should be on the street and removes all houses if any is present.<br>
-//	 * @param fieldNumber : int [1:40]
-//	 * @param hasHotel : boolean
-//	 */
-//	public void setHotel(int fieldNumber, boolean hasHotel) {
-//		Field f = FieldFactory.fields.get(fieldNumber - 1);
-//		if(f instanceof Territory) {
-//			Territory s = ((Territory) f);
-//			s.setHotel(hasHotel);
-//		}
-//	}
-	
 }

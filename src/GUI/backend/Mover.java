@@ -8,18 +8,18 @@ import java.util.Map;
 /**
  * @author Ronnie 
  * Implemented using builder-pattern EX: 
- * Car car = new Car.Builder()
+ * Mover car = new Mover.Builder()
  *   .primaryColor(Color.MAGENTA)
  *   .secondaryColor(Color.BLUE)
  *   .typeTractor() 
  *   .patternDotted() 
  *   .Build();
  */
-public final class Car {
+public final class Mover {
     private final BufferedImage image;
     private final Color primaryColor, secondaryColor;
 
-    private Car(Builder builder) {
+    private Mover(Builder builder) {
         this.image = builder.image;
         this.primaryColor = builder.color1;
         this.secondaryColor = builder.color2;
@@ -49,7 +49,7 @@ public final class Car {
         }
         
         @SuppressWarnings("synthetic-access")
-        public Car build() {
+        public Mover build() {
             final int X = this.type.x();
             final int Y = 0;
             
@@ -101,10 +101,10 @@ public final class Car {
                     break;
                 default:
                     throw new RuntimeException(
-                        "Engine failure! - Car doesn't work.");
+                        "Engine failure! - Mover doesn't work.");
             }
             
-            return new Car(this);
+            return new Mover(this);
         }
         
         // Setters
@@ -293,7 +293,7 @@ public final class Car {
         private enum Type {
             CAR(0, 15), TRACTOR(1, 11), RACECAR(2, 13), UFO(3, 10);
             private final int x, h;
-            private final int width = Car.WIDTH + 1;
+            private final int width = Mover.WIDTH + 1;
             Type(int no, int h) {
                 this.x = no * this.width;
                 this.h = h;
@@ -317,15 +317,15 @@ public final class Car {
             new HashMap<Pattern, String>();
         static {
             patternImages.put(Pattern.DIAGONAL_DUAL_COLOR,
-                    "/GUI/resources/structures/Diag_dual.png");
-            patternImages.put(Pattern.DOTTED, "/GUI/resources/structures/Dotted.png");
-            patternImages.put(Pattern.CHECKERED, "/GUI/resources/structures/Checkered.png");
-            patternImages.put(Pattern.ZEBRA, "/GUI/resources/structures/Zebra.png");
+                    "/GUI/resources/Movers/Diag_dual.png");
+            patternImages.put(Pattern.DOTTED, "/GUI/resources/Movers/Dotted.png");
+            patternImages.put(Pattern.CHECKERED, "/GUI/resources/Movers/Checkered.png");
+            patternImages.put(Pattern.ZEBRA, "/GUI/resources/Movers/Zebra.png");
         }
     }
     
     // Constants
     private static final int WIDTH = 40;
     private static final int HEIGHT = 21;
-    private static final String PATH = "/GUI/resources/pics/cars.png";
+    private static final String PATH = "/GUI/resources/Movers/cars.png";
 }

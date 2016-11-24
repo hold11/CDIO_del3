@@ -19,22 +19,22 @@ public class TestRunExampleGame{
 		sleep();
 		GUI.addPlayer("Stig", 30000);
 		sleep();
-		GUI.setCar(1, "Mads");
+		GUI.setMover(1, "Mads");
 		sleep();
-		GUI.setCar(1, "Stig");
+		GUI.setMover(1, "Stig");
 		
 		// Move player 1
 		sleep();
 		GUI.setDice(1, 2);
 		sleep();
-		GUI.removeAllCars("Mads");
-		GUI.setCar(2, "Mads");
+		GUI.removeAllMovers("Mads");
+		GUI.setMover(2, "Mads");
 		sleep();
-		GUI.removeAllCars("Mads");
-		GUI.setCar(3, "Mads");
+		GUI.removeAllMovers("Mads");
+		GUI.setMover(3, "Mads");
 		sleep();
-		GUI.removeAllCars("Mads");
-		GUI.setCar(4, "Mads");
+		GUI.removeAllMovers("Mads");
+		GUI.setMover(4, "Mads");
 		sleep();
 		GUI.setBalance("Mads", 28000);
 		GUI.setOwner(4, "Mads");

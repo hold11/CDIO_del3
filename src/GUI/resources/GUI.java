@@ -4,7 +4,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import GUI.board.Board;
 import GUI.board.BoardController;
-import GUI.backend.Car;
+import GUI.backend.Mover;
 import GUI.backend.FieldFactory;
 import GUI.fields.Field;
 
@@ -44,7 +44,6 @@ public final class GUI {
      *      ... new Territory.Builder().build();<br>
      *      ... new Fleet.Builder().build();<br>
      *      ... new Refuge.Builder().build();<br>
-     *      ... new Jail.Builder().build();<br>
      *      ... new Chance.Builder().build();<br>
      *      ... new LaborCamp.Builder().build();<br>
      *      ... new Empty.Builder().build();<br>
@@ -64,7 +63,7 @@ public final class GUI {
     }
     /**
      * Displays a message to the user.<br>
-     * Breaks the system untill "OK" is pressed.<br>
+     * Breaks the system until "OK" is pressed.<br>
      * @param msg The message to print.
      */
     public static void showMessage(String msg) {
@@ -72,7 +71,7 @@ public final class GUI {
     }
     /**
      * Displays a message to the user and awaits the response.<br>
-     * @param msg The message that promts the user.
+     * @param msg The message that prompts the user.
      * @return The string that the user has entered.
      */
     public static String getUserString(String msg) {
@@ -81,7 +80,7 @@ public final class GUI {
     /**
      * Displays a message to the user and awaits the integer response. Only
      * values between min and max are allowed.<br>
-     * @param msg The message that promts the user.
+     * @param msg The message that prompts the user.
      * @param min The minimum value the user is allowed to enter.
      * @param max The maximum value the user is allowed to enter.
      * @return The integer that the user selected.
@@ -91,7 +90,7 @@ public final class GUI {
     }
     /**
      * Displays a message to the user and awaits the integer response.<br>
-     * @param msg The message that promts the user.
+     * @param msg The message that prompts the user.
      * @return The integer that the user selected.
      */
     public static int getUserInteger(String msg) {
@@ -99,7 +98,7 @@ public final class GUI {
     }
     /**
      * Displays a message to the user and awaits the button pressed response.<br>
-     * @param msg The message that promts the user.
+     * @param msg The message that prompts the user.
      * @param buttons A number of strings that should be printed on the buttons
      *        the user can press.
      * @return The string from the button that the user pressed.
@@ -109,7 +108,7 @@ public final class GUI {
     }
     /**
      * Displays a message to the user and awaits the drop-down response.<br>
-     * @param msg The message that promts the user.
+     * @param msg The message that prompts the user.
      * @param options A number of strings with the texts that the user should
      *        choose from.
      * @return The string that the user selected.
@@ -119,7 +118,7 @@ public final class GUI {
     }
     /**
      * Displays a message to the user and awaits the boolean response.<br>
-     * @param msg The message that promts the user.
+     * @param msg The message that prompts the user.
      * @param trueButton The text that should appear on the left button.
      * @param falseButton The text that should appear on the right button.
      * @return True if the left button is pressed by the user. False otherwise.
@@ -159,17 +158,17 @@ public final class GUI {
      * Max. 6 players.<br>
      * @param name : String (Mind the length!) (Unique identifier of the player - no duplicates)
      * @param balance : int
-     * @param car : Car
-     * Cars are created this way:<br>
-     *   Car car = new Car.Builder()<br>
+     * @param mover : Mover
+     * Movers are created this way:<br>
+     *   Mover mover = new Mover.Builder()<br>
      *     .primaryColor(Color.MAGENTA)<br>
      *     .secondaryColor(Color.BLUE)<br>
      *     .typeTractor()<br>
      *     .patternDotted()<br>
      *     .Build();<br>
      */
-    public static void addPlayer(String name, int balance, Car car) {
-        getBC().addPlayer(name, balance, car);
+    public static void addPlayer(String name, int balance, Mover mover) {
+        getBC().addPlayer(name, balance, mover);
     }
     /**
      * Adds a player to the board.<br>
@@ -267,7 +266,7 @@ public final class GUI {
     }
     /**
      * Places a car on the field.<br>
-     * All cars can be placed on the same field.<br>
+     * All Movers can be placed on the same field.<br>
      * A car can only be placed if the corresponding player has been added.<br>
      * If a car is placed on the same field multiple times, nothing more
      * happens.<br>
@@ -275,8 +274,8 @@ public final class GUI {
      * @param fieldNumber : int [1:40]
      * @param name The name of the player
      */
-    public static void setCar(int fieldNumber, String name) {
-        getBC().setCar(fieldNumber, name);
+    public static void setMover(int fieldNumber, String name) {
+        getBC().setMover(fieldNumber, name);
     }
     /**
      * Removes a car from the board.<br>
@@ -284,15 +283,15 @@ public final class GUI {
      * @param fieldNumber : int [1:40]
      * @param name The name of the player
      */
-    public static void removeCar(int fieldNumber, String name) {
-        getBC().removeCar(fieldNumber, name);
+    public static void removeMover(int fieldNumber, String name) {
+        getBC().removeMover(fieldNumber, name);
     }
     /**
-     * Removes all cars belonging to this player.
+     * Removes all Movers belonging to this player.
      * @param name The name of the player.
      */
-    public static void removeAllCars(String name) {
-        getBC().removeAllCars(name);
+    public static void removeAllMovers(String name) {
+        getBC().removeAllMovers(name);
     }
     /**
      * Sets an owner of a field.<br>
@@ -314,23 +313,4 @@ public final class GUI {
     public static void removeOwner(int fieldNumber) {
         getBC().removeOwner(fieldNumber);
     }
-//    /**
-//     * Sets houses from the street, and removes the hotel if one is present.<br>
-//     * If houseCount is out of bounds, nothing happens.<br>
-//     * If field is not a street, nothing happens.<br>
-//     * @param fieldNumber : int [1:40]
-//     * @param houseCount : int [0:4]
-//     */
-//    public static void setHouses(int fieldNumber, int houseCount) {
-//        getBC().setHouses(fieldNumber, houseCount);
-//    }
-//    /**
-//     * Sets whether or not a hotel should be on the street and removes all
-//     * houses if any is present.<br>
-//     * @param fieldNumber : int [1:40]
-//     * @param hasHotel : boolean
-//     */
-//    public static void setHotel(int fieldNumber, boolean hasHotel) {
-//        getBC().setHotel(fieldNumber, hasHotel);
-//    }
 }

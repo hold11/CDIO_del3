@@ -98,6 +98,6 @@ public final class Territory extends Ownable {
         } else {
             Center.label[5].setText(getPrice());
         }
-        super.displayCarOnCenter();
+        super.displayMoverOnCenter();
     }
 }

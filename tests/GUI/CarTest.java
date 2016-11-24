@@ -1,13 +1,13 @@
 package GUI;
 
 import java.awt.Color;
-import GUI.backend.Car;
+import GUI.backend.Mover;
 import GUI.resources.GUI;
 
 public class CarTest {
     
     public static void main(String[] args) {
-        Car car = new Car.Builder()
+        Mover car = new Mover.Builder()
             .typeRacecar()
             .primaryColor(Color.BLUE)
             .secondaryColor(Color.RED)

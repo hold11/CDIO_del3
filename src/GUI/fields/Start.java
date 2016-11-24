@@ -66,6 +66,6 @@ public final class Start extends Field {
         Center.label[1].setText(this.title.replace("<html><center>", ""));
         Center.label[2].setText("__________________________");
         Center.label[3].setText(this.description);
-        super.displayCarOnCenter();
+        super.displayMoverOnCenter();
     }
 }

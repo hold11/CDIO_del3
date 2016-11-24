@@ -1,7 +1,7 @@
 package GUI;
 
 import java.awt.Color;
-import GUI.backend.Car;
+import GUI.backend.Mover;
 import GUI.resources.GUI;
 
 public class Test {
@@ -84,11 +84,6 @@ public class Test {
 		GUI.setDescriptionText(fieldNr, desc + fieldNr);
 		GUI.setSubText(fieldNr, sub + fieldNr);
 		GUI.setTitleText(fieldNr, title + fieldNr);
-		// Jail - 11
-		fieldNr = 11;
-		GUI.setDescriptionText(fieldNr, desc + fieldNr);
-		GUI.setSubText(fieldNr, sub + fieldNr);
-		GUI.setTitleText(fieldNr, title + fieldNr);
 		// Refuge - 21
 		fieldNr = 21;
 		GUI.setDescriptionText(fieldNr, desc + fieldNr);
@@ -113,9 +108,9 @@ public class Test {
 	private void testAddPlayer() {
 		GUI.addPlayer("Arthur Dent", 1000);
 		
-		Car car;
+		Mover car;
 		
-		car = new Car.Builder()
+		car = new Mover.Builder()
 			.primaryColor(Color.MAGENTA)
 			.secondaryColor(Color.BLUE)
 			.typeTractor()
@@ -123,7 +118,7 @@ public class Test {
 			.build();
 		GUI.addPlayer("Ford Prefect", 1000, car);
 		
-		car = new Car.Builder()
+		car = new Mover.Builder()
 			.primaryColor(Color.BLACK)
 			.secondaryColor(Color.RED)
 			.typeUfo()
@@ -131,7 +126,7 @@ public class Test {
 			.build();
 		GUI.addPlayer("Zaphod Beeblebrox", 100000, car);
 		
-		car = new Car.Builder()
+		car = new Mover.Builder()
 			.primaryColor(Color.DARK_GRAY)
 			.secondaryColor(Color.CYAN)
 			.typeRacecar()
@@ -139,14 +134,14 @@ public class Test {
 			.build();
 		GUI.addPlayer("Tricia McMillan", 100000, car);
 		
-		car = new Car.Builder()
+		car = new Mover.Builder()
 			.primaryColor(new Color(160, 32, 240))
 			.secondaryColor(Color.YELLOW)
 			.patternHorizontalGradiant()
 			.build();
 		GUI.addPlayer("Marvin", 1000, car);
 		
-		car = new Car.Builder()
+		car = new Mover.Builder()
 			.primaryColor(Color.BLACK)
 			.secondaryColor(Color.WHITE)
 			.patternCheckered()
@@ -195,40 +190,40 @@ public class Test {
 	}
 	private void testSetCar() {
 		for(int i = 1; i <= 10; i++) {
-			GUI.setCar(i, "Zaphod Beeblebrox");
+			GUI.setMover(i, "Zaphod Beeblebrox");
 		}
 		for(int i = 11; i <= 20; i++) {
-			GUI.setCar(i, "Tricia McMillan");
-			GUI.setCar(i, "Ford Prefect");
+			GUI.setMover(i, "Tricia McMillan");
+			GUI.setMover(i, "Ford Prefect");
 		}
 		for(int i = 21; i <= 30; i++) {
-			GUI.setCar(i, "Arthur Dent");
-			GUI.setCar(i, "Marvin");
-			GUI.setCar(i, "Slartibartfast");
+			GUI.setMover(i, "Arthur Dent");
+			GUI.setMover(i, "Marvin");
+			GUI.setMover(i, "Slartibartfast");
 		}
 		for(int i = 31; i <= 40; i++) {
-			GUI.setCar(i, "Tricia McMillan");
-			GUI.setCar(i, "Zaphod Beeblebrox");
-			GUI.setCar(i, "Arthur Dent");
-			GUI.setCar(i, "Ford Prefect");
-			GUI.setCar(i, "Marvin");
-			GUI.setCar(i, "Slartibartfast");
+			GUI.setMover(i, "Tricia McMillan");
+			GUI.setMover(i, "Zaphod Beeblebrox");
+			GUI.setMover(i, "Arthur Dent");
+			GUI.setMover(i, "Ford Prefect");
+			GUI.setMover(i, "Marvin");
+			GUI.setMover(i, "Slartibartfast");
 		}
 	}
 	private void testRemoveCar() {
-		GUI.removeAllCars("Zaphod Beeblebrox");
-		GUI.removeAllCars("Tricia McMillan");
-		GUI.removeAllCars("Ford Prefect");
-		GUI.removeAllCars("Arthur Dent");
-		GUI.removeAllCars("Marvin");
-		GUI.removeAllCars("Slartibartfast");
+		GUI.removeAllMovers("Zaphod Beeblebrox");
+		GUI.removeAllMovers("Tricia McMillan");
+		GUI.removeAllMovers("Ford Prefect");
+		GUI.removeAllMovers("Arthur Dent");
+		GUI.removeAllMovers("Marvin");
+		GUI.removeAllMovers("Slartibartfast");
 		
-		GUI.removeAllCars("Tricia McMillan");
-		GUI.removeAllCars("Zaphod Beeblebrox");
-		GUI.removeAllCars("Arthur Dent");
-		GUI.removeAllCars("Ford Prefect");
-		GUI.removeAllCars("Marvin");
-		GUI.removeAllCars("Slartibartfast");
+		GUI.removeAllMovers("Tricia McMillan");
+		GUI.removeAllMovers("Zaphod Beeblebrox");
+		GUI.removeAllMovers("Arthur Dent");
+		GUI.removeAllMovers("Ford Prefect");
+		GUI.removeAllMovers("Marvin");
+		GUI.removeAllMovers("Slartibartfast");
 	}
 	private void testSetOwner() {
 		for(int i = 1; i <= 10; i++) {

@@ -18,7 +18,7 @@ public final class Center{
 	private static Center center;
 	private static JPanel centerPanel;
 	public static JLabel[] label = new JLabel[7];
-	public static JLabel[] cars = new JLabel[Board.MAX_PLAYER_COUNT];
+	public static JLabel[] Movers = new JLabel[Board.MAX_PLAYER_COUNT];
 	public static String chanceCardText = "Prøv Lykken";
 	private JLayeredPane playersPane = new JLayeredPane();
 	
@@ -37,9 +37,9 @@ public final class Center{
 			label[i].setAlignmentX(Component.CENTER_ALIGNMENT);
 			centerPanel.add(label[i]);
 		}
-		for(int i = 0; i < cars.length; i++){
+		for(int i = 0; i < Movers.length; i++){
 			JLabel l = new JLabel();
-			cars[i] = l;
+			Movers[i] = l;
 			l.setOpaque(false);
 			l.setBounds(25*i+3, 0, Player.ICON_WIDTH, Player.ICON_HEIGHT);
 			this.playersPane.setLayer(l, i+6);
@@ -100,7 +100,7 @@ public final class Center{
 			l.setForeground(Color.BLACK);
 		}
 		for(int i=0; i<Board.MAX_PLAYER_COUNT; i++){
-			Center.cars[i].setVisible(false);
+			Center.Movers[i].setVisible(false);
 		}
 	}
     /**
