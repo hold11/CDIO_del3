@@ -10,8 +10,11 @@ package models;
     /`           ´\                                      |
  */
 
+import fields.Ownable;
+
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Scanner;
 
 /**
  * Created by tjc on 23/11/16.
@@ -35,11 +38,11 @@ public class GameLogic
      */
     public void playTurn(Player currentPlayer)
     {
-        // TODO: This is method from CDIO_2, has to get rewritten.
         if (hasWon(currentPlayer)) {
             return;
         }
         diceCup.roll();
+
 
         // TODO: Remove below, just for testing purposes
         System.out.println(currentPlayer.getPlayerName() + "'s turn. Current balance: " + currentPlayer.getPlayerAccount().getBalance());
@@ -50,9 +53,36 @@ public class GameLogic
         System.out.println(currentPlayer.getPlayerName() + " rolled " + results[0] + " and " + results[1] + " (" + getTotalEyes(diceCup) + ").");
         // TODO: Remove above, just for testing purposes
 
+
         currentPlayer.moveCurrentField(getTotalEyes(diceCup));
         board.getFields()[currentPlayer.getCurrentField() - 1].landOnField(currentPlayer); // - 1 to make sure you can land on index 0, but not 21
-//        currentPlayer.getCurrentField().landOnField(currentPlayer); // old from CDIO_del2
+
+
+        // TODO: Remove below, just for testing purposes
+        if (board.getFields()[currentPlayer.getCurrentField() - 1] instanceof Ownable )
+        {
+            Ownable ownedField = (Ownable) board.getFields()[currentPlayer.getCurrentField()];
+
+            if (!ownedField.isOwned()) { // Field isn't owned by anyone
+                String answer;
+                System.out.println("\nCurrent Balance: " + currentPlayer.getPlayerAccount().getBalance() + " | Plot Price: " + ownedField.getPrice());
+                System.out.print("This plot is not owned, do you want to buy? ");
+                Scanner in = new Scanner(System.in);
+                answer = in.nextLine().toLowerCase();
+                if (answer == "y" || answer == "yes") {
+                    ownedField.purchaseField(currentPlayer);
+                    System.out.println(currentPlayer.getPlayerName() + " just bought " + ownedField + " for " + ownedField.getPrice() + ".");
+                    System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                }
+            }
+            else { // Field is owned by someone
+                System.out.println(ownedField + " is currently owned by " + ownedField.getOwner() + ".");
+                System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+            }
+        }
+
+        // TODO: Remove above, just for testing purposes
+
 
         // TODO: Remove below, just for testing purposes
         System.out.println(currentPlayer.getPlayerName() + " landed on " + (currentPlayer.getCurrentField() - 1));
