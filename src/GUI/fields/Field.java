@@ -16,8 +16,8 @@ import GUI.backend.Player;
 import GUI.backend.SwingComponentFactory;
 
 public abstract class Field {
-	public static final int FIELDWIDTH = 63;
-	public static final int FIELDHEIGHT = 63;
+	public static final int FIELDWIDTH = 85;
+	public static final int FIELDHEIGHT = 85;
 	private static int nextNumber = 0;
 	protected int number;
 	private int x;
@@ -53,13 +53,13 @@ public abstract class Field {
     }
     
     public static class Builder<E> {
-        protected String title = "Title";
-        protected String subText = "subText";
-        protected String description = "description";
-        protected String picture = "default";
-        protected String rent = "Rent";
-        protected String price = "Price";
-        protected String bonus = "Bonus";
+        protected String title = "";
+        protected String subText = "";
+        protected String description = "";
+        protected String picture = "";
+        protected String rent = "";
+        protected String price = "";
+        protected String bonus = "";
         protected Color bgColor = Color.LIGHT_GRAY;
         protected Color fgColor = Color.BLACK;
         

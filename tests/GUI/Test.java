@@ -2,7 +2,6 @@ package GUI;
 
 import java.awt.Color;
 import GUI.backend.Mover;
-import GUI.resources.GUI;
 
 public class Test {
 	

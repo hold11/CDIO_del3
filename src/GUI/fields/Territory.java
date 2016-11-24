@@ -7,9 +7,8 @@ import GUI.board.Center;
 import GUI.backend.SwingComponentFactory;
 
 public final class Territory extends Ownable {
-    private static final int TOPHEIGHT = 31;
-    private static final int TITLEHEIGHT = 16;
-    private static final int SUBTEXTHEIGHT = 14;
+    private static final int TOPHEIGHT = 51;
+    private static final int TITLEHEIGHT = 30;
     private ImageIcon icon;
     private JLabel topLabel;
     private SwingComponentFactory factory = new SwingComponentFactory();
@@ -60,14 +59,9 @@ public final class Territory extends Ownable {
         }
 
         this.topLabel = makeTopLabel();
-        this.titleLabel = makeRoadNameLabel(this.title);
-        this.subTextLabel = makeBottomLabel(this.subText);
-        this.layered.add(this.topLabel,
-                this.factory.createGridBagConstraints(0, 0));
-        this.layered.add(this.titleLabel,
-                this.factory.createGridBagConstraints(0, 1));
-        this.layered.add(this.subTextLabel,
-                this.factory.createGridBagConstraints(0, 2));
+        this.titleLabel = makeTitleLabel(this.title);
+        this.layered.add(this.topLabel, this.factory.createGridBagConstraints(0, 0));
+        this.layered.add(this.titleLabel, this.factory.createGridBagConstraints(0, 2));
     }
 
     private JLabel makeTopLabel() {
@@ -75,28 +69,23 @@ public final class Territory extends Ownable {
         l.setIcon(this.icon);
         return l;
     }
-    private JLabel makeRoadNameLabel(String roadname) {
-        JLabel roadnameLabel = makeLabel(TITLEHEIGHT);
-        roadnameLabel.setText(roadname);
-        return roadnameLabel;
-    }
-    private JLabel makeBottomLabel(String bottomText) {
-        JLabel bottomLabel = makeLabel(SUBTEXTHEIGHT);
-        bottomLabel.setText(bottomText);
-        return bottomLabel;
+    private JLabel makeTitleLabel(String title) {
+        JLabel titleLabel = makeLabel(TITLEHEIGHT);
+        titleLabel.setText(title);
+        return titleLabel;
     }
     @Override
     public void displayOnCenter() {
         super.displayOnCenter();
         Center.label[1].setIcon(this.icon);
-        Center.label[3].setText("__________________________");
+//        Center.label[3].setText("__________________________");
         Center.label[3].setText(this.description);
         Center.label[4].setText(this.subText);
         if (this.owner != null) {
             Center.label[5].setText(OWNABLELABEL + this.owner.getName());
             Center.label[6].setText(getRent());
         } else {
-            Center.label[5].setText(getPrice());
+            Center.label[6].setText(getPrice());
         }
         super.displayMoverOnCenter();
     }

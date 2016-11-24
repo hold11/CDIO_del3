@@ -26,7 +26,7 @@ import GUI.fields.Field;
 public final class Board extends javax.swing.JFrame {
 	private static final long serialVersionUID = 1L;
 	public static final String FONT = "Tahoma";
-	public static final int FONTSIZE = 10;
+	public static final int FONTSIZE = 14;
 	public static final Color BASECOLOR = new Color(51, 204, 0);
 	public static final int MAX_PLAYER_COUNT = 6;
 	

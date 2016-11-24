@@ -2,7 +2,6 @@ package GUI;
 
 import GUI.backend.Mover;
 import GUI.fields.*;
-import GUI.resources.GUI;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class GUITEST {
         test.CreateBoardWithFields();
         test.createPlayers();
         test.testSetOwner();
-        test.realExampleGame();
+        //test.realExampleGame();
     }
 
     private void CreateBoardWithFields() {
@@ -23,7 +22,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("Tribe Encampment")
-                .setSubText("Tribe Encampment")
+                // // .setSubtext("Tribe Encampment")
                 .setPicture("src/GUI/resources/art/Tribe_Encampment.jpg")
                 .setRent("100")
                 .setPrice("1000")
@@ -31,7 +30,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("Crater")
-                .setSubText("Crater")
+                // .setSubtext("Crater")
                 .setPicture("src/GUI/resources/art/Crater.jpg")
                 .setRent("300")
                 .setPrice("1500")
@@ -39,7 +38,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("Mountain")
-                .setSubText("Mountain")
+                // .setSubtext("Mountain")
                 .setPicture("src/GUI/resources/art/Mountain.jpg")
                 .setRent("500")
                 .setPrice("2000")
@@ -47,7 +46,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("Cold Desert")
-                .setSubText("Cold Desert")
+                // .setSubtext("Cold Desert")
                 .setPicture("src/GUI/resources/art/Cold_Desert.jpg")
                 .setRent("700")
                 .setPrice("3000")
@@ -55,7 +54,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("Black Cave")
-                .setSubText("Black Cave")
+                // .setSubtext("Black Cave")
                 .setPicture("src/GUI/resources/art/Black_Cave.jpg")
                 .setRent("1000")
                 .setPrice("4000")
@@ -63,7 +62,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("The Werewall")
-                .setSubText("The Werewall")
+                // .setSubtext("The Werewall")
                 .setPicture("src/GUI/resources/art/The_Werewall.jpg")
                 .setRent("1300")
                 .setPrice("4300")
@@ -71,7 +70,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("Mountain Village")
-                .setSubText("Mountain Village")
+                // .setSubtext("Mountain Village")
                 .setPicture("src/GUI/resources/art/Mountain_Village.jpg")
                 .setRent("1600")
                 .setPrice("4750")
@@ -79,7 +78,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("South Citadel")
-                .setSubText("South Citadel")
+                // .setSubtext("South Citadel")
                 .setPicture("src/GUI/resources/art/South_Citadel.jpg")
                 .setRent("2000")
                 .setPrice("5000")
@@ -87,7 +86,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("Palace Gates")
-                .setSubText("Palace Gates")
+                // .setSubtext("Palace Gates")
                 .setPicture("src/GUI/resources/art/Palace_Gates.jpg")
                 .setRent("2600")
                 .setPrice("5500")
@@ -95,7 +94,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("Tower")
-                .setSubText("Tower")
+                // .setSubtext("Tower")
                 .setPicture("src/GUI/resources/art/Tower.jpg")
                 .setRent("3200")
                 .setPrice("6000")
@@ -103,7 +102,7 @@ public class GUITEST {
 
         list.add(new Territory.Builder()
                 .setTitle("Castle")
-                .setSubText("Castle")
+                // .setSubtext("Castle")
                 .setPicture("src/GUI/resources/art/Castle.jpg")
                 .setRent("4000")
                 .setPrice("8000")
@@ -111,21 +110,21 @@ public class GUITEST {
 
         list.add(new Refuge.Builder()
                 .setTitle("Walled City")
-                .setSubText("Walled City")
+                // .setSubtext("Walled City")
                 .setPicture("src/GUI/resources/art/Walled_City.jpg")
                 .setBonus("5000")
                 .build());
 
         list.add(new Refuge.Builder()
                 .setTitle("Monastary")
-                .setSubText("Monastary")
+                //// .setSubtext("Monastary")
                 .setPicture("src/GUI/resources/art/Monastary.jpg")
                 .setBonus("500")
                 .build());
 
         list.add(new LaborCamp.Builder()
                 .setTitle("Huts in the Mountain")
-                .setSubText("Huts in the Mountain")
+                //// .setSubtext("Huts in the Mountain")
                 .setPicture("src/GUI/resources/art/Mountain_Hut.jpg")
                 .setRent("dice x100")  //TODO: Should this maybe display the rent a player has to pay to the owner as well?
                 .setPrice("2500")
@@ -133,7 +132,7 @@ public class GUITEST {
 
         list.add(new LaborCamp.Builder()
                 .setTitle("The Pit")
-                .setSubText("The Pit")
+                //// .setSubtext("The Pit")
                 .setPicture("src/GUI/resources/art/The_Pit.jpg")
                 .setRent("dice x100")  //TODO: Should this maybe display the rent a player has to pay to the owner as well?
                 .setPrice("2500")
@@ -141,21 +140,21 @@ public class GUITEST {
 
         list.add(new Tax.Builder()
                 .setTitle("Goldmine")
-                .setSubText("Goldmine")
+                //// .setSubtext("Goldmine")
                 .setPicture("src/GUI/resources/art/Goldmine.jpg")
                 .setTax("2000")
                 .build());
 
         list.add(new Tax.Builder()
                 .setTitle("Caravan")
-                .setSubText("Caravan")
+                // .setSubtext("Caravan")
                 .setPicture("src/GUI/resources/art/Caravan.jpg")
                 .setTax("10% or 4000")   //TODO: Maybe have it show what 10% means for current player
                 .build());
 
         list.add(new Fleet.Builder()
                 .setTitle("Second Sail")
-                .setSubText("Second Sail")
+                // .setSubtext("Second Sail")
                 .setPicture("src/GUI/resources/art/Second_Sail.png")
                 .setRent("1000")  //TODO: Make it actually show the correct value according to the rules
                 .setPrice("4000")
@@ -163,7 +162,7 @@ public class GUITEST {
 
         list.add(new Fleet.Builder()
                 .setTitle("Sea Grover")
-                .setSubText("Sea Grover")
+                // .setSubtext("Sea Grover")
                 .setPicture("src/GUI/resources/art/Sea_Grover.png")
                 .setRent("2000")  //TODO: Make it actually show the correct value according to the rules
                 .setPrice("4000")
@@ -171,7 +170,7 @@ public class GUITEST {
 
         list.add(new Fleet.Builder()
                 .setTitle("The Buccaneers")
-                .setSubText("The Buccaneers")
+                // .setSubtext("The Buccaneers")
                 .setPicture("src/GUI/resources/art/The_Buccaneers.png")
                 .setRent("3000")  //TODO: Make it actually show the correct value according to the rules
                 .setPrice("4000")
@@ -179,7 +178,7 @@ public class GUITEST {
 
         list.add(new Fleet.Builder()
                 .setTitle("Private Armada")
-                .setSubText("Private Armada")
+                // .setSubtext("Private Armada")
                 .setPicture("src/GUI/resources/art/Private_Armada.png")
                 .setRent("4000")  //TODO: Make it actually show the correct value according to the rules
                 .setPrice("4000")

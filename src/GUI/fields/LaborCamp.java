@@ -7,9 +7,8 @@ import GUI.board.Center;
 import GUI.backend.SwingComponentFactory;
 
 public final class LaborCamp extends Ownable {
-    private static final int TOPHEIGHT = 31;
-    private static final int TITLEHEIGHT = 16;
-    private static final int SUBTEXTHEIGHT = 14;
+    private static final int TOPHEIGHT = 51;
+    private static final int TITLEHEIGHT = 30;
     private JLabel topLabel;
     private ImageIcon icon;
     private SwingComponentFactory factory = new SwingComponentFactory();
@@ -63,12 +62,9 @@ public final class LaborCamp extends Ownable {
         
         this.topLabel = makeTopLabel();
         this.titleLabel = makeRoadNameLabel(this.title);
-        this.subTextLabel = makeBottomLabel(this.subText);
         this.layered.add(this.topLabel,
             this.factory.createGridBagConstraints(0, 0));
         this.layered.add(this.titleLabel,
-            this.factory.createGridBagConstraints(0, 1));
-        this.layered.add(this.subTextLabel,
             this.factory.createGridBagConstraints(0, 2));
     }
     
@@ -81,11 +77,6 @@ public final class LaborCamp extends Ownable {
         JLabel roadnameLabel = makeLabel(TITLEHEIGHT);
         roadnameLabel.setText(roadname);
         return roadnameLabel;
-    }
-    private JLabel makeBottomLabel(String bottomText) {
-        JLabel bottomLabel = makeLabel(SUBTEXTHEIGHT);
-        bottomLabel.setText(bottomText);
-        return bottomLabel;
     }
     @Override
     public void displayOnCenter() {

@@ -7,9 +7,8 @@ import GUI.board.Center;
 import GUI.backend.SwingComponentFactory;
 
 public final class Fleet extends Ownable {
-	private static final int TOPHEIGHT = 31;
-	private static final int TITLEHEIGHT = 16;
-	private static final int SUBTEXTHEIGHT = 14;
+	private static final int TOPHEIGHT = 51;
+	private static final int TITLEHEIGHT = 30;
 	private JLabel topLabel;
 	private ImageIcon icon;
 	private SwingComponentFactory factory = new SwingComponentFactory();
@@ -63,10 +62,8 @@ public final class Fleet extends Ownable {
 		
 		this.topLabel = makeTopLabel();
 		super.titleLabel = makeRoadNameLabel(this.title);
-		super.subTextLabel = makeBottomLabel(this.subText);
 		this.layered.add(this.topLabel, this.factory.createGridBagConstraints(0, 0));
-		this.layered.add(this.titleLabel, this.factory.createGridBagConstraints(0, 1));
-		this.layered.add(this.subTextLabel, this.factory.createGridBagConstraints(0, 2));
+		this.layered.add(this.titleLabel, this.factory.createGridBagConstraints(0, 2));
 	}
 	private JLabel makeTopLabel() {
 		JLabel l = makeLabel(TOPHEIGHT);
@@ -78,22 +75,11 @@ public final class Fleet extends Ownable {
 		roadnameLabel.setText(titleShipping);
 		return roadnameLabel;
 	}
-	private JLabel makeBottomLabel(String subTextShipping) {
-		JLabel bottomLabel = makeLabel(SUBTEXTHEIGHT);
-		bottomLabel.setText(subTextShipping);
-		return bottomLabel;
-	}
-	public String getRoadname() {
-		return this.title;
-	}
-	public String getBottomText() {
-		return this.subText;
-	}
 	@Override
 	public void displayOnCenter() {
 		super.displayOnCenter();
 		Center.label[1].setIcon(this.icon);
-		Center.label[2].setText("__________________________");
+		//Center.label[2].setText("__________________________");
 		Center.label[3].setText(this.description);
 		Center.label[4].setText(this.subText);
 		if(this.owner != null) {

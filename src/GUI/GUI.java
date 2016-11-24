@@ -1,4 +1,4 @@
-package GUI.resources;
+package GUI;
 
 import java.awt.Color;
 import java.util.ArrayList;
