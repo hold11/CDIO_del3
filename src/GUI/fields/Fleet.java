@@ -15,7 +15,7 @@ public final class Fleet extends Ownable {
 	
 	public static class Builder extends Field.Builder<Fleet.Builder> implements iBuilder{
 
-        
+
         @Override
         @SuppressWarnings("synthetic-access")
         public Fleet build() {
@@ -61,7 +61,7 @@ public final class Fleet extends Ownable {
 			}
 		
 		this.topLabel = makeTopLabel();
-		super.titleLabel = makeRoadNameLabel(this.title);
+		super.titleLabel = makeTitleLabel(this.title);
 		this.layered.add(this.topLabel, this.factory.createGridBagConstraints(0, 0));
 		this.layered.add(this.titleLabel, this.factory.createGridBagConstraints(0, 2));
 	}
@@ -70,10 +70,10 @@ public final class Fleet extends Ownable {
 		l.setIcon(this.icon);
 		return l;
 	}
-	private JLabel makeRoadNameLabel(String titleShipping) {
-		JLabel roadnameLabel = makeLabel(TITLEHEIGHT);
-		roadnameLabel.setText(titleShipping);
-		return roadnameLabel;
+	private JLabel makeTitleLabel(String titleFleet) {
+		JLabel fleetLabel = makeLabel(TITLEHEIGHT);
+		fleetLabel.setText(titleFleet);
+		return fleetLabel;
 	}
 	@Override
 	public void displayOnCenter() {

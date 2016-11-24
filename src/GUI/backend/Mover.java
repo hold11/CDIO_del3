@@ -317,15 +317,15 @@ public final class Mover {
             new HashMap<Pattern, String>();
         static {
             patternImages.put(Pattern.DIAGONAL_DUAL_COLOR,
-                    "/GUI/resources/Movers/Diag_dual.png");
-            patternImages.put(Pattern.DOTTED, "/GUI/resources/Movers/Dotted.png");
-            patternImages.put(Pattern.CHECKERED, "/GUI/resources/Movers/Checkered.png");
-            patternImages.put(Pattern.ZEBRA, "/GUI/resources/Movers/Zebra.png");
+                    "/GUI/art/Movers/Diag_dual.png");
+            patternImages.put(Pattern.DOTTED, "/GUI/art/Movers/Dotted.png");
+            patternImages.put(Pattern.CHECKERED, "/GUI/art/Movers/Checkered.png");
+            patternImages.put(Pattern.ZEBRA, "/GUI/art/Movers/Zebra.png");
         }
     }
     
     // Constants
     private static final int WIDTH = 40;
     private static final int HEIGHT = 21;
-    private static final String PATH = "/GUI/resources/Movers/cars.png";
+    private static final String PATH = "/GUI/art/Movers/cars.png";
 }

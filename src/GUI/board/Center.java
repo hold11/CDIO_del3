@@ -89,9 +89,9 @@ public final class Center{
 	public void displayDefault(){
 		centerPanel.setBorder(javax.swing.BorderFactory.createLineBorder(Color.BLACK, 3));
 		clearLabels();
-		label[0].setIcon(new ImageIcon(getClass().getResource("/GUI/resources/art/The_Werewall_Background.png")));
-		label[1].setText("LANDLORDOPOLY");
-		label[0].setFont(new Font(label[1].getFont().getName(), Font.BOLD, 20));
+		label[1].setIcon(new ImageIcon(getClass().getResource("/GUI/art/The_Werewall_Background.png")));
+		label[0].setText("LANDLORDOPOLY");
+		label[0].setFont(new Font(label[0].getFont().getName(), Font.BOLD, 24));
 		label[0].setVerticalTextPosition(SwingConstants.TOP);
 		label[0].setHorizontalTextPosition(SwingConstants.CENTER);
 		centerPanel.setBackground(Board.BASECOLOR);
