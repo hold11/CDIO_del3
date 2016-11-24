@@ -51,6 +51,9 @@ public abstract class Ownable extends Field
         return this.price;
     }
 
+    /**
+     * This method is ONLY used for unit testing
+     */
     public static void reset()
     {
         ownedOwnables.clear();
