@@ -9,15 +9,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import GUI.fields.Brewery;
-import GUI.fields.Chance;
-import GUI.fields.Field;
-import GUI.fields.Jail;
-import GUI.fields.Refuge;
-import GUI.fields.Shipping;
-import GUI.fields.Start;
-import GUI.fields.Street;
-import GUI.fields.Tax;
+
+import GUI.fields.*;
+import GUI.fields.LaborCamp;
 
 /**
  * Creates all the fields
@@ -134,7 +128,7 @@ public final class FieldFactory {
         String subText = valueOf("subText", attributes);
         String description = valueOf("description", attributes);
         String leje = valueOf("leje", attributes);
-        Field f = new Brewery.Builder()
+        Field f = new LaborCamp.Builder()
             .setPicture(picture)
             .setTitle(title)
             .setSubText(subText)
@@ -179,7 +173,7 @@ public final class FieldFactory {
         String subText = valueOf("subText", attributes);
         String description = valueOf("description", attributes);
         String leje = valueOf("leje", attributes);
-        Field f = new Shipping.Builder()
+        Field f = new Fleet.Builder()
             .setPicture(picture)
             .setTitle(title)
             .setSubText(subText)
@@ -210,7 +204,7 @@ public final class FieldFactory {
         String subText = valueOf("subText", attributes);
         String description = valueOf("description", attributes);
         String leje = valueOf("leje", attributes);
-        Field f = new Street.Builder()
+        Field f = new Territory.Builder()
             .setTitle(title)
             .setBgColor(bgColor)
             .setFgColor(fgColor) 

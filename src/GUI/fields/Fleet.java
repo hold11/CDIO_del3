@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import GUI.board.Center;
 import GUI.backend.SwingComponentFactory;
 
-public final class Shipping extends Ownable {
+public final class Fleet extends Ownable {
 	private static final int TOPHEIGHT = 31;
 	private static final int TITLEHEIGHT = 16;
 	private static final int SUBTEXTHEIGHT = 14;
@@ -15,17 +15,14 @@ public final class Shipping extends Ownable {
 	private SwingComponentFactory factory = new SwingComponentFactory();
 	private static int picCounter = 0;
 	
-	public static class Builder extends Field.Builder<Shipping.Builder> implements iBuilder{
-        public Builder() {
-            this.title = "Shipping";
-            this.bgColor = Color.WHITE;
-        }
+	public static class Builder extends Field.Builder<Fleet.Builder> implements iBuilder{
+
         
         @Override
         @SuppressWarnings("synthetic-access")
-        public Shipping build() {
-            return new Shipping(this.picture, this.title,
-                this.subText, this.description, this.rent, this.bgColor, this.fgColor);
+        public Fleet build() {
+            return new Fleet(this.picture, this.title,
+                this.subText, this.description, this.rent, this.price, this.bgColor, this.fgColor);
         }
         
         public Builder setPicture(String picture) {
@@ -48,24 +45,22 @@ public final class Shipping extends Ownable {
             this.rent = rent;
             return this;
         }
+		public Builder setPrice(String price) {
+			this.price = price;
+			return this;
+		}
     }
 	
-	private Shipping(String picture, String title, String subText,
-		String description, String rent, Color bgColor, Color fgColor) {
-		super(bgColor, fgColor, title,
-			subText, description, rent);
-		
-		if("default".equalsIgnoreCase(picture)) {
-			int p = (picCounter++ % 4) + 1;
-			this.icon = this.factory.createIcon("/GUI/resources/pics/Ferry" + p + ".jpg");
-		} else {
+	private Fleet(String picture, String title, String subText,
+                  String description, String rent, String price, Color bgColor, Color fgColor) {
+		super(bgColor, fgColor, title, subText, description, rent, price);
+
 			try {
 				this.icon = new ImageIcon(picture);
 			} catch(Exception e) {
 				e.printStackTrace();
 				System.out.println("Bad Resource: " + picture);
 			}
-		}
 		
 		this.topLabel = makeTopLabel();
 		super.titleLabel = makeRoadNameLabel(this.title);
@@ -104,7 +99,9 @@ public final class Shipping extends Ownable {
 		Center.label[4].setText(this.subText);
 		if(this.owner != null) {
 			Center.label[5].setText(OWNABLELABEL + this.owner.getName());
-			Center.label[6].setText(getLeje());
+			Center.label[6].setText(getRent());
+		} else {
+			Center.label[5].setText(getPrice());
 		}
 		super.displayCarOnCenter();
 	}

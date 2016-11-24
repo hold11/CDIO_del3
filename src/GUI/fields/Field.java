@@ -58,7 +58,8 @@ public abstract class Field {
         protected String description = "description";
         protected String picture = "default";
         protected String rent = "Rent";
-		protected String tax = "Tax";
+        protected String price = "Price";
+        protected String bonus = "Bonus";
         protected Color bgColor = Color.LIGHT_GRAY;
         protected Color fgColor = Color.BLACK;
         
@@ -77,7 +78,7 @@ public abstract class Field {
     protected Field(Color bgColor, Color fgColor, String title, String subText, String description) {
         this(bgColor, fgColor, title, subText, description, BorderFactory.createLineBorder(Color.BLACK));
     }
-	protected Field(Color bgColor, Color fgColor, String title, String subText, String description, Border border) {
+	protected Field(Color bgColor, Color fgColor, String title, String subText, String description , Border border) {
 		nextNumber = (nextNumber % 40) + 1;
 		this.number = nextNumber;
 		Point p = Field.points[nextPoint];

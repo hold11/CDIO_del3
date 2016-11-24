@@ -24,8 +24,6 @@ public class Test {
 		test.testSetDiceAllAngles();
 		test.testRemoveCar();
 		test.testRemoveOwner();
-		test.testSetHouses();
-		test.testRemoveHouses();
 		try {
 			Thread.sleep(2000);
 		} catch(InterruptedException ex) {
@@ -76,7 +74,7 @@ public class Test {
 		GUI.setDescriptionText(fieldNr, desc + fieldNr);
 		GUI.setSubText(fieldNr, sub + fieldNr);
 		GUI.setTitleText(fieldNr, title + fieldNr);
-		// Brewery - 13
+		// LaborCamp - 13
 		fieldNr = 13;
 		GUI.setDescriptionText(fieldNr, desc + fieldNr);
 		GUI.setSubText(fieldNr, sub + fieldNr);
@@ -96,12 +94,12 @@ public class Test {
 		GUI.setDescriptionText(fieldNr, desc + fieldNr);
 		GUI.setSubText(fieldNr, sub + fieldNr);
 		GUI.setTitleText(fieldNr, title + fieldNr);
-		// Shipping - 6
+		// Fleet - 6
 		fieldNr = 6;
 		GUI.setDescriptionText(fieldNr, desc + fieldNr);
 		GUI.setSubText(fieldNr, sub + fieldNr);
 		GUI.setTitleText(fieldNr, title + fieldNr);
-		// Street - 2
+		// Territory - 2
 		fieldNr = 2;
 		GUI.setDescriptionText(fieldNr, desc + fieldNr);
 		GUI.setSubText(fieldNr, sub + fieldNr);
@@ -253,28 +251,5 @@ public class Test {
 		for(int i = 21; i <= 25; i++) {
 			GUI.removeOwner(i);
 		}
-	}
-	private void testSetHouses() {
-		for(int i = 1; i <= 10; i++) {
-			GUI.setHouses(i, 1);
-		}
-		for(int i = 11; i <= 20; i++) {
-			GUI.setHouses(i, 2);
-		}
-		for(int i = 21; i <= 30; i++) {
-			GUI.setHouses(i, 3);
-		}
-		for(int i = 31; i <= 40; i++) {
-			GUI.setHouses(i, 4);
-		}
-		GUI.setHotel(38, true);
-		GUI.setHotel(40, true);
-	}
-	private void testRemoveHouses() {
-		GUI.setHouses(2, 0);
-		GUI.setHouses(12, 0);
-		GUI.setHouses(22, 0);
-		GUI.setHouses(32, 0);
-		GUI.setHotel(38, false);
 	}
 }

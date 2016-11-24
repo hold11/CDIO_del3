@@ -41,12 +41,12 @@ public final class GUI {
      *   Depending on the type of field, various attributes can be set.<br>
      *   The field types are as follows:<br>
      *      ... new Tax.Builder().build();<br>
-     *      ... new Street.Builder().build();<br>
-     *      ... new Shipping.Builder().build();<br>
+     *      ... new Territory.Builder().build();<br>
+     *      ... new Fleet.Builder().build();<br>
      *      ... new Refuge.Builder().build();<br>
      *      ... new Jail.Builder().build();<br>
      *      ... new Chance.Builder().build();<br>
-     *      ... new Brewery.Builder().build();<br>
+     *      ... new LaborCamp.Builder().build();<br>
      *      ... new Empty.Builder().build();<br>
      */
     public static void create(Field[] fields) {
@@ -314,23 +314,23 @@ public final class GUI {
     public static void removeOwner(int fieldNumber) {
         getBC().removeOwner(fieldNumber);
     }
-    /**
-     * Sets houses from the street, and removes the hotel if one is present.<br>
-     * If houseCount is out of bounds, nothing happens.<br>
-     * If field is not a street, nothing happens.<br>
-     * @param fieldNumber : int [1:40]
-     * @param houseCount : int [0:4]
-     */
-    public static void setHouses(int fieldNumber, int houseCount) {
-        getBC().setHouses(fieldNumber, houseCount);
-    }
-    /**
-     * Sets whether or not a hotel should be on the street and removes all
-     * houses if any is present.<br>
-     * @param fieldNumber : int [1:40]
-     * @param hasHotel : boolean
-     */
-    public static void setHotel(int fieldNumber, boolean hasHotel) {
-        getBC().setHotel(fieldNumber, hasHotel);
-    }
+//    /**
+//     * Sets houses from the street, and removes the hotel if one is present.<br>
+//     * If houseCount is out of bounds, nothing happens.<br>
+//     * If field is not a street, nothing happens.<br>
+//     * @param fieldNumber : int [1:40]
+//     * @param houseCount : int [0:4]
+//     */
+//    public static void setHouses(int fieldNumber, int houseCount) {
+//        getBC().setHouses(fieldNumber, houseCount);
+//    }
+//    /**
+//     * Sets whether or not a hotel should be on the street and removes all
+//     * houses if any is present.<br>
+//     * @param fieldNumber : int [1:40]
+//     * @param hasHotel : boolean
+//     */
+//    public static void setHotel(int fieldNumber, boolean hasHotel) {
+//        getBC().setHotel(fieldNumber, hasHotel);
+//    }
 }

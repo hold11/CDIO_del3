@@ -1,13 +1,13 @@
 package GUI.fields;
 
 import java.awt.Color;
-import java.awt.datatransfer.StringSelection;
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 
 import GUI.board.Center;
 import GUI.backend.SwingComponentFactory;
 
-public final class Tax extends Field {
+public final class Tax extends NotOwnable {
     private static final int TOPHEIGHT = 31;
     private static final int TITLEHEIGHT = 16;
     private static final int SUBTEXTHEIGHT = 14;
@@ -15,18 +15,14 @@ public final class Tax extends Field {
     private ImageIcon icon;
     private SwingComponentFactory factory = new SwingComponentFactory();
     
-    public static class Builder extends Field.Builder<Tax.Builder> implements
-        iBuilder {
-        public Builder() {
-            this.title = "Tax";
-            this.bgColor = new Color(153, 153, 153);
-        }
+    public static class Builder extends Field.Builder<Tax.Builder> implements iBuilder {
+
         
         @Override
         @SuppressWarnings("synthetic-access")
         public Tax build() {
             return new Tax(this.picture, this.description, this.title,
-                this.subText, this.tax, this.bgColor, this.fgColor);
+                this.subText, this.bonus, this.bgColor, this.fgColor);
         }
 
         public Builder setPicture(String picture) {
@@ -46,11 +42,11 @@ public final class Tax extends Field {
             return this;
         }
         public Builder setTax(String tax) {
-            this.tax = tax;
+            this.bonus = tax;
             return this;
         }
     }
-    
+
     private Tax(String picture, String title, String subText, String description, String tax,
         Color bgColor, Color fgColor) {
         super(bgColor, fgColor, title, subText, description, tax);
@@ -91,6 +87,7 @@ public final class Tax extends Field {
         Center.label[1].setText("__________________________");
         Center.label[2].setText(this.description);
         Center.label[4].setText(this.subText);
+        Center.label[5].setText(getBonus());
         super.displayCarOnCenter();
     }
 }

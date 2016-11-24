@@ -6,27 +6,22 @@ import javax.swing.JLabel;
 import GUI.board.Center;
 import GUI.backend.SwingComponentFactory;
 
-public final class Brewery extends Ownable {
+public final class LaborCamp extends Ownable {
     private static final int TOPHEIGHT = 31;
     private static final int TITLEHEIGHT = 16;
     private static final int SUBTEXTHEIGHT = 14;
     private JLabel topLabel;
     private ImageIcon icon;
     private SwingComponentFactory factory = new SwingComponentFactory();
-    private static int picCounter = 0;
     
-    public static class Builder extends Field.Builder<Brewery.Builder>
-        implements iBuilder {
-        public Builder() {
-            this.bgColor = Color.BLACK;
-            this.fgColor = Color.WHITE;
-        }
+    public static class Builder extends Field.Builder<LaborCamp.Builder> implements iBuilder {
+
         
         @Override
         @SuppressWarnings("synthetic-access")
-        public Brewery build() {
-            return new Brewery(this.picture, this.title,
-                this.subText, this.description, this.rent, this.bgColor, this.fgColor);
+        public LaborCamp build() {
+            return new LaborCamp(this.picture, this.title,
+                this.subText, this.description, this.rent, this.price, this.bgColor, this.fgColor);
         }
         
         public Builder setPicture(String picture) {
@@ -49,23 +44,22 @@ public final class Brewery extends Ownable {
             this.rent = rent;
             return this;
         }
+        public Builder setPrice(String price) {
+            this.price = price;
+            return this;
+        }
     }
     
-    private Brewery(String picture, String title, String subText,
-        String description, String rent, Color bgColor, Color fgColor) {
-        super(bgColor, fgColor, title, subText, description, rent);
-        
-        if ("default".equalsIgnoreCase(picture)) {
-            int p = (picCounter++ % 2) + 1;
-            this.icon = this.factory.createIcon("/GUI/resources/pics/Brewery" + p + ".jpg");
-        } else {
+    private LaborCamp(String picture, String title, String subText,
+                      String description, String rent, String price, Color bgColor, Color fgColor) {
+        super(bgColor, fgColor, title, subText, description, rent, price);
+
             try {
                 this.icon = new ImageIcon(picture);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Bad Resource: " + picture);
             }
-        }
         
         this.topLabel = makeTopLabel();
         this.titleLabel = makeRoadNameLabel(this.title);
@@ -102,7 +96,9 @@ public final class Brewery extends Ownable {
         Center.label[4].setText(this.subText);
         if (this.owner != null) {
             Center.label[5].setText(OWNABLELABEL + this.owner.getName());
-            Center.label[6].setText(getLeje());
+            Center.label[6].setText(getRent());
+        } else {
+            Center.label[5].setText(getPrice());
         }
         super.displayCarOnCenter();
     }

@@ -8,13 +8,15 @@ import GUI.backend.Player;
 import GUI.backend.SwingComponentFactory;
 
 public abstract class Ownable extends Field{
-	public static final String OWNABLELABEL = "Ejes af: ";
+	public static final String OWNABLELABEL = "Owned by: ";
 	protected Player owner;
-	private String leje;
+	private String rent;
+	private String price;
 	public Ownable(Color bgColor, Color fgColor, String title,
-		String subText, String description, String leje){
+		String subText, String description, String rent, String price){
 		super(bgColor, fgColor, title, subText, description);
-		this.leje = leje;
+		this.rent = rent;
+		this.price = price;
 	}
 	
 	public Player getOwner(){return this.owner; }
@@ -36,9 +38,11 @@ public abstract class Ownable extends Field{
 		this.layered.setBorder(border);
 		
 	}
-	public String getLeje(){
-		return this.leje;
+	public String getRent(){
+		return this.rent;
 	}
+
+	public String getPrice() { return this.price; }
 	
 	@Override
 	public void displayOnCenter(){

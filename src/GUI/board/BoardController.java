@@ -19,7 +19,7 @@ import GUI.backend.FieldFactory;
 import GUI.backend.Player;
 import GUI.fields.Field;
 import GUI.fields.Ownable;
-import GUI.fields.Street;
+import GUI.fields.Territory;
 
 /**
  * Provides access to GUI
@@ -497,33 +497,33 @@ public final class BoardController {
 			((Ownable) f).setOwner(null);
 		}
 	}
-	/**
-	 * Sets houses from the street, and removes the hotel if one is present.<br>
-	 * If houseCount is out of bounds, nothing happens.<br>
-	 * If the field is not a street, nothing happens.<br>
-	 * @param fieldNumber : int [1:40]
-	 * @param houseCount : int [0:4]
-	 */
-	public void setHouses(int fieldNumber, int houseCount) {
-		if(houseCount >= 0 && houseCount < 5) {
-			Field f = FieldFactory.fields.get(fieldNumber - 1);
-			if(f instanceof Street) {
-				Street s = ((Street) f);
-				s.setHouses(houseCount);
-			}
-		}
-	}
-	/**
-	 * Sets whether or not a hotel should be on the street and removes all houses if any is present.<br>
-	 * @param fieldNumber : int [1:40]
-	 * @param hasHotel : boolean
-	 */
-	public void setHotel(int fieldNumber, boolean hasHotel) {
-		Field f = FieldFactory.fields.get(fieldNumber - 1);
-		if(f instanceof Street) {
-			Street s = ((Street) f);
-			s.setHotel(hasHotel);
-		}
-	}
+//	/**
+//	 * Sets houses from the street, and removes the hotel if one is present.<br>
+//	 * If houseCount is out of bounds, nothing happens.<br>
+//	 * If the field is not a street, nothing happens.<br>
+//	 * @param fieldNumber : int [1:40]
+//	 * @param houseCount : int [0:4]
+//	 */
+//	public void setHouses(int fieldNumber, int houseCount) {
+//		if(houseCount >= 0 && houseCount < 5) {
+//			Field f = FieldFactory.fields.get(fieldNumber - 1);
+//			if(f instanceof Territory) {
+//				Territory s = ((Territory) f);
+//				s.setHouses(houseCount);
+//			}
+//		}
+//	}
+//	/**
+//	 * Sets whether or not a hotel should be on the street and removes all houses if any is present.<br>
+//	 * @param fieldNumber : int [1:40]
+//	 * @param hasHotel : boolean
+//	 */
+//	public void setHotel(int fieldNumber, boolean hasHotel) {
+//		Field f = FieldFactory.fields.get(fieldNumber - 1);
+//		if(f instanceof Territory) {
+//			Territory s = ((Territory) f);
+//			s.setHotel(hasHotel);
+//		}
+//	}
 	
 }

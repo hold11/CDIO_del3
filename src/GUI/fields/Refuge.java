@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import GUI.board.Center;
 import GUI.backend.SwingComponentFactory;
 
-public final class Refuge extends Field {
+public final class Refuge extends NotOwnable {
     private static final int TOPHEIGHT = 47;
     private static final int SUBTEXTHEIGHT = 14;
     private ImageIcon icon;
@@ -14,18 +14,13 @@ public final class Refuge extends Field {
     
     private SwingComponentFactory factory = new SwingComponentFactory();
     
-    public static class Builder extends Field.Builder<Refuge.Builder> implements
-        iBuilder {
-        public Builder() {
-            this.title = "Refuge";
-            this.bgColor = Color.WHITE;
-        }
-        
+    public static class Builder extends Field.Builder<Refuge.Builder> implements iBuilder {
+
         @Override
         @SuppressWarnings("synthetic-access")
         public Refuge build() {
             return new Refuge(this.picture, this.title,
-                this.subText, this.description, this.bgColor, this.fgColor);
+                this.subText, this.description, this.bonus, this.bgColor, this.fgColor);
         }
         
         public Builder setPicture(String picture) {
@@ -44,22 +39,22 @@ public final class Refuge extends Field {
             this.description = description;
             return this;
         }
+        public Builder setBonus(String bonus) {
+            this.bonus = bonus;
+            return this;
+        }
     }
     
     private Refuge(String picture, String title, String subText,
-        String description, Color bgColor, Color fgColor) {
-        super(bgColor, fgColor, title, subText, description);
-        
-        if ("default".equalsIgnoreCase(picture)) {
-            this.icon = this.factory.createIcon("/GUI/resources/pics/Cones.jpg");
-        } else {
+        String description, String bonus, Color bgColor, Color fgColor) {
+        super(bgColor, fgColor, title, subText, description, bonus);
+
             try {
                 this.icon = new ImageIcon(picture);
             } catch (Exception e) {
                 e.printStackTrace();
                 System.out.println("Bad Resource: " + picture);
             }
-        }
         
         this.topLabel = makeTopLabel();
         this.subTextLabel = makeBottomLabel(this.subText);
@@ -85,6 +80,7 @@ public final class Refuge extends Field {
         Center.label[2].setIcon(this.icon);
         Center.label[3].setText("__________________________");
         Center.label[4].setText(this.description);
+        Center.label[5].setText(getBonus());
         super.displayCarOnCenter();
     }
 }
