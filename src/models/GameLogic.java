@@ -51,11 +51,11 @@ public class GameLogic
         // TODO: Remove above, just for testing purposes
 
         currentPlayer.moveCurrentField(getTotalEyes(diceCup));
-        board.getFields()[currentPlayer.getCurrentField()].landOnField(currentPlayer);
+        board.getFields()[currentPlayer.getCurrentField() - 1].landOnField(currentPlayer); // - 1 to make sure you can land on index 0, but not 21
 //        currentPlayer.getCurrentField().landOnField(currentPlayer); // old from CDIO_del2
 
         // TODO: Remove below, just for testing purposes
-        System.out.println(currentPlayer.getPlayerName() + " landed on " + currentPlayer.getCurrentField());
+        System.out.println(currentPlayer.getPlayerName() + " landed on " + (currentPlayer.getCurrentField() - 1));
         System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance());
         System.out.println("\n");
         // TODO: Remove above, just for testing purposes

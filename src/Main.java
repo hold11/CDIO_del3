@@ -20,15 +20,15 @@ public class Main
         Player p2 = new Player();
         GameLogic game = new GameLogic();
 
-        for (int i = 0; i < 43; i++) {
-            p1.moveCurrentField(1);
-            System.out.println("Current Field: " + p1.getCurrentField());
-        }
-
-//        for (int i = 0; i < 100; i++) {
-//            game.playTurn(p1);
-//            game.playTurn(p2);
+//        for (int i = 0; i < 43; i++) {
+//            p1.moveCurrentField(1);
+//            System.out.println("Current Field: " + p1.getCurrentField());
 //        }
+
+        for (int i = 0; i < 1000; i++) {
+            game.playTurn(p1);
+            game.playTurn(p2);
+        }
         System.out.println("This works.");
     }
 }

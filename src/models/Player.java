@@ -76,7 +76,7 @@ public class Player
     public void moveCurrentField(int diceCount) {
         models.GameBoard board = new models.GameBoard();
         if (this.currentField + diceCount > board.getFields().length)
-            this.currentField = diceCount - board.getFields().length + this.currentField - 1;
+            this.currentField = diceCount - board.getFields().length + this.currentField;
         else
             this.currentField += diceCount;
     }
