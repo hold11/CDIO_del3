@@ -28,11 +28,13 @@ public class BankAccount
         idCount++;
     }
 
-    public void setBalance(int balance) {
+    public void setBalance(int balance)
+    {
         this.balance = balance;
     }
 
-    public int getBalance() {
+    public int getBalance()
+    {
         return balance;
     }
 
