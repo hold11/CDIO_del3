@@ -22,7 +22,8 @@ public class Player
     private int playerID;
     private String playerName;
     private BankAccount playerAccount;
-    private Field currentField;
+//    private Field currentField;
+    private int currentField;
     private final int STARTING_BALANCE = 30000;
 
     private static int nextPlayerID = 1; // This variable is used to specify the next ID for the next player that gets constructed
@@ -36,6 +37,8 @@ public class Player
         this.playerAccount = new BankAccount(STARTING_BALANCE);
         nextPlayerID++;
         players.add(this);
+
+        currentField = 0;
     }
 
     public Player(String playerName)
@@ -65,15 +68,31 @@ public class Player
         return playerName;
     }
 
-    public Field getCurrentField()
-    {
+//    public Field getCurrentField()
+//    {
+//        return this.currentField;
+//    }
+
+    public void moveCurrentField(int diceCount) {
+        models.GameBoard board = new models.GameBoard();
+        if (this.currentField + diceCount > board.getFields().length)
+            this.currentField = diceCount - board.getFields().length + this.currentField - 1;
+        else
+            this.currentField += diceCount;
+    }
+
+    public void setCurrentField(int fieldID) {
+        this.currentField = fieldID;
+    }
+
+    public int getCurrentField() {
         return this.currentField;
     }
 
-    public void setCurrentField(Field f)
-    {
-        this.currentField = f;
-    }
+//    public void moveCurrentField(Field f)
+//    {
+//        this.currentField = f;
+//    }
 
     public static Player findPlayer(int playerID)
     {

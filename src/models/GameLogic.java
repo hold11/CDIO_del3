@@ -11,6 +11,7 @@ package models;
  */
 
 import java.util.Collection;
+import java.util.Iterator;
 
 /**
  * Created by tjc on 23/11/16.
@@ -40,13 +41,29 @@ public class GameLogic
         }
         diceCup.roll();
 
-        currentPlayer.setCurrentField(board.getFields()[getTotalEyes(diceCup) - 2]);
-        currentPlayer.getCurrentField().landOnField(currentPlayer);
+        // TODO: Remove below, just for testing purposes
+        System.out.println(currentPlayer.getPlayerName() + "'s turn. Current balance: " + currentPlayer.getPlayerAccount().getBalance());
+        int[] results = new int[2];
+        int i = 0;
+        for (Iterator<Integer> iter = diceCup.getResults().iterator(); iter.hasNext(); i++)
+            results[i] = iter.next();
+        System.out.println(currentPlayer.getPlayerName() + " rolled " + results[0] + " and " + results[1] + " (" + getTotalEyes(diceCup) + ").");
+        // TODO: Remove above, just for testing purposes
+
+        currentPlayer.moveCurrentField(getTotalEyes(diceCup));
+        board.getFields()[currentPlayer.getCurrentField()].landOnField(currentPlayer);
+//        currentPlayer.getCurrentField().landOnField(currentPlayer); // old from CDIO_del2
+
+        // TODO: Remove below, just for testing purposes
+        System.out.println(currentPlayer.getPlayerName() + " landed on " + currentPlayer.getCurrentField());
+        System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance());
+        System.out.println("\n");
+        // TODO: Remove above, just for testing purposes
 
         // Below is from CDIO_del2:
 //
 //
-//        getCurrentPlayer().setCurrentField(Field.values()[getTotalEyes(diceCup)-2]);
+//        getCurrentPlayer().moveCurrentField(Field.values()[getTotalEyes(diceCup)-2]);
 //        if (currentPlayer.getCurrentField().getScoreValue() < 0) {
 //            currentPlayer.getPlayerAccount().withdraw(currentPlayer.getCurrentField().getScoreValue());
 //        } else {
