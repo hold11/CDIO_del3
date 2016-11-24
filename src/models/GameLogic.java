@@ -19,32 +19,39 @@ public class GameLogic
 {
     private DiceCup diceCup;
     private int playerTurn = 1;
-    private Collection<Player> players = Player.getPlayersList();
+    private Collection<Player> players;
+    private GameBoard board;
 
     public GameLogic()
     {
         diceCup = new DiceCup();    // Creates the default diceCup with 2 dice with 6 sides.
-
+        board = new GameBoard();
+        players = Player.getPlayersList();
     }
 
     /**
      * playTurn
      */
-    public void playTurn(Player player)
+    public void playTurn(Player currentPlayer)
     {
         // TODO: This is method from CDIO_2, has to get rewritten.
-/*        if (hasWon(getCurrentPlayer())) {
+        if (hasWon(currentPlayer)) {
             return;
         }
         diceCup.roll();
 
+        currentPlayer.setCurrentField(board.getFields()[getTotalEyes(diceCup) - 2]);
+        currentPlayer.getCurrentField().landOnField(currentPlayer);
 
-        getCurrentPlayer().setCurrentField(Field.values()[getTotalEyes(diceCup)-2]);
-        if (currentPlayer.getCurrentField().getScoreValue() < 0) {
-            currentPlayer.getPlayerAccount().withdraw(currentPlayer.getCurrentField().getScoreValue());
-        } else {
-            currentPlayer.getPlayerAccount().deposit(currentPlayer.getCurrentField().getScoreValue());
-        }*/
+        // Below is from CDIO_del2:
+//
+//
+//        getCurrentPlayer().setCurrentField(Field.values()[getTotalEyes(diceCup)-2]);
+//        if (currentPlayer.getCurrentField().getScoreValue() < 0) {
+//            currentPlayer.getPlayerAccount().withdraw(currentPlayer.getCurrentField().getScoreValue());
+//        } else {
+//            currentPlayer.getPlayerAccount().deposit(currentPlayer.getCurrentField().getScoreValue());
+//        }
     }
 
     /**
@@ -53,7 +60,10 @@ public class GameLogic
      */
     public boolean hasWon(Player player)
     {
-        return true;        // TODO: return actual winning player.
+        if (Player.getPlayersList().size() == 1 && Player.getPlayersList().get(0) == player) // TODO: Test if this actually works
+            return true;
+        else
+            return false;
     }
 
     /**
@@ -113,11 +123,9 @@ public class GameLogic
      * or mark player as bankrupt so that player will not get any more turns for the rest of the game.
      * @param player
      */
-    public void checkBankruptcy(Player player)
+    private void checkBankruptcy(Player player)
     {
         if (player.getPlayerAccount().getBalance() == 0)
-        {
             player.removePlayer(player);
-        }
     }
 }
