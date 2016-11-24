@@ -1,6 +1,14 @@
 package models;
-
-import fields.Field;
+/*
+           ,                                             |
+          /#\         _         _     _    ___   ___     | Projekt: Landlordopoly - CDIO_del3
+         /###\       | |__   _ | | __| |  /_  | /_  |    |
+        /#####\      | '_ \ / \| |/ _  |    | |   | |    |
+       /##,-,##\     | | | | O | | ( | |   _| |_ _| |_   | Anders Wiberg Olsen (s165241), Emil Johan Høg (s152282),
+      /##(   )##\    |_| |_|\_/|_|\__,_|  |_____|_____|  | Iman Chelhi (s165228), Troels Just Christoffersen (s120052)
+     /#.--   --.#\                                       | Sebastian Tibor Bakonyvári (s145918), Valentin Leon Christensen (s152735)
+    /`           ´\                                      |
+ */
 
 import java.util.Collection;
 
@@ -97,5 +105,19 @@ public class GameLogic
         for (int i: diceCup.getResults())
             total += i;
         return total;
+    }
+
+    /**
+     * checkBankruptcy
+     * Check if player has gotten bankrupt by the end of his turn, and remove him from list of players
+     * or mark player as bankrupt so that player will not get any more turns for the rest of the game.
+     * @param player
+     */
+    public void checkBankruptcy(Player player)
+    {
+        if (player.getPlayerAccount().getBalance() == 0)
+        {
+            player.removePlayer(player);
+        }
     }
 }
