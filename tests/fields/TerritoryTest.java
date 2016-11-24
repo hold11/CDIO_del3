@@ -68,6 +68,6 @@ public class TerritoryTest {
         assertEquals(startBalance1-currentTerritory.getPrice(), testPlayer1.getPlayerAccount().getBalance());
 
         //This section tests the territory is ownable
-        assertTrue(Ownable.isOwned(currentTerritory));
+        assertTrue(currentTerritory.isOwned());
     }
 }
