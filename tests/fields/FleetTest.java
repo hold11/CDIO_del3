@@ -58,8 +58,12 @@ public class FleetTest {
         // The multiplier of the rent gets tested in the getRent() test down below.
     }
 
+    /**
+     * Tests if the same player buys all fleets, if the rent then is correct
+     * @throws Exception
+     */
     @Test
-    public void getRent() throws Exception {
+    public void getRentOnePlayerAll() throws Exception {
         Fleet fl1 = ((Fleet) board.getFields()[17]);
         Fleet fl2 = ((Fleet) board.getFields()[18]);
         Fleet fl3 = ((Fleet) board.getFields()[19]);
@@ -91,10 +95,24 @@ public class FleetTest {
         assertEquals(4000, fl2.getRent());
         assertEquals(4000, fl3.getRent());
         assertEquals(4000, fl4.getRent());
+    }
 
-        Ownable.reset();
+    /**
+     * Tests if different people buys different amount of fleets, if the rent then is correct
+     * @throws Exception
+     */
+    @Test
+    public void getRentDifferentPlayers() throws Exception {
+        Fleet fl1 = ((Fleet) board.getFields()[17]);
+        Fleet fl2 = ((Fleet) board.getFields()[18]);
+        Fleet fl3 = ((Fleet) board.getFields()[19]);
+        Fleet fl4 = ((Fleet) board.getFields()[20]);
 
         assertEquals(0, fl1.getRent());
+        assertEquals(0, fl2.getRent());
+        assertEquals(0, fl3.getRent());
+        assertEquals(0, fl4.getRent());
+
         fl1.purchaseField(player1);
         fl2.purchaseField(player1);
         fl3.purchaseField(player2);
