@@ -89,6 +89,12 @@ public class Player
         return players;
     }
 
+    public static void removePlayer(Player player)
+    {
+        players.remove(player);
+        return;
+    }
+
     public static void reset()
     {
         nextPlayerID = 1;
