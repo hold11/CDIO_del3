@@ -92,7 +92,6 @@ public class Player
     public static void removePlayer(Player player)
     {
         players.remove(player);
-        return;
     }
 
     public static void reset()
