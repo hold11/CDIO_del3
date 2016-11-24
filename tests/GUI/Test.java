@@ -8,22 +8,22 @@ public class Test {
 	
 	public static void main(String[] args) {
 		Test test = new Test();
-		test.setDiceAngleAndCoordinates();
-		test.testClose();
-		// GUI.create("C:\\Users\\Ronnie\\Desktop\\fields.txt");
-		test.testSetText();
-		test.testSetTexts();
-		test.testAddPlayer();
-		test.testSetBalance();
-		test.testSetDice();
-		test.testInput();
-		test.testSetNextChanceCardText();
-		test.testSetCar();
-		test.testSetOwner();
-		test.testSetDiceAngleAndCoordinatesMultipleTimes();
-		test.testSetDiceAllAngles();
-		test.testRemoveCar();
-		test.testRemoveOwner();
+//		test.setDiceAngleAndCoordinates();
+//		test.testClose();
+//		GUI.create("C:\\Users\\Ronnie\\Desktop\\fields.txt");
+//		test.testSetText();
+//		test.testSetTexts();
+//		test.testAddPlayer();
+//		test.testSetBalance();
+//		test.testSetDice();
+//		test.testInput();
+//		test.testSetNextChanceCardText();
+//		test.testSetCar();
+//		test.testSetOwner();
+//		test.testSetDiceAngleAndCoordinatesMultipleTimes();
+//		test.testSetDiceAllAngles();
+//		test.testRemoveCar();
+//		test.testRemoveOwner();
 		try {
 			Thread.sleep(2000);
 		} catch(InterruptedException ex) {
@@ -55,14 +55,10 @@ public class Test {
 	private void testSetText() {
 		GUI.setTitleText(3, "Ocean Blv.");
 		GUI.setSubText(3, "Price: 1 mio.");
-		GUI.setDescriptionText(
-			3,
-			"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac libero lorem. Aliquam ligula mauris, luctus interdum malesuada non, adipiscing ut mauris.");
+		GUI.setDescriptionText(3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac libero lorem. Aliquam ligula mauris, luctus interdum malesuada non, adipiscing ut mauris.");
 		GUI.setTitleText(34, "Start");
 		GUI.setSubText(1, "Daniel2");
-		GUI.setDescriptionText(
-			1,
-			"Daniel3Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac libero lorem. Aliquam ligula mauris, luctus interdum malesuada non, adipiscing ut mauris.");
+		GUI.setDescriptionText(1, "Daniel3Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ac libero lorem. Aliquam ligula mauris, luctus interdum malesuada non, adipiscing ut mauris.");
 	}
 	private void testSetTexts() {
 		int fieldNr = 0;
@@ -70,7 +66,7 @@ public class Test {
 		String sub = "subtext";
 		String title = "title";
 		// Start - 1
-		fieldNr = 34;
+		fieldNr = 1;
 		GUI.setDescriptionText(fieldNr, desc + fieldNr);
 		GUI.setSubText(fieldNr, sub + fieldNr);
 		GUI.setTitleText(fieldNr, title + fieldNr);

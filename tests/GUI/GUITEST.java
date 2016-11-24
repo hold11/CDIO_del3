@@ -8,8 +8,17 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class GUITEST {
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        GUITEST test = new GUITEST();
+
+        test.CreateBoardWithFields();
+        test.createPlayers();
+        test.testSetOwner();
+        test.realExampleGame();
+    }
+
+    private void CreateBoardWithFields() {
         ArrayList<Field> list = new ArrayList<Field>();
 
         list.add(new Territory.Builder()
@@ -181,54 +190,130 @@ public class GUITEST {
         for(int i = 0; i < fields.length; i++) fields[i] = list.get(i);
 
         GUI.create(fields);
-
-
-        Mover car1 = new Mover.Builder()
+    }
+    private void createPlayers() {
+        Mover mover1 = new Mover.Builder()
                 .typeRacecar()
                 .primaryColor(Color.BLUE)
                 .secondaryColor(Color.RED)
                 .patternDiagonalDualColor()
                 .build();
-        GUI.addPlayer("Steen", 30000, car1);
+        GUI.addPlayer("Steen", 30000, mover1);
 
-        Mover car2 = new Mover.Builder()
+        Mover mover2 = new Mover.Builder()
                 .typeRacecar()
                 .primaryColor(Color.BLUE)
                 .secondaryColor(Color.RED)
                 .patternDiagonalDualColor()
                 .build();
-        GUI.addPlayer("Steeen", 30000, car2);
+        GUI.addPlayer("Steeen", 30000, mover2);
 
-        Mover car3 = new Mover.Builder()
+        Mover mover3 = new Mover.Builder()
                 .typeRacecar()
                 .primaryColor(Color.BLUE)
                 .secondaryColor(Color.RED)
                 .patternDiagonalDualColor()
                 .build();
-        GUI.addPlayer("Steeeen", 30000, car3);
+        GUI.addPlayer("Steeeen", 30000, mover3);
 
-        Mover car4 = new Mover.Builder()
+        Mover mover4 = new Mover.Builder()
                 .typeRacecar()
                 .primaryColor(Color.BLUE)
                 .secondaryColor(Color.RED)
                 .patternDiagonalDualColor()
                 .build();
-        GUI.addPlayer("Steeeeen", 30000, car4);
+        GUI.addPlayer("Steeeeen", 30000, mover4);
 
-        Mover car5 = new Mover.Builder()
+        Mover mover5 = new Mover.Builder()
                 .typeRacecar()
                 .primaryColor(Color.BLUE)
                 .secondaryColor(Color.RED)
                 .patternDiagonalDualColor()
                 .build();
-        GUI.addPlayer("Steeeeeen", 30000, car5);
+        GUI.addPlayer("Steeeeeen", 30000, mover5);
 
-        Mover car6 = new Mover.Builder()
+        Mover mover6 = new Mover.Builder()
                 .typeRacecar()
                 .primaryColor(Color.BLUE)
                 .secondaryColor(Color.RED)
                 .patternDiagonalDualColor()
                 .build();
-        GUI.addPlayer("Steeeeeeen", 30000, car6);
+        GUI.addPlayer("Steeeeeeen", 30000, mover6);
+    }
+    private void testSetOwner() {
+        GUI.setOwner(2, "Steen");
+        GUI.setOwner(7, "Steeeeeeen");
+    }
+    private void realExampleGame(){
+
+        GUI.setMover(1, "Steen");
+        sleep(1200);
+        GUI.setMover(1, "Steeeeeeen");
+
+        sleep(1200);
+        GUI.setDice(1, 2);
+        sleep(1200);
+        GUI.removeAllMovers("Mads");
+        GUI.setMover(2, "Mads");
+        sleep(1200);
+        GUI.removeAllMovers("Mads");
+        GUI.setMover(3, "Mads");
+        sleep(1200);
+        GUI.removeAllMovers("Mads");
+        GUI.setMover(4, "Mads");
+        sleep(1200);
+        GUI.setBalance("Mads", 28000);
+        GUI.setOwner(4, "Mads");
+        sleep(1200);
+        GUI.displayChanceCard("De har vundet vild med dans og skifter navn til Allan!");
+    }
+    private static void sleep(int n) {
+        long t0, t1;
+        t0 = System.currentTimeMillis();
+        do{
+            t1 = System.currentTimeMillis();
+        }
+        while((t1 - t0) < (n));
+    }
+    private void testSetTexts() {
+        int fieldNr = 0;
+        String desc = "description";
+        String sub = "subtext";
+        String title = "title";
+        // Start - 1
+        fieldNr = 1;
+        GUI.setDescriptionText(fieldNr, desc + fieldNr);
+        GUI.setSubText(fieldNr, sub + fieldNr);
+        GUI.setTitleText(fieldNr, title + fieldNr);
+        // LaborCamp - 13
+        fieldNr = 13;
+        GUI.setDescriptionText(fieldNr, desc + fieldNr);
+        GUI.setSubText(fieldNr, sub + fieldNr);
+        GUI.setTitleText(fieldNr, title + fieldNr);
+        // Chance - 3
+        fieldNr = 3;
+        GUI.setDescriptionText(fieldNr, desc + fieldNr);
+        GUI.setSubText(fieldNr, sub + fieldNr);
+        GUI.setTitleText(fieldNr, title + fieldNr);
+        // Refuge - 21
+        fieldNr = 21;
+        GUI.setDescriptionText(fieldNr, desc + fieldNr);
+        GUI.setSubText(fieldNr, sub + fieldNr);
+        GUI.setTitleText(fieldNr, title + fieldNr);
+        // Fleet - 6
+        fieldNr = 6;
+        GUI.setDescriptionText(fieldNr, desc + fieldNr);
+        GUI.setSubText(fieldNr, sub + fieldNr);
+        GUI.setTitleText(fieldNr, title + fieldNr);
+        // Territory - 2
+        fieldNr = 2;
+        GUI.setDescriptionText(fieldNr, desc + fieldNr);
+        GUI.setSubText(fieldNr, sub + fieldNr);
+        GUI.setTitleText(fieldNr, title + fieldNr);
+        // Tax - 5
+        fieldNr = 5;
+        GUI.setDescriptionText(fieldNr, desc + fieldNr);
+        GUI.setSubText(fieldNr, sub + fieldNr);
+        GUI.setTitleText(fieldNr, title + fieldNr);
     }
 }
