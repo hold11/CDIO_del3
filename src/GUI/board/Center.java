@@ -26,7 +26,7 @@ public final class Center{
 
 	private Center(){
 		centerPanel = new javax.swing.JPanel();
-		this.factory.setSize(centerPanel, 3*Field.FIELDWIDTH, 3*Field.FIELDHEIGHT);
+		this.factory.setSize(centerPanel, 3*Field.FIELDWIDTH, 4*Field.FIELDHEIGHT);
 		centerPanel.addMouseListener(new CenterMouseListener(this));
 		centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.Y_AXIS));
 		 
@@ -108,8 +108,12 @@ public final class Center{
      */
 	public void displayChanceCard() {
         clearLabels();
-        centerPanel.setBackground(new Color(200,244,99));
+       // centerPanel.setBackground(new Color(200,244,99));
+		//JLayeredPane.putLayer(label[0],1);
+		//JLayeredPane.putLayer(label[1],0);
+		//label[0].setIcon(new ImageIcon(getClass().getResource("/GUI/art/Misc/parchment.png")));
         label[1].setText("<html><table><tr><td>" + chanceCardText);
+
 	}
     /**
      * Set the next chance card

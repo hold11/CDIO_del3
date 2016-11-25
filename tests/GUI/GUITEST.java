@@ -2,7 +2,6 @@ package GUI;
 
 import GUI.backend.Mover;
 import GUI.fields.*;
-import models.GameLogic;
 import strings.Lang;
 
 import java.awt.*;
@@ -17,8 +16,9 @@ public class GUITEST {
 
         test.CreateBoardWithFields();
         test.createPlayers();
+        GUI.displayChanceCard(Lang.msg("desc_buy_TheWerewall"));
         //test.testSetOwner();
-        test.realExampleGame();
+        //test.realExampleGame();
         //test.testDescriptionCards();
     }
 
@@ -214,92 +214,92 @@ public class GUITEST {
     }
     private void createPlayers() {
         Mover mover1 = new Mover.Builder()
-                .typeRacecar()
-                .primaryColor(Color.BLUE)
-                .secondaryColor(Color.RED)
-                .patternDiagonalDualColor()
+                .troldeTanja()
+                .primaryColor(new Color(22, 154,255))
+                .secondaryColor(new Color(255, 21, 208))
+                .overlayDualColor()
                 .build();
-        GUI.addPlayer("Steen", 30000, mover1);
+        GUI.addPlayer("Steen",30000, mover1);
 
         Mover mover2 = new Mover.Builder()
-                .typeRacecar()
+                .troldeTanja()
                 .primaryColor(Color.GREEN)
-                .secondaryColor(Color.BLACK)
-                .patternDiagonalDualColor()
+                .secondaryColor(Color.WHITE)
+                .overlayDualColor()
                 .build();
         GUI.addPlayer("Steeen", 30000, mover2);
 
         Mover mover3 = new Mover.Builder()
-                .typeRacecar()
+                .troldeTanja()
                 .primaryColor(Color.WHITE)
                 .secondaryColor(Color.RED)
-                .patternDiagonalDualColor()
+                .overlayDualColor()
                 .build();
         GUI.addPlayer("Steeeen", 30000, mover3);
 
         Mover mover4 = new Mover.Builder()
-                .typeRacecar()
-                .primaryColor(Color.BLACK)
-                .secondaryColor(Color.RED)
-                .patternDiagonalDualColor()
+                .troldeTanja()
+                .primaryColor(Color.YELLOW)
+                .secondaryColor(Color.GREEN)
+                .overlayDualColor()
                 .build();
         GUI.addPlayer("Steeeeen", 30000, mover4);
 
         Mover mover5 = new Mover.Builder()
-                .typeRacecar()
+                .troldeTanja()
                 .primaryColor(Color.BLUE)
-                .secondaryColor(Color.BLACK)
-                .patternDiagonalDualColor()
+                .secondaryColor(Color.ORANGE)
+                .overlayDualColor()
                 .build();
         GUI.addPlayer("Steeeeeen", 30000, mover5);
 
         Mover mover6 = new Mover.Builder()
-                .typeRacecar()
+                .troldeTanja()
                 .primaryColor(Color.WHITE)
-                .secondaryColor(Color.BLUE)
-                .patternDiagonalDualColor()
+                .secondaryColor(new Color(22, 154,255))
+                .overlayDualColor()
                 .build();
         GUI.addPlayer("Steeeeeeen", 30000, mover6);
     }
-    private void testSetOwner() {
-        for (int i = 1 ; i < 3 ; i++) {
-            GUI.setOwner(i, "Steen");
-        }
-        for (int i = 3 ; i < 5 ; i++) {
-            GUI.setOwner(i, "Steeen");
-        }
-        for (int i = 5 ; i < 7 ; i++) {
-            GUI.setOwner(i, "Steeeen");
-        }
-        for (int i = 7 ; i < 9 ; i++) {
-            GUI.setOwner(i, "Steeeeen");
-        }
-        for (int i = 9 ; i < 11 ; i++) {
-            GUI.setOwner(i, "Steeeeeen");
-        }
-        for (int i = 11 ; i < 12 ; i++) {
-            GUI.setOwner(i, "Steeeeeeen");
-        }
-        GUI.setOwner(14, "steen");
-        GUI.setOwner(15, "steeen");
-        GUI.setOwner(18, "steeeen");
-        GUI.setOwner(19, "steeeeen");
-        GUI.setOwner(20, "steeeeeen");
-        GUI.setOwner(21, "steeeeeeen");
-    }
-    private void realExampleGame(){
-        GUI.setMover(6, "Steen");
-        GUI.displayChanceCard(Lang.msg("desc_buy_TheWerewall"));
-        sleep(1200);
-        GUI.getUserSelection("Buy field?", "Yes", "No");
-        GUI.setBalance("Steen", 25700);
-        GUI.setOwner(6, "Steen");
-        sleep(1200);
-        GUI.setMover(6, "Steeen");
-        GUI.displayChanceCard(Lang.msg("desc_rent_TheWerewall"));
-        GUI.setBalance("Steeen", 28700);
-
-    }
+//    private void testSetOwner() {
+//        for (int i = 1 ; i < 3 ; i++) {
+//            GUI.setOwner(i, "Steen");
+//        }
+//        for (int i = 3 ; i < 5 ; i++) {
+//            GUI.setOwner(i, "Steeen");
+//        }
+//        for (int i = 5 ; i < 7 ; i++) {
+//            GUI.setOwner(i, "Steeeen");
+//        }
+//        for (int i = 7 ; i < 9 ; i++) {
+//            GUI.setOwner(i, "Steeeeen");
+//        }
+//        for (int i = 9 ; i < 11 ; i++) {
+//            GUI.setOwner(i, "Steeeeeen");
+//        }
+//        for (int i = 11 ; i < 12 ; i++) {
+//            GUI.setOwner(i, "Steeeeeeen");
+//        }
+//        GUI.setOwner(14, "steen");
+//        GUI.setOwner(15, "steeen");
+//        GUI.setOwner(18, "steeeen");
+//        GUI.setOwner(19, "steeeeen");
+//        GUI.setOwner(20, "steeeeeen");
+//        GUI.setOwner(21, "steeeeeeen");
+//    }
+//    private void realExampleGame(){
+//        GUI.setMover(6, "Steen");
+//        GUI.displayChanceCard(Lang.msg("desc_buy_TheWerewall"));
+//        sleep(1200);
+//        GUI.getUserSelection("Buy field?", "Yes", "No");
+//        GUI.setBalance("Steen", 25700);
+//        GUI.setOwner(6, "Steen");
+//        sleep(1200);
+//        GUI.setMover(6, "Steeen");
+//        GUI.displayChanceCard(Lang.msg("desc_rent_TheWerewall"));
+//        GUI.setBalance("Steeen", 28700);
+//
+//    }
     private void testDescriptionCards() {
         GUI.displayChanceCard(Lang.msg("desc_buy_TheWerewall"));
         sleep(1200);

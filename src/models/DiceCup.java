@@ -95,4 +95,24 @@ public class DiceCup {
         roll();
         return results;
     }
+
+    /**
+     * getTotalEyes returns the total number of eyes of the rolled dice.
+     * @return
+     */
+    public int getTotalEyes() {
+        int total = 0;
+
+        for (int i: this.getResults())
+            total += i;
+        return total;
+    }
+
+    public int[] getResultArr() {
+        int[] results = new int[2];
+        int i = 0;
+        for (Iterator<Integer> iter = this.getResults().iterator(); iter.hasNext(); i++)
+            results[i] = iter.next();
+        return results;
+    }
 }

@@ -156,7 +156,7 @@ public final class GUI {
     /**
      * Adds a player to the board.<br>
      * Max. 6 players.<br>
-     * @param player : String (Mind the length!) (Unique identifier of the player - no duplicates)
+     * @param name : String (Mind the length!) (Unique identifier of the player - no duplicates)
      * @param balance : int
      * @param mover : Mover
      * Movers are created this way:<br>
@@ -167,6 +167,10 @@ public final class GUI {
      *     .patternDotted()<br>
      *     .Build();<br>
      */
+    public static void addPlayer(String name, int balance, Mover mover) {
+        getBC().addPlayer(name, balance, mover);
+    }
+
     public static void addPlayer(models.Player player, Mover mover) {
         getBC().addPlayer(player.getPlayerName(), player.getPlayerAccount().getBalance(), mover);
     }

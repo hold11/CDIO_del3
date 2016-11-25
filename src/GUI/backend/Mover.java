@@ -44,7 +44,7 @@ public final class Mover {
         public Builder() {
             this.color1 = null;
             this.color2 = null;
-            this.type = Type.CAR;
+            this.type = Type.TROLDETANJA;
             this.pattern = Pattern.FILL;
         }
         
@@ -73,9 +73,9 @@ public final class Mover {
                         paintHorizontalGradiant(template, this.color1,
                             this.color2);
                     break;
-                case DIAGONAL_DUAL_COLOR:
+                case OVERLAY:
                     this.image =
-                        paintDiagonalDualColor(template, this.color1,
+                        overlayDualColor(template, this.color1,
                             this.color2);
                     break;
                 case HORIZONTAL_DUAL_COLOR:
@@ -116,8 +116,8 @@ public final class Mover {
             this.color2 = color;
             return this;
         }
-        public Builder typeCar() {
-            this.type = Type.CAR;
+        public Builder troldeTanja() {
+            this.type = Type.TROLDETANJA;
             return this;
         }
         public Builder typeRacecar() {
@@ -140,8 +140,8 @@ public final class Mover {
             this.pattern = Pattern.CHECKERED;
             return this;
         }
-        public Builder patternDiagonalDualColor() {
-            this.pattern = Pattern.DIAGONAL_DUAL_COLOR;
+        public Builder overlayDualColor() {
+            this.pattern = Pattern.OVERLAY;
             return this;
         }
         public Builder patternDotted() {
@@ -176,8 +176,7 @@ public final class Mover {
             }
             return img;
         }
-        private BufferedImage paintHorizontalGradiant(BufferedImage img,
-            Color c1, Color c2) {
+        private BufferedImage paintHorizontalGradiant(BufferedImage img, Color c1, Color c2) {
             int r1 = c1.getRed();
             int r2 = c2.getRed();
             int g1 = c1.getGreen();
@@ -215,15 +214,11 @@ public final class Mover {
             }
             return img;
         }
-        private BufferedImage paintDiagonalDualColor(BufferedImage img,
-            Color c1, Color c2) {
-            String path = patternImages.get(Pattern.DIAGONAL_DUAL_COLOR);
-            BufferedImage patternImg =
+        private BufferedImage overlayDualColor(BufferedImage img, Color c1, Color c2) {String path = patternImages.get(Pattern.OVERLAY);BufferedImage patternImg =
                 new SwingComponentFactory().createImage(path);
             return paintPattern(patternImg, img, c1, c2);
         }
-        private BufferedImage paintHorizontalDualColor(BufferedImage img, Color c1, Color c2,
-                Type t) {
+        private BufferedImage paintHorizontalDualColor(BufferedImage img, Color c1, Color c2, Type t) {
             for (int y = 0; y < img.getHeight(); y++) {
                 for (int x = 0; x < img.getWidth(); x++) {
                     if (img.getRGB(x, y) == PRIMARYCOLORSTANDIN) {
@@ -238,8 +233,7 @@ public final class Mover {
             }
             return img;
         }
-        private BufferedImage paintHorizontalLine(BufferedImage img, Color c1,
-            Color c2, Type t) {
+        private BufferedImage paintHorizontalLine(BufferedImage img, Color c1, Color c2, Type t) {
             for (int y = 0; y < img.getHeight(); y++) {
                 for (int x = 0; x < img.getWidth(); x++) {
                     if (img.getRGB(x, y) == PRIMARYCOLORSTANDIN) {
@@ -272,9 +266,7 @@ public final class Mover {
                 new SwingComponentFactory().createImage(path);
             return paintPattern(patternImg, img, c1, c2);
         }
-        private BufferedImage paintPattern(BufferedImage patternImg,
-            BufferedImage img, Color c1,
-            Color c2) {
+        private BufferedImage paintPattern(BufferedImage patternImg, BufferedImage img, Color c1, Color c2) {
             for (int y = 0; y < img.getHeight(); y++) {
                 for (int x = 0; x < img.getWidth(); x++) {
                     if (img.getRGB(x, y) == PRIMARYCOLORSTANDIN) {
@@ -291,9 +283,9 @@ public final class Mover {
         
         // Constants
         private enum Type {
-            CAR(0, 15), TRACTOR(1, 11), RACECAR(2, 13), UFO(3, 10);
+            TROLDETANJA(0, 15), TRACTOR(1, 11), RACECAR(2, 13), UFO(3, 10);
             private final int x, h;
-            private final int width = Mover.WIDTH + 1;
+            private final int width = Mover.WIDTH;
             Type(int no, int h) {
                 this.x = no * this.width;
                 this.h = h;
@@ -306,7 +298,7 @@ public final class Mover {
             }
         }
         private enum Pattern {
-            FILL, HORIZONTAL_GRADIANT, DIAGONAL_DUAL_COLOR,
+            FILL, HORIZONTAL_GRADIANT, OVERLAY,
             HORIZONTAL_DUAL_COLOR, HORIZONTAL_LINE, CHECKERED, DOTTED, ZEBRA
         }
         private static final int PRIMARYCOLORSTANDIN = 0xffff0000;
@@ -316,16 +308,15 @@ public final class Mover {
         private static final Map<Pattern, String> patternImages =
             new HashMap<Pattern, String>();
         static {
-            patternImages.put(Pattern.DIAGONAL_DUAL_COLOR,
-                    "/GUI/art/Movers/Diag_dual.png");
-            patternImages.put(Pattern.DOTTED, "/GUI/art/Movers/Dotted.png");
-            patternImages.put(Pattern.CHECKERED, "/GUI/art/Movers/Checkered.png");
-            patternImages.put(Pattern.ZEBRA, "/GUI/art/Movers/Zebra.png");
+            patternImages.put(Pattern.OVERLAY, "/GUI/art/Movers/troldetanja_overlay.png");
+          //  patternImages.put(Pattern.DOTTED, "/GUI/art/Movers/Dotted.png");
+          //  patternImages.put(Pattern.CHECKERED, "/GUI/art/Movers/Checkered.png");
+          //  patternImages.put(Pattern.ZEBRA, "/GUI/art/Movers/Zebra.png");
         }
     }
     
     // Constants
-    private static final int WIDTH = 40;
-    private static final int HEIGHT = 21;
-    private static final String PATH = "/GUI/art/Movers/cars.png";
+    private static final int WIDTH = 36;
+    private static final int HEIGHT = 58;
+    private static final String PATH = "/GUI/art/Movers/troldetanja.png";
 }

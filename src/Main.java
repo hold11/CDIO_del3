@@ -9,8 +9,10 @@
     /`           ´\                                      |
  */
 
+import GUI.GameGUI;
 import models.GameLogic;
 import models.Player;
+import strings.Lang;
 
 public class Main
 {
@@ -19,6 +21,8 @@ public class Main
         Player p1 = new Player();
         Player p2 = new Player();
         GameLogic game = new GameLogic();
+        GameGUI g = new GameGUI();
+
 
         for (int i = 0; i < 1000; i++) {
             game.playTurn(game.getCurrentPlayer());

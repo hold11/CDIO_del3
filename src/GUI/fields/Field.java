@@ -173,7 +173,7 @@ public abstract class Field {
 			l.setBackground(this.bgColor);
 			l.setForeground(this.fgColor);
 		}
-		Center.label[0].setText(""+this.number);
+		Center.label[0].setText("" + this.number);
 	}
 	protected void displayMoverOnCenter() {
 		for(int i = 0; i < Board.MAX_PLAYER_COUNT; i++) {
