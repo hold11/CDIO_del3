@@ -1,3 +1,4 @@
+package strings;
 /*
            ,                                             |
           /#\         _         _     _    ___   ___     | Projekt: Landlordopoly - CDIO_del3
