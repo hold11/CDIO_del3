@@ -60,8 +60,8 @@ public abstract class Field {
         protected String rent = "";
         protected String price = "";
         protected String bonus = "";
-        protected Color bgColor = Color.LIGHT_GRAY;
-        protected Color fgColor = Color.BLACK;
+        protected Color bgColor = new Color(24, 39, 51);
+        protected Color fgColor = new Color(230, 230, 230);
         
         @SuppressWarnings("unchecked")
         public E setFgColor(Color fgColor) {

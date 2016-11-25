@@ -108,7 +108,7 @@ public final class Center{
      */
 	public void displayChanceCard() {
         clearLabels();
-        centerPanel.setBackground(Color.WHITE);
+        centerPanel.setBackground(new Color(200,244,99));
         label[1].setText("<html><table><tr><td>" + chanceCardText);
 	}
     /**
