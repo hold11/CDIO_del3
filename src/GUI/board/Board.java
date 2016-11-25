@@ -228,9 +228,9 @@ public final class Board extends javax.swing.JFrame {
 	 * Makes the components on which to show players
 	 */
 	private void makePlayerAreas() {
-		int x = 7;
+		int x = 9;
 		for(int i = 0; i < MAX_PLAYER_COUNT; i++) {
-			int y = 9 - i;
+			int y = 5 - i;
 			
 			JLabel iconLabel = new JLabel();
 			this.factory.setSize(iconLabel, 1 * Field.FIELDWIDTH, 1 * Field.FIELDWIDTH);
@@ -239,7 +239,7 @@ public final class Board extends javax.swing.JFrame {
 			this.iconLabels[i] = iconLabel;
 			
 			JLabel playerLabel = new JLabel();
-			this.factory.setSize(playerLabel, 2 * Field.FIELDWIDTH, 1 * Field.FIELDWIDTH);
+			this.factory.setSize(playerLabel, 1 * Field.FIELDWIDTH, 1 * Field.FIELDWIDTH);
 			this.base.setLayer(playerLabel, 1);
 			this.base.add(playerLabel, this.factory.createGridBagConstraints(x + 1, y, 2, 1));
 			this.playerLabels[i] = playerLabel;
@@ -258,12 +258,12 @@ public final class Board extends javax.swing.JFrame {
 	 */
 	public void setDice(int x1, int y1, int facevalue1, int rotation1,
 		int x2, int y2, int facevalue2, int rotation2) {
-		this.diceLabels[this.die1x][this.die1y].setIcon(null);
-		this.diceLabels[this.die2x][this.die2y].setIcon(null);
-		this.die1x = x1;
-		this.die1y = y1;
-		this.die2x = x2;
-		this.die2y = y2;
+//		this.diceLabels[this.die1x][this.die1y].setIcon(null);
+//		this.diceLabels[this.die2x][this.die2y].setIcon(null);
+//		this.die1x = x1;
+//		this.die1y = y1;
+//		this.die2x = x2;
+//		this.die2y = y2;
 		
 		this.diceLabels[x1][y1].setRotation(rotation1);
 		this.diceLabels[x1][y1].setHorizontalAlignment(SwingConstants.CENTER);

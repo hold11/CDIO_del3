@@ -19,7 +19,7 @@ public final class Center{
 	private static JPanel centerPanel;
 	public static JLabel[] label = new JLabel[7];
 	public static JLabel[] Movers = new JLabel[Board.MAX_PLAYER_COUNT];
-	public static String chanceCardText = "Prøv Lykken";
+	public static String chanceCardText = "";
 	private JLayeredPane playersPane = new JLayeredPane();
 	
 	private SwingComponentFactory factory = new SwingComponentFactory();

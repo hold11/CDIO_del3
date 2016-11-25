@@ -2,6 +2,8 @@ package GUI;
 
 import GUI.backend.Mover;
 import GUI.fields.*;
+import models.GameLogic;
+import strings.Lang;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -11,19 +13,22 @@ public class GUITEST {
     public static void main(String[] args) {
         GUITEST test = new GUITEST();
 
+        Lang.setLanguage(args);
+
         test.CreateBoardWithFields();
         test.createPlayers();
-        test.testSetOwner();
-        //test.realExampleGame();
+        //test.testSetOwner();
+        test.realExampleGame();
+        //test.testDescriptionCards();
     }
 
     private void CreateBoardWithFields() {
-        ArrayList<Field> list = new ArrayList<Field>();
+        ArrayList<Field> list = new ArrayList<>();
 
         //Field #1
         list.add(new Territory.Builder()
                 .setTitle("Tribe Encampment")
-                // // .setSubtext("Tribe Encampment")
+                // .setSubtext("Tribe Encampment")
                 .setPicture("src/GUI/art/fields/territories/tribalEncampment.png")
                 .setRent("100")
                 .setPrice("1000")
@@ -205,10 +210,6 @@ public class GUITEST {
                 .setPrice("4000")
                 .build());
 
-
-//        Field[] fields = new Field[list.size()];
-//        for(int i = 0; i < fields.length; i++) fields[i] = list.get(i);
-
         GUI.create(list);
     }
     private void createPlayers() {
@@ -287,35 +288,34 @@ public class GUITEST {
         GUI.setOwner(21, "steeeeeeen");
     }
     private void realExampleGame(){
+        GUI.setMover(6, "Steen");
+        GUI.displayChanceCard(Lang.msg("desc_buy_TheWerewall"));
+        sleep(1200);
+        GUI.getUserSelection("Buy field?", "Yes", "No");
+        GUI.setBalance("Steen", 25700);
+        GUI.setOwner(6, "Steen");
+        sleep(1200);
+        GUI.setMover(6, "Steeen");
+        GUI.displayChanceCard(Lang.msg("desc_rent_TheWerewall"));
+        GUI.setBalance("Steeen", 28700);
 
-        GUI.setMover(1, "Steen");
-        sleep(1200);
-        GUI.setMover(1, "Steeeeeeen");
-
-        sleep(1200);
-        GUI.setDice(1, 2);
-        sleep(1200);
-        GUI.removeAllMovers("Mads");
-        GUI.setMover(2, "Mads");
-        sleep(1200);
-        GUI.removeAllMovers("Mads");
-        GUI.setMover(3, "Mads");
-        sleep(1200);
-        GUI.removeAllMovers("Mads");
-        GUI.setMover(4, "Mads");
-        sleep(1200);
-        GUI.setBalance("Mads", 28000);
-        GUI.setOwner(4, "Mads");
-        sleep(1200);
-        GUI.displayChanceCard("De har vundet vild med dans og skifter navn til Allan!");
     }
-    private static void sleep(int n) {
-        long t0, t1;
-        t0 = System.currentTimeMillis();
-        do{
-            t1 = System.currentTimeMillis();
-        }
-        while((t1 - t0) < (n));
+    private void testDescriptionCards() {
+        GUI.displayChanceCard(Lang.msg("desc_buy_TheWerewall"));
+        sleep(1200);
+        GUI.displayChanceCard(Lang.msg("desc_rent_TheWerewall"));
+        sleep(1200);
+        GUI.displayChanceCard(Lang.msg("desc_buy_BlackCave"));
+        sleep(1200);
+        GUI.displayChanceCard(Lang.msg("desc_rent_BlackCave"));
+        sleep(1200);
+        GUI.displayChanceCard(Lang.msg("desc_buy_ColdDesert"));
+        sleep(1200);
+        GUI.displayChanceCard(Lang.msg("desc_rent_ColdDesert"));
+        sleep(1200);
+        GUI.displayChanceCard(Lang.msg("desc_buy_TribeEncampment"));
+        sleep(1200);
+        GUI.displayChanceCard(Lang.msg("desc_rent_TribeEncampment"));
     }
     private void testSetTexts() {
         int fieldNr = 0;
@@ -357,5 +357,13 @@ public class GUITEST {
         GUI.setDescriptionText(fieldNr, desc + fieldNr);
         GUI.setSubText(fieldNr, sub + fieldNr);
         GUI.setTitleText(fieldNr, title + fieldNr);
+    }
+    private static void sleep(int n) {
+        long t0, t1;
+        t0 = System.currentTimeMillis();
+        do{
+            t1 = System.currentTimeMillis();
+        }
+        while((t1 - t0) < (n));
     }
 }

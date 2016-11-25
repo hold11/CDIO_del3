@@ -19,8 +19,6 @@ public abstract class Ownable extends Field
 
     /**
      * Checks if field is owned by some player.
-     * @param ownable
-     * @return
      */
     public boolean isOwned()
     {
