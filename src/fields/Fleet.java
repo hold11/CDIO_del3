@@ -20,7 +20,7 @@ public class Fleet extends Ownable
     {
         this.fieldName = fieldName;
         this.price = 4000;
-        this.owner = null; // TODO: Do this need to be here?
+        this.owner = null;
     }
 
     /**
@@ -81,6 +81,7 @@ public class Fleet extends Ownable
         if (this.isOwned() && this.owner != player)      // If field is owned by other player, withdraw rent.
         {
             player.getPlayerAccount().withdraw(this.getRent());
+            this.getOwner().getPlayerAccount().deposit(this.getRent());
         }
     }
 }

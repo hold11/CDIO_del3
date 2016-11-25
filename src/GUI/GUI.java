@@ -156,7 +156,7 @@ public final class GUI {
     /**
      * Adds a player to the board.<br>
      * Max. 6 players.<br>
-     * @param name : String (Mind the length!) (Unique identifier of the player - no duplicates)
+     * @param player : String (Mind the length!) (Unique identifier of the player - no duplicates)
      * @param balance : int
      * @param mover : Mover
      * Movers are created this way:<br>
@@ -167,25 +167,25 @@ public final class GUI {
      *     .patternDotted()<br>
      *     .Build();<br>
      */
-    public static void addPlayer(String name, int balance, Mover mover) {
-        getBC().addPlayer(name, balance, mover);
+    public static void addPlayer(models.Player player, Mover mover) {
+        getBC().addPlayer(player.getPlayerName(), player.getPlayerAccount().getBalance(), mover);
     }
     /**
      * Adds a player to the board.<br>
      * Max. 6 players.<br>
-     * @param name : String (Mind the length!) (Unique identifier of the player - no duplicates)
+     * @param player : String (Mind the length!) (Unique identifier of the player - no duplicates)
      * @param balance : int
      */
-    public static void addPlayer(String name, int balance) {
-        getBC().addPlayer(name, balance);
+    public static void addPlayer(models.Player player, int balance) {
+        getBC().addPlayer(player.getPlayerName(), balance);
     }
     /**
      * Sets the balance of a player if the player has been added.
-     * @param name The name of the player
+     * @param player The name of the player
      * @param newBalance : int
      */
-    public static void setBalance(String name, int newBalance) {
-        getBC().setBalance(name, newBalance);
+    public static void setBalance(models.Player player, int newBalance) {
+        getBC().setBalance(player.getPlayerName(), newBalance);
     }
     /**
      * Shows two dice on the board. The dice will have the specified values, but
@@ -272,26 +272,26 @@ public final class GUI {
      * happens.<br>
      * A car can not be placed on multiple fields simultaneously.
      * @param fieldNumber : int [1:40]
-     * @param name The name of the player
+     * @param player The name of the player
      */
-    public static void setMover(int fieldNumber, String name) {
-        getBC().setMover(fieldNumber, name);
+    public static void setMover(int fieldNumber, models.Player player) {
+        getBC().setMover(fieldNumber, player.getPlayerName());
     }
     /**
      * Removes a car from the board.<br>
      * If the car is not on the board, nothing happens.
      * @param fieldNumber : int [1:40]
-     * @param name The name of the player
+     * @param player The name of the player
      */
-    public static void removeMover(int fieldNumber, String name) {
-        getBC().removeMover(fieldNumber, name);
+    public static void removeMover(int fieldNumber, models.Player player) {
+        getBC().removeMover(fieldNumber, player.getPlayerName());
     }
     /**
      * Removes all Movers belonging to this player.
-     * @param name The name of the player.
+     * @param player The name of the player.
      */
-    public static void removeAllMovers(String name) {
-        getBC().removeAllMovers(name);
+    public static void removeAllMovers(models.Player player) {
+        getBC().removeAllMovers(player.getPlayerName());
     }
     /**
      * Sets an owner of a field.<br>
@@ -300,10 +300,10 @@ public final class GUI {
      * a brewery nothing happens.<br>
      * If the owner hasn't been added to the board, nothing happens.
      * @param fieldNumber : int [1:40]
-     * @param name The name of the player
+     * @param player The name of the player
      */
-    public static void setOwner(int fieldNumber, String name) {
-        getBC().setOwner(fieldNumber, name);
+    public static void setOwner(int fieldNumber, models.Player player) {
+        getBC().setOwner(fieldNumber, player.getPlayerName());
     }
     /**
      * Removes an owner from the field.<br>
