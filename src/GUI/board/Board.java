@@ -53,7 +53,7 @@ public final class Board extends javax.swing.JFrame {
 		makeDiceLabels();
 		makePlayerAreas();
 		makeCenter();
-		FieldFactory.makeFields();
+//		FieldFactory.makeFields();
 		makeFieldPanels();
 		makeMoverPanes();
 		makeInputPanel();

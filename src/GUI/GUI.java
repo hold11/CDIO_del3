@@ -48,10 +48,10 @@ public final class GUI {
      *      ... new LaborCamp.Builder().build();<br>
      *      ... new Empty.Builder().build();<br>
      */
-    public static void create(Field[] fields) {
-        ArrayList<Field> list = new ArrayList<Field>();
-        for(Field f : fields) list.add(f);
-        FieldFactory.fields = list;
+    public static void create(ArrayList<Field> fields) {
+//        ArrayList<Field> list = new ArrayList<Field>();
+//        for(Field f : fields) list.add(f);
+        FieldFactory.fields = fields;
     }
     /**
      * Closes the GUI, so you can start a new one. 
@@ -59,7 +59,7 @@ public final class GUI {
     public final static void close() {
         getBC().closeGUI();
         bc = null;
-        FieldFactory.path = null;
+        //FieldFactory.path = null;
     }
     /**
      * Displays a message to the user.<br>

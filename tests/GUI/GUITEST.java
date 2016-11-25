@@ -206,10 +206,10 @@ public class GUITEST {
                 .build());
 
 
-        Field[] fields = new Field[list.size()];
-        for(int i = 0; i < fields.length; i++) fields[i] = list.get(i);
+//        Field[] fields = new Field[list.size()];
+//        for(int i = 0; i < fields.length; i++) fields[i] = list.get(i);
 
-        GUI.create(fields);
+        GUI.create(list);
     }
     private void createPlayers() {
         Mover mover1 = new Mover.Builder()
