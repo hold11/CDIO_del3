@@ -41,14 +41,11 @@ public class GameLogic
 
         // TODO: Remove below, just for testing purposes
         System.out.println(currentPlayer.getPlayerName() + "'s turn. Current balance: " + currentPlayer.getPlayerAccount().getBalance());
-        int[] results = new int[2];
-        int i = 0;
-        for (Iterator<Integer> iter = currentPlayer.getDiceCup().getResults().iterator(); iter.hasNext(); i++)
-            results[i] = iter.next();
-        System.out.println(currentPlayer.getPlayerName() + " rolled " + results[0] + " and " + results[1] + " (" + getTotalEyes(currentPlayer.getDiceCup()) + ").");
+
+        System.out.println(currentPlayer.getPlayerName() + " rolled " + currentPlayer.getDiceCup().getResultArr()[0] + " and " + currentPlayer.getDiceCup().getResultArr()[1] + " (" + currentPlayer.getDiceCup().getTotalEyes() + ").");
         // TODO: Remove above, just for testing purposes
 
-        currentPlayer.moveCurrentField(getTotalEyes(currentPlayer.getDiceCup())); // Moves the player's currentFieldID to the next field based on the rolled dice
+        currentPlayer.moveCurrentField(currentPlayer.getDiceCup().getTotalEyes()); // Moves the player's currentFieldID to the next field based on the rolled dice
         board.getFields()[currentPlayer.getCurrentField() - 1].landOnField(currentPlayer); // - 1 to make sure you can land on index 0, but not 21 - otherwise just calls the landOnField method for the player
 
         // TODO: Remove below, just for testing purposes
@@ -193,19 +190,6 @@ public class GameLogic
     public Player getCurrentPlayer()
     {
         return Player.findPlayer(playerTurn);
-    }
-
-    /**
-     * getTotalEyes returns the total number of eyes of the rolled dice.
-     * @return
-     */
-    public int getTotalEyes(DiceCup diceCup)
-    {
-        int total = 0;
-
-        for (int i: diceCup.getResults())
-            total += i;
-        return total;
     }
 
     /**
