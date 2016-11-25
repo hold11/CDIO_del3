@@ -46,11 +46,27 @@ public class PlayerTest {
         assertFalse("bobdylan" == testPlayer1.getPlayerName());
     }
 
+//    @Test
+//    public void moveCurrentField() throws Exception {
+//        GameBoard testBoard = new GameBoard();
+//        testPlayer1.moveCurrentField(testBoard.getFields()[2]);
+//        assertEquals(testBoard.getFields()[2], testPlayer1.getCurrentField());
+//    }
+
+
     @Test
-    public void setCurrentField() throws Exception {
-        GameBoard testBoard = new GameBoard();
-        testPlayer1.setCurrentField(testBoard.getFields()[2]);
-        assertEquals(testBoard.getFields()[2], testPlayer1.getCurrentField());
+    public void moveCurrentField() throws Exception {
+        // For this we'll test following data:
+        // Field count = 21
+        // Player on   = 18
+        // Rolls       = 10
+
+        // Supposed to land on field number 7 (index 6).
+        testPlayer1.setCurrentField(18);
+        int diceRoll = 10;
+        testPlayer1.moveCurrentField(diceRoll);
+        assertEquals(6, testPlayer1.getCurrentField());
+
     }
 
     @Test

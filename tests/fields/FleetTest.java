@@ -44,7 +44,7 @@ public class FleetTest {
         assertEquals(player1StartBalance - fleet.getPrice(), player1.getPlayerAccount().getBalance());
 
         // Check if the fleet is actually bought
-        assertTrue(Ownable.isOwned(fleet));
+        assertTrue(fleet.isOwned());
 
         // Check if another player can buy an already bought fleet
         fleet.purchaseField(player2);

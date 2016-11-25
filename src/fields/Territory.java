@@ -39,7 +39,7 @@ public class Territory extends Ownable
     @Override
     public void landOnField(Player player)
     {
-        if (isOwned(this) && this.owner != player)      // If field is owned by other player, withdraw rent.
+        if (this.isOwned() && this.owner != player)      // If field is owned by other player, withdraw rent.
         {
             player.getPlayerAccount().withdraw(this.rent);
         }
