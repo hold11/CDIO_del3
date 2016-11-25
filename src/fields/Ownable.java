@@ -52,6 +52,14 @@ public abstract class Ownable extends Field
         System.out.println(this.getOwner() + " just bought " + this.fieldName);
     }
 
+    public static List<Ownable> getPlayersOwnedFields(Player player) {
+        List<Ownable> ownables = new ArrayList<>();
+        for (Ownable o : ownedOwnables)
+            if (o.owner == player)
+                ownables.add(o);
+        return ownables;
+    }
+
     public int getPrice()
     {
         return this.price;
