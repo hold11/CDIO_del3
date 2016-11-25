@@ -65,7 +65,7 @@ public class PlayerTest {
         testPlayer1.setCurrentField(18);
         int diceRoll = 10;
         testPlayer1.moveCurrentField(diceRoll);
-        assertEquals(6, testPlayer1.getCurrentField());
+        assertEquals(6, testPlayer1.getCurrentField() - 1);
 
     }
 

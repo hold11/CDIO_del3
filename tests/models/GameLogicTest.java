@@ -24,7 +24,7 @@ public class GameLogicTest {
 
     @After
     public void tearDown() throws Exception {
-
+        Player.reset();
     }
 
     @Test
