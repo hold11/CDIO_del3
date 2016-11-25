@@ -125,10 +125,17 @@ public class FleetTest {
     @Test
     public void landOnField() throws Exception {
         Fleet fleet = ((Fleet) board.getFields()[17]);
-        fleet.purchaseField(player1);
 
         int player1StartBalance = player1.getPlayerAccount().getBalance();
         int player2StartBalance = player2.getPlayerAccount().getBalance();
+
+        fleet.landOnField(player1);
+        fleet.landOnField(player2);
+        assertEquals(player1StartBalance, player1.getPlayerAccount().getBalance());
+        assertEquals(player2StartBalance, player2.getPlayerAccount().getBalance());
+
+        fleet.purchaseField(player1);
+
 
         fleet.landOnField(player2);
         assertEquals(player2StartBalance - fleet.getRent(), player2.getPlayerAccount().getBalance());
