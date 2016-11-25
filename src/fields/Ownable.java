@@ -54,9 +54,14 @@ public abstract class Ownable extends Field
 
     public static List<Ownable> getPlayersOwnedFields(Player player) {
         List<Ownable> ownables = new ArrayList<>();
+
         for (Ownable o : ownedOwnables)
             if (o.owner == player)
                 ownables.add(o);
+
+
+
+
         return ownables;
     }
 

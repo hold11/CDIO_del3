@@ -1,17 +1,21 @@
 package GUI;
 
 import GUI.backend.Mover;
+import GUI.fields.*;
 import GUI.fields.Field;
 import GUI.fields.Fleet;
 import GUI.fields.LaborCamp;
+import GUI.fields.Ownable;
 import GUI.fields.Refuge;
 import GUI.fields.Tax;
 import GUI.fields.Territory;
+import fields.*;
 import models.Player;
 import strings.Lang;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
+import java.util.List;
 
 public class GameGUI {
     private Mover[] movers = new Mover[6];
@@ -21,7 +25,7 @@ public class GameGUI {
         createBoardWithFields();
     }
 
-    private void initMovers() {
+    public void initMovers() {
         movers[0] = new Mover.Builder()
                 .troldeTanja()
                 .primaryColor(new Color(22, 154,255))
@@ -60,7 +64,7 @@ public class GameGUI {
                 .build();
     }
 
-    private void createBoardWithFields() {
+    public void createBoardWithFields() {
         ArrayList<Field> list = new ArrayList<>();
 
         //Field #1
@@ -230,7 +234,7 @@ public class GameGUI {
         GUI.create(list);
     }
 
-    private void createPlayers() {
+    public void createPlayers() {
         initMovers();
 
         for (int i = 0; i > Player.getPlayersList().size(); i++) {
@@ -238,11 +242,11 @@ public class GameGUI {
         }
     }
 
-    private void showDiceRoll(Player player) {
+    public void showDiceRoll(Player player) {
         GUI.setDice(player.getDiceCup().getResultArr()[0], player.getDiceCup().getResultArr()[1]);
     }
 
-    private void moveMovers(Player player) {
+    public void moveMovers(Player player) {
         int results = player.getDiceCup().getTotalEyes();
 
         if (player.getCurrentField() == 0) {
@@ -258,27 +262,40 @@ public class GameGUI {
         }
     }
 
-    private void updateBalance(Player player) {
+    public void removeBankruptPlayer(Player player) {
+        GUI.removeAllMovers(player);
+
+        List<Integer> ownablesInt = new ArrayList<>();
+        List<fields.Ownable> tmp = fields.Ownable.getPlayersOwnedFields(player);
+        models.GameBoard board = new models.GameBoard();
+
+        for (int i = 0; i > board.getFields().length; i++) {
+            for (int i2 = 0; i > tmp.size(); i2++) {
+                if (board.getFields()[i].toString().equals(tmp.get(i2).toString()))
+                    ownablesInt.add(i);
+            }
+        }
+
+        for(int i : ownablesInt)
+            GUI.removeOwner(i);
 
     }
 
-    private void playerRoll(Player player) {
+    public void updateBalance(Player player) {
+
+    }
+
+    public void playerRoll(Player player) {
         GUI.getUserButtonPressed(player.getPlayerName() + "! Roll for adventure and glory!", "Roll!");
         player.getDiceCup().roll();
     }
 
-    private void wannaPurchase(Player player) {
-        if (GUI.getUserButtonPressed("Wanna purchase the field you've landed on?", "yes", "no").equals("yes")) {
-
-        }
-    }
-
-    private void testSetOwner(int fieldID, models.Player player) {
+    public void testSetOwner(int fieldID, models.Player player) {
             GUI.setOwner(fieldID, player);
         GUI.setOwner(fieldID, player);
     }
 
-   private void showDescriptionCardBuy(Field fieldnr) {
+   public void showDescriptionCardBuy(Field fieldnr) {
 
         //switch()
 
@@ -300,53 +317,12 @@ public class GameGUI {
         sleep(1200);
         GUI.displayChanceCard(Lang.msg("desc_rent_TribeEncampment"));
     }
-   private void showDescriptionCardRent(Field fieldnr) {
+
+   public void showDescriptionCardRent(Field fieldnr) {
 
     }
 
-   private void testSetTexts() {
-        int fieldNr = 0;
-        String desc = "description";
-        String sub = "subtext";
-        String title = "title";
-        // Start - 1
-        fieldNr = 1;
-        GUI.setDescriptionText(fieldNr, desc + fieldNr);
-        GUI.setSubText(fieldNr, sub + fieldNr);
-        GUI.setTitleText(fieldNr, title + fieldNr);
-        // LaborCamp - 13
-        fieldNr = 13;
-        GUI.setDescriptionText(fieldNr, desc + fieldNr);
-        GUI.setSubText(fieldNr, sub + fieldNr);
-        GUI.setTitleText(fieldNr, title + fieldNr);
-        // Chance - 3
-        fieldNr = 3;
-        GUI.setDescriptionText(fieldNr, desc + fieldNr);
-        GUI.setSubText(fieldNr, sub + fieldNr);
-        GUI.setTitleText(fieldNr, title + fieldNr);
-        // Refuge - 21
-        fieldNr = 21;
-        GUI.setDescriptionText(fieldNr, desc + fieldNr);
-        GUI.setSubText(fieldNr, sub + fieldNr);
-        GUI.setTitleText(fieldNr, title + fieldNr);
-        // Fleet - 6
-        fieldNr = 6;
-        GUI.setDescriptionText(fieldNr, desc + fieldNr);
-        GUI.setSubText(fieldNr, sub + fieldNr);
-        GUI.setTitleText(fieldNr, title + fieldNr);
-        // Territory - 2
-        fieldNr = 2;
-        GUI.setDescriptionText(fieldNr, desc + fieldNr);
-        GUI.setSubText(fieldNr, sub + fieldNr);
-        GUI.setTitleText(fieldNr, title + fieldNr);
-        // Tax - 5
-        fieldNr = 5;
-        GUI.setDescriptionText(fieldNr, desc + fieldNr);
-        GUI.setSubText(fieldNr, sub + fieldNr);
-        GUI.setTitleText(fieldNr, title + fieldNr);
-    }
-
-    private static void sleep(int n) {
+    public static void sleep(int n) {
         long t0, t1;
         t0 = System.currentTimeMillis();
         do{
