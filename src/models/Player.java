@@ -24,6 +24,7 @@ public class Player
     private BankAccount playerAccount;
 //    private Field currentField;
     private int currentField;
+    private DiceCup diceCup;
     private final int STARTING_BALANCE = 30000;
 
     private static int nextPlayerID = 1; // This variable is used to specify the next ID for the next player that gets constructed
@@ -31,8 +32,22 @@ public class Player
 
     public Player()
     {
-        this.playerName = String.format("models.Player %s", nextPlayerID);
+        this.playerName = String.format("Player %s", nextPlayerID);
         this.playerID = nextPlayerID;
+        this.diceCup = new DiceCup();
+
+        this.playerAccount = new BankAccount(STARTING_BALANCE);
+        nextPlayerID++;
+        players.add(this);
+
+        currentField = 0;
+    }
+
+    public Player(DiceCup diceCup)
+    {
+        this.playerName = String.format("Player %s", nextPlayerID);
+        this.playerID = nextPlayerID;
+        this.diceCup = diceCup;
 
         this.playerAccount = new BankAccount(STARTING_BALANCE);
         nextPlayerID++;
@@ -45,6 +60,20 @@ public class Player
     {
         this.playerName = playerName;
         this.playerID = nextPlayerID;
+        this.diceCup = new DiceCup();
+
+        this.playerAccount = new BankAccount(STARTING_BALANCE);
+
+        nextPlayerID++;
+
+        players.add(this);
+    }
+
+    public Player(String playerName, DiceCup diceCup)
+    {
+        this.playerName = playerName;
+        this.playerID = nextPlayerID;
+        this.diceCup = diceCup;
 
         this.playerAccount = new BankAccount(STARTING_BALANCE);
 
@@ -89,6 +118,8 @@ public class Player
         return this.currentField;
     }
 
+    public DiceCup getDiceCup() { return this.diceCup; }
+
 //    public void moveCurrentField(Field f)
 //    {
 //        this.currentField = f;
@@ -112,6 +143,9 @@ public class Player
     {
         players.remove(player);
     }
+
+    @Override
+    public String toString() { return this.playerName; }
 
     public static void reset()
     {
