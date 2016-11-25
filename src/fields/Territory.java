@@ -41,7 +41,8 @@ public class Territory extends Ownable
     {
         if (this.isOwned() && this.owner != player)      // If field is owned by other player, withdraw rent.
         {
-            player.getPlayerAccount().withdraw(this.rent);
+            player.getPlayerAccount().withdraw(this.getRent());
+            this.getOwner().getPlayerAccount().deposit(this.getRent());
         }
     }
 }

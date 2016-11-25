@@ -9,10 +9,13 @@
     /`           ´\                                      |
  */
 
-import GUI.GameGUI;
+import fields.Ownable;
+import fields.Territory;
+import models.GameBoard;
 import models.GameLogic;
 import models.Player;
-import strings.Lang;
+
+import java.util.Scanner;
 
 public class Main
 {
@@ -21,17 +24,63 @@ public class Main
         Player p1 = new Player();
         Player p2 = new Player();
         GameLogic game = new GameLogic();
-        GameGUI g = new GameGUI();
-
+        GameBoard board = new GameBoard();
 
         for (int i = 0; i < 1000; i++) {
             game.playTurn(game.getCurrentPlayer());
+
             game.purchaseField(game.getCurrentPlayer());
-            game.nextPlayer();
+//            if (game.fieldIsPurchaseable(game.getCurrentPlayer())) {
+//                Scanner in = new Scanner(System.in);
+//                System.out.print("Buy? ");
+//                String msg = in.nextLine();
+//
+//                if (msg.equals("yes") || msg.equals("y")) {
+//                    System.out.println("Want to buy.");
+//                    ((Ownable) board.getFields()[game.getCurrentPlayer().getCurrentField() - 1]).purchaseField(game.getCurrentPlayer());
+//
+//                } else
+//                    System.out.println("Don't want to buy.");
+//            }
 
             if (game.hasWon(game.getCurrentPlayer()))
                 return;
+
+            game.nextPlayer();
         }
-        System.out.println("This works.");
+
+
+//        for (int i = 0; i < 1000; i++) {
+//            game.playTurn(game.getCurrentPlayer());         // Player Turn
+//
+//            if(game.fieldIsPurchaseable(game.getCurrentPlayer()))      // Can buy?
+//            {
+//                Scanner in = new Scanner(System.in);
+//                System.out.println("Want to buy? ");
+//                String msg = in.nextLine().toLowerCase();
+//                if (msg.equals("yes"))
+//                    ((Ownable) board.getFields()[game.getCurrentPlayer().getCurrentField() ]).purchaseField(game.getCurrentPlayer());  // BUY!!
+//            }
+//
+//            game.nextPlayer();                              // Next player turn
+//
+//            if (game.hasWon(game.getCurrentPlayer()))       // ... unless someone has won the game
+//                return;
+//        }
+//        System.out.println("This works.");
+    }
+
+    public static void testGame() {
+        Player p1 = new Player();
+        Player p2 = new Player();
+        GameLogic game = new GameLogic();
+        GameBoard board = new GameBoard();
+
+        // Player 1 lands on field 2
+        ((Territory) board.getFields()[1]).landOnField(p1);
+
+        p1.setCurrentField(1);
+//        if (game.fieldIsPurchaseable(p1))
+//            ((Ownable) board.getFields()[game])
     }
 }
