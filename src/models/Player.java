@@ -12,6 +12,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 import fields.Field;
+import fields.Ownable;
 
 /**
  * This class is the player class.
@@ -141,6 +142,7 @@ public class Player
 
     public static void removePlayer(Player player)
     {
+        Ownable.removePlayersOwnables(player);
         players.remove(player);
     }
 
