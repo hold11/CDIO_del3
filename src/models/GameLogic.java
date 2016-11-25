@@ -52,9 +52,8 @@ public class GameLogic
         board.getFields()[currentPlayer.getCurrentField() - 1].landOnField(currentPlayer); // - 1 to make sure you can land on index 0, but not 21
 
         // TODO: Remove below, just for testing purposes
-        System.out.println(currentPlayer.getPlayerName() + " landed on " + (currentPlayer.getCurrentField() - 1));
+        System.out.println(currentPlayer.getPlayerName() + " landed on " + board.getFields()[(currentPlayer.getCurrentField() - 1)]);
         System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance());
-        System.out.println("\n");
         // TODO: Remove above, just for testing purposes
 
         purchaseField(currentPlayer);
@@ -80,11 +79,22 @@ public class GameLogic
             }
             else { // Field is owned by someone
                 System.out.println(ownedField + " is currently owned by " + ownedField.getOwner() + ".");
-                if (board.getFields()[currentPlayer.getCurrentField()] instanceof LaborCamp)
-                    System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
-                else
+                try
+                {
                     System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                }
+                catch (IllegalArgumentException ex)
+                {
+                    System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                }
+
+//                if (board.getFields()[currentPlayer.getCurrentField()] instanceof LaborCamp)
+//                    System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+//                else
+//                    System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
             }
+
+            System.out.println("\n");
         }
 
         // TODO: Remove above, just for testing purposes

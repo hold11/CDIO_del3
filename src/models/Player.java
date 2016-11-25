@@ -32,7 +32,7 @@ public class Player
 
     public Player()
     {
-        this.playerName = String.format("models.Player %s", nextPlayerID);
+        this.playerName = String.format("Player %s", nextPlayerID);
         this.playerID = nextPlayerID;
         this.diceCup = new DiceCup();
 
@@ -45,7 +45,7 @@ public class Player
 
     public Player(DiceCup diceCup)
     {
-        this.playerName = String.format("models.Player %s", nextPlayerID);
+        this.playerName = String.format("Player %s", nextPlayerID);
         this.playerID = nextPlayerID;
         this.diceCup = diceCup;
 
@@ -143,6 +143,9 @@ public class Player
     {
         players.remove(player);
     }
+
+    @Override
+    public String toString() { return this.playerName; }
 
     public static void reset()
     {
