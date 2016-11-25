@@ -128,7 +128,7 @@ public class GUITEST {
         list.add(new Refuge.Builder()
                 .setTitle("Walled City")
                 // .setSubtext("Walled City")
-                .setPicture("src/GUI/art/Fields/Walled_City.jpg")
+                .setPicture("src/GUI/art/Fields/refuge/walledCity.png")
                 .setBonus("5000")
                 .build());
 
@@ -136,7 +136,7 @@ public class GUITEST {
         list.add(new Refuge.Builder()
                 .setTitle("Monastery")
                 //// .setSubtext("Monastary")
-                .setPicture("src/GUI/art/Fields/Monastery.jpg")
+                .setPicture("src/GUI/art/Fields/refuge/monastery.png")
                 .setBonus("500")
                 .build());
 
@@ -144,7 +144,7 @@ public class GUITEST {
         list.add(new LaborCamp.Builder()
                 .setTitle("Huts in the Mountain")
                 //// .setSubtext("Huts in the Mountain")
-                .setPicture("src/GUI/art/Fields/Mountain_Hut.jpg")
+                .setPicture("src/GUI/art/Fields/laborCamp/hutsInTheMountain.png")
                 .setRent("dice x100")  //TODO: Should this maybe display the rent a player has to pay to the owner as well?
                 .setPrice("2500")
                 .build());
@@ -153,7 +153,7 @@ public class GUITEST {
         list.add(new LaborCamp.Builder()
                 .setTitle("The Pit")
                 //// .setSubtext("The Pit")
-                .setPicture("src/GUI/art/Fields/The_Pit.jpg")
+                .setPicture("src/GUI/art/Fields/laborCamp/thePit.png")
                 .setRent("dice x100")  //TODO: Should this maybe display the rent a player has to pay to the owner as well?
                 .setPrice("2500")
                 .build());
@@ -162,7 +162,7 @@ public class GUITEST {
         list.add(new Tax.Builder()
                 .setTitle("Goldmine")
                 //// .setSubtext("Goldmine")
-                .setPicture("src/GUI/art/Fields/Goldmine.jpg")
+                .setPicture("src/GUI/art/Fields/tax/goldmine.png")
                 .setTax("2000")
                 .build());
 
@@ -170,7 +170,7 @@ public class GUITEST {
         list.add(new Tax.Builder()
                 .setTitle("Caravan")
                 // .setSubtext("Caravan")
-                .setPicture("src/GUI/art/Fields/Caravan.jpg")
+                .setPicture("src/GUI/art/Fields/tax/caravan.png")
                 .setTax("10% or 4000")   //TODO: Maybe have it show what 10% means for current player
                 .build());
 
@@ -178,7 +178,7 @@ public class GUITEST {
         list.add(new Fleet.Builder()
                 .setTitle("Second Sail")
                 // .setSubtext("Second Sail")
-                .setPicture("src/GUI/art/Fields/Second_Sail.png")
+                .setPicture("src/GUI/art/Fields/fleet/secondSail.png")
                 .setRent("1000")  //TODO: Make it actually show the correct value according to the rules
                 .setPrice("4000")
                 .build());
@@ -187,7 +187,7 @@ public class GUITEST {
         list.add(new Fleet.Builder()
                 .setTitle("Sea Grover")
                 // .setSubtext("Sea Grover")
-                .setPicture("src/GUI/art/Fields/Sea_Grover.png")
+                .setPicture("src/GUI/art/Fields/fleet/seaGrover.png")
                 .setRent("2000")  //TODO: Make it actually show the correct value according to the rules
                 .setPrice("4000")
                 .build());
@@ -196,16 +196,16 @@ public class GUITEST {
         list.add(new Fleet.Builder()
                 .setTitle("The Buccaneers")
                 // .setSubtext("The Buccaneers")
-                .setPicture("src/GUI/art/Fields/The_Buccaneers.png")
+                .setPicture("src/GUI/art/Fields/fleet/theBuccaneers.png")
                 .setRent("3000")  //TODO: Make it actually show the correct value according to the rules
                 .setPrice("4000")
                 .build());
 
         //Field #21
         list.add(new Fleet.Builder()
-                .setTitle("Private Armada")
-                // .setSubtext("Private Armada")
-                .setPicture("src/GUI/art/Fields/Private_Armada.png")
+                .setTitle("Privateer Armada")
+                // .setSubtext("Privateer Armada")
+                .setPicture("src/GUI/art/Fields/fleet/privateerArmada.png")
                 .setRent("4000")  //TODO: Make it actually show the correct value according to the rules
                 .setPrice("4000")
                 .build());
