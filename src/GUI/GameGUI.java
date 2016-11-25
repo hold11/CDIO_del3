@@ -1,22 +1,17 @@
 package GUI;
 
 import GUI.backend.Mover;
-import GUI.board.BoardController;
-import GUI.fields.*;
 import GUI.fields.Field;
 import GUI.fields.Fleet;
 import GUI.fields.LaborCamp;
 import GUI.fields.Refuge;
 import GUI.fields.Tax;
 import GUI.fields.Territory;
-import com.sun.xml.internal.ws.api.addressing.OneWayFeature;
-import fields.*;
 import models.Player;
 import strings.Lang;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 public class GameGUI {
     private Mover[] movers = new Mover[6];
