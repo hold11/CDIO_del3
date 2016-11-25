@@ -29,18 +29,19 @@ public class Main
         for (int i = 0; i < 1000; i++) {
             game.playTurn(game.getCurrentPlayer());
 
-            if (game.fieldIsPurchaseable(game.getCurrentPlayer())) {
-                Scanner in = new Scanner(System.in);
-                System.out.print("Buy? ");
-                String msg = in.nextLine();
-
-                if (msg.equals("yes") || msg.equals("y")) {
-                    System.out.println("Want to buy.");
-                    ((Ownable) board.getFields()[game.getCurrentPlayer().getCurrentField() - 1]).purchaseField(game.getCurrentPlayer());
-
-                } else
-                    System.out.println("Don't want to buy.");
-            }
+            game.purchaseField(game.getCurrentPlayer());
+//            if (game.fieldIsPurchaseable(game.getCurrentPlayer())) {
+//                Scanner in = new Scanner(System.in);
+//                System.out.print("Buy? ");
+//                String msg = in.nextLine();
+//
+//                if (msg.equals("yes") || msg.equals("y")) {
+//                    System.out.println("Want to buy.");
+//                    ((Ownable) board.getFields()[game.getCurrentPlayer().getCurrentField() - 1]).purchaseField(game.getCurrentPlayer());
+//
+//                } else
+//                    System.out.println("Don't want to buy.");
+//            }
 
             if (game.hasWon(game.getCurrentPlayer()))
                 return;

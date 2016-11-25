@@ -57,6 +57,40 @@ public class GameLogic
         // TODO: Remove above, just for testing purposes
     }
 
+    public void purchaseField(Player currentPlayer, String answer) {
+        // TODO: Remove below, just for testing purposes
+        if (board.getFields()[currentPlayer.getCurrentField() - 1] instanceof Ownable) {
+            Ownable ownedField = (Ownable) board.getFields()[currentPlayer.getCurrentField() - 1];
+
+            if (!ownedField.isOwned() && ownedField.getPrice() <= currentPlayer.getPlayerAccount().getBalance()) { // Field isn't owned by anyone
+//                String answer;
+                System.out.println("\nCurrent Balance: " + currentPlayer.getPlayerAccount().getBalance() + " | Plot Price: " + ownedField.getPrice());
+                System.out.print("This plot is not owned, do you want to buy? ");
+//                Scanner in = new Scanner(System.in);
+//                answer = in.nextLine().toLowerCase();
+                if (answer.equals("y") || answer.equals("yes")) {
+                    ownedField.purchaseField(currentPlayer);
+                    System.out.println(currentPlayer.getPlayerName() + " just bought " + ownedField + " for " + ownedField.getPrice() + ".");
+                    System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                }
+            } else { // Field is owned by someone
+                System.out.println(ownedField + " is currently owned by " + ownedField.getOwner() + ".");
+                try {
+                    System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                } catch (IllegalArgumentException ex) {
+                    System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                }
+
+//                if (board.getFields()[currentPlayer.getCurrentField()] instanceof LaborCamp)
+//                    System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+//                else
+//                    System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+            }
+
+            System.out.println("\n");
+        }
+    }
+
     public boolean fieldIsPurchaseable(Player currentPlayer) {
         if (board.getFields()[currentPlayer.getCurrentField() - 1] instanceof Ownable) {
             Ownable ownedField = (Ownable) board.getFields()[currentPlayer.getCurrentField() - 1];
