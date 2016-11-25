@@ -57,17 +57,17 @@ public class GameLogic
         // TODO: Remove above, just for testing purposes
     }
 
-    public void purchaseField(Player currentPlayer, String answer) {
+    public void purchaseField(Player currentPlayer) {
         // TODO: Remove below, just for testing purposes
         if (board.getFields()[currentPlayer.getCurrentField() - 1] instanceof Ownable) {
             Ownable ownedField = (Ownable) board.getFields()[currentPlayer.getCurrentField() - 1];
 
             if (!ownedField.isOwned() && ownedField.getPrice() <= currentPlayer.getPlayerAccount().getBalance()) { // Field isn't owned by anyone
-//                String answer;
+                String answer;
                 System.out.println("\nCurrent Balance: " + currentPlayer.getPlayerAccount().getBalance() + " | Plot Price: " + ownedField.getPrice());
                 System.out.print("This plot is not owned, do you want to buy? ");
-//                Scanner in = new Scanner(System.in);
-//                answer = in.nextLine().toLowerCase();
+                Scanner in = new Scanner(System.in);
+                answer = in.nextLine().toLowerCase();
                 if (answer.equals("y") || answer.equals("yes")) {
                     ownedField.purchaseField(currentPlayer);
                     System.out.println(currentPlayer.getPlayerName() + " just bought " + ownedField + " for " + ownedField.getPrice() + ".");
