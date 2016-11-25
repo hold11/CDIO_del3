@@ -330,7 +330,7 @@ public final class Board extends javax.swing.JFrame {
 				Icon icon = new ImageIcon(p.getImage());
 				
 				this.iconLabels[position].setIcon(icon);
-				this.playerLabels[position].setText("<html>" + p.getName() + "<br>"
+				this.playerLabels[position].setText("<html>" + "<font size=3 color=#949494>" + p.getName() + "<br>"
 					+ p.getBalance());
 				position++;
 			} else {
