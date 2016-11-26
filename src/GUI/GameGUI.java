@@ -2,7 +2,14 @@ package GUI;
 
 import GUI.backend.Mover;
 import GUI.fields.*;
-import GUI.board.*;
+import GUI.fields.Field;
+import GUI.fields.Fleet;
+import GUI.fields.LaborCamp;
+import GUI.fields.Ownable;
+import GUI.fields.Refuge;
+import GUI.fields.Tax;
+import GUI.fields.Territory;
+import fields.*;
 import models.Player;
 import strings.Lang;
 
