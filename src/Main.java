@@ -9,6 +9,7 @@
     /`           ´\                                      |
  */
 
+import GUI.GameGUI;
 import models.GameBoard;
 import models.GameLogic;
 import models.Player;
@@ -19,17 +20,36 @@ public class Main
     {
         Player p1 = new Player();
         Player p2 = new Player();
+
         GameLogic game = new GameLogic();
         GameBoard board = new GameBoard();
+        GameGUI gui = new GameGUI();
 
-        for (int i = 0; i < 1000; i++) {
+        while (true) {
+            gui.playerRoll(game.getCurrentPlayer());
             game.playTurn(game.getCurrentPlayer());
+            gui.showDiceRoll(game.getCurrentPlayer());
+
+            gui.moveMovers(game.getCurrentPlayer());
 
             game.purchaseField(game.getCurrentPlayer());
+
             if (game.hasWon(game.getCurrentPlayer()))
                 return;
 
             game.nextPlayer();
         }
+
+
+
+//        for (int i = 0; i < 1000; i++) {
+//            game.playTurn(game.getCurrentPlayer());
+//
+//            game.purchaseField(game.getCurrentPlayer());
+//            if (game.hasWon(game.getCurrentPlayer()))
+//                return;
+//
+//            game.nextPlayer();
+//        }
     }
 }
