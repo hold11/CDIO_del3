@@ -20,20 +20,17 @@ import java.util.Scanner;
 /**
  * Created by tjc on 23/11/16.
  */
-public class GameLogic
-{
+public class GameLogic {
     private int playerTurn = 1;
     private Collection<Player> players;
     private GameBoard board;
 
-    public GameLogic()
-    {
+    public GameLogic() {
         board = new GameBoard();
         players = Player.getPlayersList();
     }
 
-    public void playTurn(Player currentPlayer)
-    {
+    public void playTurn(Player currentPlayer) {
         if (hasWon(currentPlayer))
             return;
 
@@ -88,7 +85,7 @@ public class GameLogic
         }
     }
 
-    public boolean fieldIsPurchaseable(Player currentPlayer) {
+    public boolean fieldIsPurchasable(Player currentPlayer) {
         if (board.getFields()[currentPlayer.getCurrentField() - 1] instanceof Ownable) {
             Ownable ownedField = (Ownable) board.getFields()[currentPlayer.getCurrentField() - 1];
 
@@ -155,8 +152,7 @@ public class GameLogic
      * hasWon checks if player has won.
      * @return
      */
-    public boolean hasWon(Player player)
-    {
+    public boolean hasWon(Player player) {
         if (Player.getPlayersList().size() == 1 && Player.getPlayersList().get(0) == player)
             return true;
         else
@@ -166,8 +162,7 @@ public class GameLogic
     /**
      * nextPlayer
      */
-    public void nextPlayer()
-    {
+    public void nextPlayer() {
         if (playerTurn < players.size())
             playerTurn++;
         else
@@ -198,8 +193,7 @@ public class GameLogic
      * or mark player as bankrupt so that player will not get any more turns for the rest of the game.
      * @param player
      */
-    private void checkBankruptcy(Player player)
-    {
+    private void checkBankruptcy(Player player) {
         if (player.getPlayerAccount().getBalance() == 0)
             player.removePlayer(player);
     }

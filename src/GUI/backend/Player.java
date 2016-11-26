@@ -13,8 +13,8 @@ public class Player{
 	private int balance;
 	
 	private Mover mover;
-	public static final int ICON_WIDTH = 41;
-	public static final int ICON_HEIGHT = 22;
+	public static final int ICON_WIDTH = 36;
+	public static final int ICON_HEIGHT = 58;
 
 	public Player(int number, String name, int balance, Mover mover){
 		this.number = number;

@@ -2,14 +2,7 @@ package GUI;
 
 import GUI.backend.Mover;
 import GUI.fields.*;
-import GUI.fields.Field;
-import GUI.fields.Fleet;
-import GUI.fields.LaborCamp;
-import GUI.fields.Ownable;
-import GUI.fields.Refuge;
-import GUI.fields.Tax;
-import GUI.fields.Territory;
-import fields.*;
+import GUI.board.*;
 import models.Player;
 import strings.Lang;
 
@@ -21,47 +14,57 @@ public class GameGUI {
     private Mover[] movers = new Mover[6];
 
     public GameGUI() {
-        createPlayers();
         createBoardWithFields();
+        createPlayers();
     }
 
     public void initMovers() {
+
         movers[0] = new Mover.Builder()
                 .troldeTanja()
                 .primaryColor(new Color(22, 154,255))
                 .secondaryColor(new Color(255, 21, 208))
                 .overlayDualColor()
                 .build();
+
         movers[1] = new Mover.Builder()
                 .troldeTanja()
                 .primaryColor(Color.GREEN)
                 .secondaryColor(Color.WHITE)
                 .overlayDualColor()
                 .build();
+
         movers[2] = new Mover.Builder()
                 .troldeTanja()
                 .primaryColor(Color.WHITE)
                 .secondaryColor(Color.RED)
                 .overlayDualColor()
                 .build();
+
         movers[3] = new Mover.Builder()
                 .troldeTanja()
                 .primaryColor(Color.YELLOW)
                 .secondaryColor(Color.GREEN)
                 .overlayDualColor()
                 .build();
+
         movers[4] = new Mover.Builder()
                 .troldeTanja()
                 .primaryColor(Color.BLUE)
                 .secondaryColor(Color.ORANGE)
                 .overlayDualColor()
                 .build();
+
         movers[5] = new Mover.Builder()
                 .troldeTanja()
                 .primaryColor(Color.WHITE)
                 .secondaryColor(new Color(22, 154,255))
                 .overlayDualColor()
                 .build();
+    }
+
+    public void getPlayerNames() {
+
     }
 
     public void createBoardWithFields() {
@@ -237,28 +240,17 @@ public class GameGUI {
     public void createPlayers() {
         initMovers();
 
-        for (int i = 0; i > Player.getPlayersList().size(); i++) {
+        for (int i = 0; i < Player.getPlayersList().size(); i++)
             GUI.addPlayer(Player.getPlayersList().get(i), movers[i]);
-        }
-    }
-
-    public void showDiceRoll(Player player) {
-        GUI.setDice(player.getDiceCup().getResultArr()[0], player.getDiceCup().getResultArr()[1]);
     }
 
     public void moveMovers(Player player) {
-        int results = player.getDiceCup().getTotalEyes();
+        int targetPos = player.getCurrentField();
 
-        if (player.getCurrentField() == 0) {
-            for(int i = 0 ; i < results ; i++)
-                GUI.setMover(i, player);
-        } else {
-            for(int i = 0; i < results ; i++)
-                if ((player.getCurrentField() + 1) == 22) {
-                    GUI.setMover(1, player);
-                } else {
-                    GUI.setMover((player.getCurrentField() + 1), player);
-            }
+        for(int i = 1; i <= targetPos; i++) {
+            GUI.removeAllMovers(player);
+            GUI.setMover((i), player);
+            sleep(500);
         }
     }
 
@@ -271,7 +263,7 @@ public class GameGUI {
 
         for (int i = 0; i > board.getFields().length; i++) {
             for (int i2 = 0; i > tmp.size(); i2++) {
-                if (board.getFields()[i].toString().equals(tmp.get(i2).toString()))
+                if (board.getFields()[i].toString() == tmp.get(i2).toString())
                     ownablesInt.add(i);
             }
         }
@@ -282,17 +274,16 @@ public class GameGUI {
     }
 
     public void updateBalance(Player player) {
-
+        GUI.setBalance(player, player.getPlayerAccount().getBalance());
     }
 
     public void playerRoll(Player player) {
         GUI.getUserButtonPressed(player.getPlayerName() + "! Roll for adventure and glory!", "Roll!");
-        player.getDiceCup().roll();
+        GUI.setDice(player.getDiceCup().getResultArr()[0], player.getDiceCup().getResultArr()[1]);
     }
 
-    public void testSetOwner(int fieldID, models.Player player) {
-            GUI.setOwner(fieldID, player);
-        GUI.setOwner(fieldID, player);
+    public void setOwner(Player player) {
+            GUI.setOwner(player.getCurrentField(), player);
     }
 
    public void showDescriptionCardBuy(Field fieldnr) {
