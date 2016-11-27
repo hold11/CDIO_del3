@@ -22,7 +22,7 @@ import java.util.Scanner;
  */
 public class GameLogic
 {
-    private int playerTurn = 1;
+    private int playerTurn = 0;
     private Collection<Player> players;
     private GameBoard board;
 
@@ -177,10 +177,10 @@ public class GameLogic
      */
     public void nextPlayer()
     {
-        if (playerTurn < players.size())
+        if (playerTurn + 1< players.size())
             playerTurn++;
         else
-            playerTurn = 1;
+            playerTurn = 0;
     }
 
     /**
@@ -198,7 +198,9 @@ public class GameLogic
      */
     public Player getCurrentPlayer()
     {
-        return Player.findPlayer(playerTurn);
+        return Player.getPlayersList().get(playerTurn);
+        // This generates an issue when removing a player from the players list
+//        return Player.findPlayer(playerTurn);
     }
 
     /**
