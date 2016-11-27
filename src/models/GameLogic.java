@@ -207,7 +207,8 @@ public class GameLogic
      * or mark player as bankrupt so that player will not get any more turns for the rest of the game.
      * @param player
      */
-    private void checkBankruptcy(Player player)
+    //TODO: Make this method private again
+    public void checkBankruptcy(Player player)
     {
         if (player.getPlayerAccount().getBalance() == 0)
             player.removePlayer(player);

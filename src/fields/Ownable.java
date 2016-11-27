@@ -4,6 +4,7 @@ import models.Player;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -68,7 +69,16 @@ public abstract class Ownable extends Field
     public static void removeAPlayersOwnables(Player player) {
         for (Ownable o : ownedOwnables)
             if (o.getOwner() == player)
-                ownedOwnables.remove(o);
+                o.resetOwner();
+
+        for (Iterator<Ownable> oIter = ownedOwnables.iterator(); oIter.hasNext(); )
+            if (oIter.next().getOwner() == player)
+                oIter.remove();
+
+//        // For some reason, this doesn't work:
+//        for (Ownable o : ownedOwnables)
+//            if (o.getOwner() == player)
+//                ownedOwnables.remove(o);
     }
 
     /**
@@ -96,4 +106,6 @@ public abstract class Ownable extends Field
     {
         return this.owner;
     }
+
+    public void resetOwner() { this.owner = null; }
 }
