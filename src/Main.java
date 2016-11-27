@@ -23,15 +23,10 @@ public class Main
 
         GameLogic game = new GameLogic();
         GameBoard board = new GameBoard();
-        GameGUI gui = new GameGUI();
+//        GameGUI gui = new GameGUI();
 
         while (true) {
-            gui.playerRoll(game.getCurrentPlayer());
             game.playTurn(game.getCurrentPlayer());
-            gui.showDiceRoll(game.getCurrentPlayer());
-
-            gui.moveMovers(game.getCurrentPlayer());
-
             game.purchaseField(game.getCurrentPlayer());
 
             if (game.hasWon(game.getCurrentPlayer()))
@@ -39,6 +34,21 @@ public class Main
 
             game.nextPlayer();
         }
+
+//        while (true) {
+//            gui.playerRoll(game.getCurrentPlayer());
+//            game.playTurn(game.getCurrentPlayer());
+//            gui.showDiceRoll(game.getCurrentPlayer());
+//
+//            gui.moveMovers(game.getCurrentPlayer());
+//
+//            game.purchaseField(game.getCurrentPlayer());
+//
+//            if (game.hasWon(game.getCurrentPlayer()))
+//                return;
+//
+//            game.nextPlayer();
+//        }
 
 
 
