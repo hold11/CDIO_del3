@@ -198,7 +198,9 @@ public class GameLogic
      */
     public Player getCurrentPlayer()
     {
-        return Player.findPlayer(playerTurn);
+        return Player.getPlayersList().get(playerTurn);
+        // This generates an issue when removing a player from the players list
+//        return Player.findPlayer(playerTurn);
     }
 
     /**
