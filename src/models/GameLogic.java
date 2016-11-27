@@ -75,7 +75,7 @@ public class GameLogic
                 }
             } else if (ownedField.isOwned()){ // Field is owned by someone
                 try {
-                System.out.println(ownedField + " is currently owned by " + ownedField.getOwner() + ".");
+                    System.out.println("The previous owner of " + ownedField + " has lost the game.");
                 } catch (NullPointerException ex) {
                     System.out.println(currentPlayer.getPlayerName() + " has lost the game.");
                 }
@@ -85,7 +85,7 @@ public class GameLogic
                 } catch (IllegalArgumentException ex) {
                     System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
                 } catch (NullPointerException ex) {
-                    System.out.println(currentPlayer.getPlayerName() + " has lost the game.");
+                    System.out.println("The previous owner of " + ownedField + " has lost the game.");
                 }
 
 //                if (board.getFields()[currentPlayer.getCurrentField()] instanceof LaborCamp)
