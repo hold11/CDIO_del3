@@ -4,6 +4,7 @@ import models.Player;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -49,9 +50,6 @@ public abstract class Ownable extends Field
             if (o.owner == player)
                 ownables.add(o);
 
-
-
-
         return ownables;
     }
 
@@ -68,14 +66,46 @@ public abstract class Ownable extends Field
         ownedOwnables.clear();
     }
 
-    public static void removePlayersOwnables (Player player) {
+    public static void removeAPlayersOwnables(Player player) {
         for (Ownable o : ownedOwnables)
             if (o.getOwner() == player)
-                ownedOwnables.remove(o);
+                o.resetOwner();
+
+        for (Iterator<Ownable> oIter = ownedOwnables.iterator(); oIter.hasNext(); )
+            if (oIter.next().getOwner() == player)
+                oIter.remove();
+
+//        // For some reason, this doesn't work:
+//        for (Ownable o : ownedOwnables)
+//            if (o.getOwner() == player)
+//                ownedOwnables.remove(o);
+    }
+
+    /**
+     * This method is only used for debugging in the CLI. It prints a list of all owned Ownables
+     * @param player
+     */
+    public static void printOwnedOwnables (Player player) {
+        System.out.println("Fields owned by " + player.getPlayerName());
+        int ownedOwnablesCount = 0;
+
+        if (ownedOwnables.size() > 0)
+            for (Ownable o : ownedOwnables) {
+                if (o.owner == player) {
+                    System.out.println(" * " + o);
+                    ownedOwnablesCount++;
+                }
+            }
+
+        if (ownedOwnablesCount == 0)
+            System.out.println(" * None");
+        System.out.println();
     }
 
     public Player getOwner()
     {
         return this.owner;
     }
+
+    public void resetOwner() { this.owner = null; }
 }

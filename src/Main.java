@@ -10,6 +10,8 @@
  */
 
 import GUI.GameGUI;
+import fields.Ownable;
+import fields.Territory;
 import models.GameBoard;
 import models.GameLogic;
 import models.Player;
@@ -25,6 +27,7 @@ public class Main
         GameBoard board = new GameBoard();
 //        GameGUI gui = new GameGUI();
 
+        // From version v1.2-stable
         while (true) {
             game.playTurn(game.getCurrentPlayer());
             game.purchaseField(game.getCurrentPlayer());
@@ -35,27 +38,16 @@ public class Main
             game.nextPlayer();
         }
 
+        // From version v1.1, with gui, doesn't work correctly
 //        while (true) {
 //            gui.playerRoll(game.getCurrentPlayer());
-//            game.playTurn(game.getCurrentPlayer());
+//            game.playTurn(game.getCurrentPlayer
 //            gui.showDiceRoll(game.getCurrentPlayer());
 //
 //            gui.moveMovers(game.getCurrentPlayer());
 //
 //            game.purchaseField(game.getCurrentPlayer());
 //
-//            if (game.hasWon(game.getCurrentPlayer()))
-//                return;
-//
-//            game.nextPlayer();
-//        }
-
-
-
-//        for (int i = 0; i < 1000; i++) {
-//            game.playTurn(game.getCurrentPlayer());
-//
-//            game.purchaseField(game.getCurrentPlayer());
 //            if (game.hasWon(game.getCurrentPlayer()))
 //                return;
 //
