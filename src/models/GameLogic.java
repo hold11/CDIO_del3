@@ -37,6 +37,8 @@ public class GameLogic
         if (hasWon(currentPlayer))
             return;
 
+        System.out.println("--------------- " + currentPlayer.getPlayerName() + " ---------------");
+
         currentPlayer.getDiceCup().roll();
 
         // TODO: Remove below, just for testing purposes
@@ -55,6 +57,7 @@ public class GameLogic
     }
 
     public void purchaseField(Player currentPlayer) {
+
         // TODO: Remove below, just for testing purposes
         if (board.getFields()[currentPlayer.getCurrentField() - 1] instanceof Ownable) {
             Ownable ownedField = (Ownable) board.getFields()[currentPlayer.getCurrentField() - 1];
@@ -70,7 +73,7 @@ public class GameLogic
                     System.out.println(currentPlayer.getPlayerName() + " just bought " + ownedField + " for " + ownedField.getPrice() + ".");
                     System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
                 }
-            } else { // Field is owned by someone
+            } else if (ownedField.isOwned()){ // Field is owned by someone
                 System.out.println(ownedField + " is currently owned by " + ownedField.getOwner() + ".");
                 try {
                     System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
@@ -83,10 +86,11 @@ public class GameLogic
 //                    System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
 //                else
 //                    System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+            } else { // Field isn't owned by anyone, but the player cannot afford the field
+                System.out.println(ownedField + " is not owned by anyone, however you cannot afford this field (Current Balance: " + currentPlayer.getPlayerAccount().getBalance() + " | Field Price: " + ownedField.getPrice() + ")");
             }
-
-            System.out.println("\n");
         }
+        System.out.println("\n");
     }
 
     public boolean fieldIsPurchaseable(Player currentPlayer) {

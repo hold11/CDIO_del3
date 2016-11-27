@@ -49,9 +49,6 @@ public abstract class Ownable extends Field
             if (o.owner == player)
                 ownables.add(o);
 
-
-
-
         return ownables;
     }
 
