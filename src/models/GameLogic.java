@@ -54,6 +54,8 @@ public class GameLogic
         System.out.println(currentPlayer.getPlayerName() + " landed on " + board.getFields()[(currentPlayer.getCurrentField() - 1)]);
         System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance());
         // TODO: Remove above, just for testing purposes
+
+        checkBankruptcy(currentPlayer);
     }
 
     public void purchaseField(Player currentPlayer) {
@@ -90,6 +92,7 @@ public class GameLogic
                 System.out.println(ownedField + " is not owned by anyone, however you cannot afford this field (Current Balance: " + currentPlayer.getPlayerAccount().getBalance() + " | Field Price: " + ownedField.getPrice() + ")");
             }
         }
+        checkBankruptcy(currentPlayer);
         System.out.println("\n");
     }
 

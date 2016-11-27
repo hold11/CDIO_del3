@@ -37,7 +37,7 @@ public class Main
 
 //        while (true) {
 //            gui.playerRoll(game.getCurrentPlayer());
-//            game.playTurn(game.getCurrentPlayer());
+//            game.playTurn(game.getCurrentPlayer
 //            gui.showDiceRoll(game.getCurrentPlayer());
 //
 //            gui.moveMovers(game.getCurrentPlayer());
