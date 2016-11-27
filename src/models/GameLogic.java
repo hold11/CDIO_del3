@@ -74,12 +74,18 @@ public class GameLogic
                     System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
                 }
             } else if (ownedField.isOwned()){ // Field is owned by someone
+                try {
                 System.out.println(ownedField + " is currently owned by " + ownedField.getOwner() + ".");
+                } catch (NullPointerException ex) {
+                    System.out.println(currentPlayer.getPlayerName() + " has lost the game.");
+                }
                 try {
                     System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
                     System.out.println(ownedField.getOwner().getPlayerName() + " recieved " + ownedField.getRent() + " from " + currentPlayer.getPlayerName() + ". " + ownedField.getOwner().getPlayerName() + "'s balance is now " + ownedField.getOwner().getPlayerAccount().getBalance());
                 } catch (IllegalArgumentException ex) {
                     System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                } catch (NullPointerException ex) {
+                    System.out.println(currentPlayer.getPlayerName() + " has lost the game.");
                 }
 
 //                if (board.getFields()[currentPlayer.getCurrentField()] instanceof LaborCamp)
