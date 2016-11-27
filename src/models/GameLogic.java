@@ -34,8 +34,6 @@ public class GameLogic {
         if (hasWon(currentPlayer))
             return;
 
-        currentPlayer.getDiceCup().roll();
-
         // TODO: Remove below, just for testing purposes
         System.out.println(currentPlayer.getPlayerName() + "'s turn. Current balance: " + currentPlayer.getPlayerAccount().getBalance());
 

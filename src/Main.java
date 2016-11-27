@@ -30,8 +30,8 @@ public class Main
             if (game.hasWon(game.getCurrentPlayer())) {
                 return;
             }
-            game.playTurn(game.getCurrentPlayer());
             gui.playerRoll(game.getCurrentPlayer());
+            game.playTurn(game.getCurrentPlayer());
             gui.moveMovers(game.getCurrentPlayer());
             gui.updateBalance(game.getCurrentPlayer());
             gui.setOwner(game.getCurrentPlayer());
