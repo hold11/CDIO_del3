@@ -27,16 +27,6 @@ public abstract class Ownable extends Field
                 return true;
         return false;
     }
-//    public static boolean isOwned(Ownable ownable)
-//    {
-//        for (Ownable o : ownedOwnables)
-//        {
-//            if (ownable == o)   // Check if field is owned by someone.
-//                return true;
-//        }
-//        return false;
-//    }
-
     /**
      *  fieldIsPurchaseable assigns player as owner to field, and withdraws field price from player's account.
      * @param player

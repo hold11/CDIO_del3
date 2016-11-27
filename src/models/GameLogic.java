@@ -74,6 +74,7 @@ public class GameLogic
                 System.out.println(ownedField + " is currently owned by " + ownedField.getOwner() + ".");
                 try {
                     System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                    System.out.println(ownedField.getOwner().getPlayerName() + " recieved " + ownedField.getRent() + " from " + currentPlayer.getPlayerName() + ". " + ownedField.getOwner().getPlayerName() + "'s balance is now " + ownedField.getOwner().getPlayerAccount().getBalance());
                 } catch (IllegalArgumentException ex) {
                     System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
                 }
