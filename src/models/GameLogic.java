@@ -38,6 +38,7 @@ public class GameLogic
             return;
 
         System.out.println("--------------- " + currentPlayer.getPlayerName() + " ---------------");
+        Ownable.printOwnedOwnables(currentPlayer);
 
         currentPlayer.getDiceCup().roll();
 

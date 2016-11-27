@@ -71,6 +71,27 @@ public abstract class Ownable extends Field
                 ownedOwnables.remove(o);
     }
 
+    /**
+     * This method is only used for debugging in the CLI. It prints a list of all owned Ownables
+     * @param player
+     */
+    public static void printOwnedOwnables (Player player) {
+        System.out.println("Fields owned by " + player.getPlayerName());
+        int ownedOwnablesCount = 0;
+
+        if (ownedOwnables.size() > 0)
+            for (Ownable o : ownedOwnables) {
+                if (o.owner == player) {
+                    System.out.println(" * " + o);
+                    ownedOwnablesCount++;
+                }
+            }
+
+        if (ownedOwnablesCount == 0)
+            System.out.println(" * None");
+        System.out.println();
+    }
+
     public Player getOwner()
     {
         return this.owner;
