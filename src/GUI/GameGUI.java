@@ -237,6 +237,7 @@ public class GameGUI {
     public void createPlayers() {
         initMovers();
 
+        // TODO: Issue here, < instead of >. Generates compiler error though.
         for (int i = 0; i > Player.getPlayersList().size(); i++) {
             GUI.addPlayer(Player.getPlayersList().get(i), movers[i]);
         }

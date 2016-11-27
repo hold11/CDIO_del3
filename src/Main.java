@@ -10,6 +10,8 @@
  */
 
 import GUI.GameGUI;
+import fields.Ownable;
+import fields.Territory;
 import models.GameBoard;
 import models.GameLogic;
 import models.Player;
@@ -23,29 +25,33 @@ public class Main
 
         GameLogic game = new GameLogic();
         GameBoard board = new GameBoard();
-        GameGUI gui = new GameGUI();
+//        GameGUI gui = new GameGUI();
 
+        // From version v1.2-stable
         while (true) {
-            gui.playerRoll(game.getCurrentPlayer());
             game.playTurn(game.getCurrentPlayer());
-            gui.showDiceRoll(game.getCurrentPlayer());
-
-            gui.moveMovers(game.getCurrentPlayer());
-
             game.purchaseField(game.getCurrentPlayer());
 
-            if (game.hasWon(game.getCurrentPlayer()))
+            if (game.hasWon(game.getCurrentPlayer())) {
+                System.out.println("\n------------------------------\n\n");
+                System.out.println(Player.getPlayersList().get(0).getPlayerName() + " has won the game. Balance: " + Player.getPlayersList().get(0).getPlayerAccount().getBalance());
                 return;
+            }
 
             game.nextPlayer();
         }
 
 
-
-//        for (int i = 0; i < 1000; i++) {
-//            game.playTurn(game.getCurrentPlayer());
+        // From version v1.1, with gui, doesn't work correctly
+//        while (true) {
+//            gui.playerRoll(game.getCurrentPlayer());
+//            game.playTurn(game.getCurrentPlayer
+//            gui.showDiceRoll(game.getCurrentPlayer());
+//
+//            gui.moveMovers(game.getCurrentPlayer());
 //
 //            game.purchaseField(game.getCurrentPlayer());
+//
 //            if (game.hasWon(game.getCurrentPlayer()))
 //                return;
 //
