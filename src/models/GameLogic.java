@@ -17,9 +17,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Scanner;
 
-/**
- * Created by tjc on 23/11/16.
- */
 public class GameLogic
 {
     private int playerTurn = 0;
@@ -77,12 +74,18 @@ public class GameLogic
                     System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
                 }
             } else if (ownedField.isOwned()){ // Field is owned by someone
+                try {
                 System.out.println(ownedField + " is currently owned by " + ownedField.getOwner() + ".");
+                } catch (NullPointerException ex) {
+                    System.out.println(currentPlayer.getPlayerName() + " has lost the game.");
+                }
                 try {
                     System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
                     System.out.println(ownedField.getOwner().getPlayerName() + " recieved " + ownedField.getRent() + " from " + currentPlayer.getPlayerName() + ". " + ownedField.getOwner().getPlayerName() + "'s balance is now " + ownedField.getOwner().getPlayerAccount().getBalance());
                 } catch (IllegalArgumentException ex) {
                     System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                } catch (NullPointerException ex) {
+                    System.out.println(currentPlayer.getPlayerName() + " has lost the game.");
                 }
 
 //                if (board.getFields()[currentPlayer.getCurrentField()] instanceof LaborCamp)
@@ -177,7 +180,7 @@ public class GameLogic
      */
     public void nextPlayer()
     {
-        if (playerTurn + 1< players.size())
+        if (playerTurn + 1 < players.size())
             playerTurn++;
         else
             playerTurn = 0;
@@ -212,7 +215,10 @@ public class GameLogic
     //TODO: Make this method private again
     public void checkBankruptcy(Player player)
     {
-        if (player.getPlayerAccount().getBalance() == 0)
+        if (player.getPlayerAccount().getBalance() == 0) {
+            if (player.getPlayerID() == Player.getPlayersList().size())
+                this.playerTurn = 0;
             player.removePlayer(player);
+        }
     }
 }
