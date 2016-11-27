@@ -17,9 +17,6 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Scanner;
 
-/**
- * Created by tjc on 23/11/16.
- */
 public class GameLogic
 {
     private int playerTurn = 0;
@@ -177,7 +174,7 @@ public class GameLogic
      */
     public void nextPlayer()
     {
-        if (playerTurn + 1< players.size())
+        if (playerTurn + 1 < players.size())
             playerTurn++;
         else
             playerTurn = 0;
@@ -212,7 +209,10 @@ public class GameLogic
     //TODO: Make this method private again
     public void checkBankruptcy(Player player)
     {
-        if (player.getPlayerAccount().getBalance() == 0)
+        if (player.getPlayerAccount().getBalance() == 0) {
+            if (player.getPlayerID() == Player.getPlayersList().size())
+                this.playerTurn = 0;
             player.removePlayer(player);
+        }
     }
 }
