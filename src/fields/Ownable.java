@@ -65,7 +65,7 @@ public abstract class Ownable extends Field
         ownedOwnables.clear();
     }
 
-    public static void removePlayersOwnables (Player player) {
+    public static void removeAPlayersOwnables(Player player) {
         for (Ownable o : ownedOwnables)
             if (o.getOwner() == player)
                 ownedOwnables.remove(o);
