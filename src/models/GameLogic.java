@@ -17,22 +17,25 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Scanner;
 
-/**
- * Created by tjc on 23/11/16.
- */
-public class GameLogic {
-    private int playerTurn = 1;
+public class GameLogic
+{
+    private int playerTurn = 0;
     private Collection<Player> players;
     private GameBoard board;
 
-    public GameLogic() {
+    public GameLogic()
+    {
         board = new GameBoard();
         players = Player.getPlayersList();
     }
 
-    public void playTurn(Player currentPlayer) {
+    public void playTurn(Player currentPlayer)
+    {
         if (hasWon(currentPlayer))
             return;
+
+        System.out.println("--------------- " + currentPlayer.getPlayerName() + " ---------------");
+        Ownable.printOwnedOwnables(currentPlayer);
 
         // TODO: Remove below, just for testing purposes
         System.out.println(currentPlayer.getPlayerName() + "'s turn. Current balance: " + currentPlayer.getPlayerAccount().getBalance());
@@ -47,9 +50,12 @@ public class GameLogic {
         System.out.println(currentPlayer.getPlayerName() + " landed on " + board.getFields()[(currentPlayer.getCurrentField() - 1)]);
         System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance());
         // TODO: Remove above, just for testing purposes
+
+        checkBankruptcy(currentPlayer);
     }
 
     public void purchaseField(Player currentPlayer) {
+
         // TODO: Remove below, just for testing purposes
         if (board.getFields()[currentPlayer.getCurrentField() - 1] instanceof Ownable) {
             Ownable ownedField = (Ownable) board.getFields()[currentPlayer.getCurrentField() - 1];
@@ -65,22 +71,31 @@ public class GameLogic {
                     System.out.println(currentPlayer.getPlayerName() + " just bought " + ownedField + " for " + ownedField.getPrice() + ".");
                     System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
                 }
-            } else { // Field is owned by someone
-                System.out.println(ownedField + " is currently owned by " + ownedField.getOwner() + ".");
+            } else if (ownedField.isOwned()){ // Field is owned by someone
+                try {
+                    System.out.println("The previous owner of " + ownedField + " has lost the game.");
+                } catch (NullPointerException ex) {
+                    System.out.println(currentPlayer.getPlayerName() + " has lost the game.");
+                }
                 try {
                     System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                    System.out.println(ownedField.getOwner().getPlayerName() + " recieved " + ownedField.getRent() + " from " + currentPlayer.getPlayerName() + ". " + ownedField.getOwner().getPlayerName() + "'s balance is now " + ownedField.getOwner().getPlayerAccount().getBalance());
                 } catch (IllegalArgumentException ex) {
                     System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+                } catch (NullPointerException ex) {
+                    System.out.println("The previous owner of " + ownedField + " has lost the game.");
                 }
 
 //                if (board.getFields()[currentPlayer.getCurrentField()] instanceof LaborCamp)
 //                    System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
 //                else
 //                    System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+            } else { // Field isn't owned by anyone, but the player cannot afford the field
+                System.out.println(ownedField + " is not owned by anyone, however you cannot afford this field (Current Balance: " + currentPlayer.getPlayerAccount().getBalance() + " | Field Price: " + ownedField.getPrice() + ")");
             }
-
-            System.out.println("\n");
         }
+        checkBankruptcy(currentPlayer);
+        System.out.println("\n");
     }
 
     public boolean fieldIsPurchasable(Player currentPlayer) {
@@ -150,7 +165,8 @@ public class GameLogic {
      * hasWon checks if player has won.
      * @return
      */
-    public boolean hasWon(Player player) {
+    public boolean hasWon(Player player)
+    {
         if (Player.getPlayersList().size() == 1 && Player.getPlayersList().get(0) == player)
             return true;
         else
@@ -160,11 +176,12 @@ public class GameLogic {
     /**
      * nextPlayer
      */
-    public void nextPlayer() {
-        if (playerTurn < players.size())
+    public void nextPlayer()
+    {
+        if (playerTurn + 1 < players.size())
             playerTurn++;
         else
-            playerTurn = 1;
+            playerTurn = 0;
     }
 
     /**
@@ -182,7 +199,9 @@ public class GameLogic {
      */
     public Player getCurrentPlayer()
     {
-        return Player.findPlayer(playerTurn);
+        return Player.getPlayersList().get(playerTurn);
+        // This generates an issue when removing a player from the players list
+//        return Player.findPlayer(playerTurn);
     }
 
     /**
@@ -191,8 +210,13 @@ public class GameLogic {
      * or mark player as bankrupt so that player will not get any more turns for the rest of the game.
      * @param player
      */
-    private void checkBankruptcy(Player player) {
-        if (player.getPlayerAccount().getBalance() == 0)
+    //TODO: Make this method private again
+    public void checkBankruptcy(Player player)
+    {
+        if (player.getPlayerAccount().getBalance() == 0) {
+            if (player.getPlayerID() == Player.getPlayersList().size())
+                this.playerTurn = 0;
             player.removePlayer(player);
+        }
     }
 }
