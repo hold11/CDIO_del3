@@ -252,12 +252,23 @@ public class GameGUI {
     }
 
     public void moveMovers(Player player) {
-        int targetPos = player.getCurrentField();
-
-        for(int i = 1; i <= targetPos; i++) {
-            GUI.removeAllMovers(player);
-            GUI.setMover((i), player);
-            sleep(500);
+        if (player.getPreviousField() >= player.getCurrentField()) {
+            for (int i = player.getPreviousField() ; i <= 21 ; i++) {
+                GUI.removeAllMovers(player);
+                GUI.setMover(i, player);
+                sleep(500);
+            }
+            for (int i = 1 ; i <= player.getCurrentField(); i++) {
+                GUI.removeAllMovers(player);
+                GUI.setMover(i, player);
+                sleep(500);
+            }
+        } else {
+            for (int i = player.getPreviousField(); i <= player.getCurrentField(); i++) {
+                GUI.removeAllMovers(player);
+                GUI.setMover((i), player);
+                sleep(500);
+            }
         }
     }
 

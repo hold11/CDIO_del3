@@ -25,6 +25,7 @@ public class Player
     private BankAccount playerAccount;
 //    private Field currentField;
     private int currentField;
+    private int previousField;
     private DiceCup diceCup;
     private final int STARTING_BALANCE = 30000;
 
@@ -42,6 +43,7 @@ public class Player
         players.add(this);
 
         currentField = 0;
+        previousField = 0;
     }
 
     public Player(DiceCup diceCup)
@@ -55,6 +57,7 @@ public class Player
         players.add(this);
 
         currentField = 0;
+        previousField = 0;
     }
 
     public Player(String playerName)
@@ -106,17 +109,25 @@ public class Player
     public void moveCurrentField(int diceCount) {
         models.GameBoard board = new models.GameBoard();
         if (this.currentField + diceCount > board.getFields().length)
-            this.currentField = diceCount - board.getFields().length + this.currentField;
+            this.setCurrentField(diceCount - board.getFields().length + this.currentField);
         else
-            this.currentField += diceCount;
+            this.setCurrentField(this.currentField + diceCount);
     }
 
     public void setCurrentField(int fieldID) {
+            if (this.currentField == 0)
+                this.previousField = this.currentField + 1;
+            else
+                this.previousField = this.currentField;
         this.currentField = fieldID;
     }
 
     public int getCurrentField() {
         return this.currentField;
+    }
+
+    public int getPreviousField() {
+        return this.previousField;
     }
 
     public DiceCup getDiceCup() { return this.diceCup; }
