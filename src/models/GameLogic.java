@@ -10,6 +10,7 @@ package models;
     /`           ´\                                      |
  */
 
+import GUI.GameGUI;
 import fields.LaborCamp;
 import fields.Ownable;
 
@@ -37,8 +38,6 @@ public class GameLogic
         System.out.println("--------------- " + currentPlayer.getPlayerName() + " ---------------");
         Ownable.printOwnedOwnables(currentPlayer);
 
-        currentPlayer.getDiceCup().roll();
-
         // TODO: Remove below, just for testing purposes
         System.out.println(currentPlayer.getPlayerName() + "'s turn. Current balance: " + currentPlayer.getPlayerAccount().getBalance());
 
@@ -56,51 +55,52 @@ public class GameLogic
         checkBankruptcy(currentPlayer);
     }
 
-    public void purchaseField(Player currentPlayer) {
+    public boolean purchaseField(Player currentPlayer) {
 
         // TODO: Remove below, just for testing purposes
         if (board.getFields()[currentPlayer.getCurrentField() - 1] instanceof Ownable) {
             Ownable ownedField = (Ownable) board.getFields()[currentPlayer.getCurrentField() - 1];
 
             if (!ownedField.isOwned() && ownedField.getPrice() <= currentPlayer.getPlayerAccount().getBalance()) { // Field isn't owned by anyone
-                String answer;
+//                String answer;
                 System.out.println("\nCurrent Balance: " + currentPlayer.getPlayerAccount().getBalance() + " | Plot Price: " + ownedField.getPrice());
-                System.out.print("This plot is not owned, do you want to buy? ");
-                Scanner in = new Scanner(System.in);
-                answer = in.nextLine().toLowerCase();
-                if (answer.equals("y") || answer.equals("yes")) {
-                    ownedField.purchaseField(currentPlayer);
-                    System.out.println(currentPlayer.getPlayerName() + " just bought " + ownedField + " for " + ownedField.getPrice() + ".");
-                    System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
-                }
-            } else if (ownedField.isOwned()){ // Field is owned by someone
-                try {
-                    System.out.println("The previous owner of " + ownedField + " has lost the game.");
-                } catch (NullPointerException ex) {
-                    System.out.println(currentPlayer.getPlayerName() + " has lost the game.");
-                }
-                try {
-                    System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
-                    System.out.println(ownedField.getOwner().getPlayerName() + " recieved " + ownedField.getRent() + " from " + currentPlayer.getPlayerName() + ". " + ownedField.getOwner().getPlayerName() + "'s balance is now " + ownedField.getOwner().getPlayerAccount().getBalance());
-                } catch (IllegalArgumentException ex) {
-                    System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
-                } catch (NullPointerException ex) {
-                    System.out.println("The previous owner of " + ownedField + " has lost the game.");
-                }
+                return true;
+//                System.out.print("This plot is not owned, do you want to buy? ");
+//                Scanner in = new Scanner(System.in);
+//                answer = in.nextLine().toLowerCase();
+//                if (answer.equals("y") || answer.equals("yes")) {
+//                    ownedField.purchaseField(currentPlayer);
+//                    System.out.println(currentPlayer.getPlayerName() + " just bought " + ownedField + " for " + ownedField.getPrice() + ".");
+//                    System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+//                }
+            } else return false;
+//            else if (ownedField.isOwned()){ // Field is owned by someone
+//                try {
+//                    System.out.println("The previous owner of " + ownedField + " has lost the game.");
+//                } catch (NullPointerException ex) {
+//                    System.out.println(currentPlayer.getPlayerName() + " has lost the game.");
+//                }
+//                try {
+//                    System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+//                    System.out.println(ownedField.getOwner().getPlayerName() + " recieved " + ownedField.getRent() + " from " + currentPlayer.getPlayerName() + ". " + ownedField.getOwner().getPlayerName() + "'s balance is now " + ownedField.getOwner().getPlayerAccount().getBalance());
+//                } catch (IllegalArgumentException ex) {
+//                    System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
+//                } catch (NullPointerException ex) {
+//                    System.out.println("The previous owner of " + ownedField + " has lost the game.");
+//                }
 
 //                if (board.getFields()[currentPlayer.getCurrentField()] instanceof LaborCamp)
 //                    System.out.println("The rent is " + ownedField.getRent(currentPlayer.getDiceCup()) + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
 //                else
 //                    System.out.println("The rent is " + ownedField.getRent() + ". " + currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance() + ".");
-            } else { // Field isn't owned by anyone, but the player cannot afford the field
-                System.out.println(ownedField + " is not owned by anyone, however you cannot afford this field (Current Balance: " + currentPlayer.getPlayerAccount().getBalance() + " | Field Price: " + ownedField.getPrice() + ")");
-            }
-        }
-        checkBankruptcy(currentPlayer);
-        System.out.println("\n");
+//            }
+//            else { // Field isn't owned by anyone, but the player cannot afford the field
+//                System.out.println(ownedField + " is not owned by anyone, however you cannot afford this field (Current Balance: " + currentPlayer.getPlayerAccount().getBalance() + " | Field Price: " + ownedField.getPrice() + ")");
+//            }
+        } else return false;
     }
 
-    public boolean fieldIsPurchaseable(Player currentPlayer) {
+    public boolean fieldIsPurchasable(Player currentPlayer) {
         if (board.getFields()[currentPlayer.getCurrentField() - 1] instanceof Ownable) {
             Ownable ownedField = (Ownable) board.getFields()[currentPlayer.getCurrentField() - 1];
 
