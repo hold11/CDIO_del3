@@ -2,14 +2,6 @@ package GUI;
 
 import GUI.backend.Mover;
 import GUI.fields.*;
-import GUI.fields.Field;
-import GUI.fields.Fleet;
-import GUI.fields.LaborCamp;
-import GUI.fields.Ownable;
-import GUI.fields.Refuge;
-import GUI.fields.Tax;
-import GUI.fields.Territory;
-import fields.*;
 import models.Player;
 import strings.Lang;
 
@@ -273,22 +265,22 @@ public class GameGUI {
     }
 
     public void removeBankruptPlayer(Player player) {
-        GUI.removeAllMovers(player);
+        if (player.getPlayerAccount().getBalance() == 0) {
+            GUI.removeAllMovers(player);
 
-        List<Integer> ownablesInt = new ArrayList<>();
-        List<fields.Ownable> tmp = fields.Ownable.getPlayersOwnedFields(player);
-        models.GameBoard board = new models.GameBoard();
+            List<Integer> ownablesInt = new ArrayList<>();
+            List<fields.Ownable> tmp = fields.Ownable.getPlayersOwnedFields(player);
+            models.GameBoard board = new models.GameBoard();
 
-        for (int i = 0; i > board.getFields().length; i++) {
-            for (int i2 = 0; i > tmp.size(); i2++) {
-                if (board.getFields()[i].toString() == tmp.get(i2).toString())
-                    ownablesInt.add(i);
+            for (int i = 0; i > board.getFields().length; i++) {
+                for (int i2 = 0; i > tmp.size(); i2++) {
+                    if (board.getFields()[i].toString() == tmp.get(i2).toString())
+                        ownablesInt.add(i);
+                }
             }
+            for (int i : ownablesInt)
+                GUI.removeOwner(i);
         }
-
-        for(int i : ownablesInt)
-            GUI.removeOwner(i);
-
     }
 
     public void updateBalance(Player player) {
@@ -301,8 +293,13 @@ public class GameGUI {
         GUI.setDice(player.getDiceCup().getResultArr()[0], player.getDiceCup().getResultArr()[1]);
     }
 
-    public void setOwner(Player player) {
+    public boolean getPlayerPurchaseChoice(Player player) {
+        showDescriptionCardBuy(player);
+        String answer = GUI.getUserButtonPressed("Want to purchase this field?", "Yes!", "No!");
+        if (answer.equals("Yes!")) {
             GUI.setOwner(player.getCurrentField(), player);
+            return true;
+        } else return false;
     }
 
    public void showDescriptionCardBuy(Player player) {
@@ -346,7 +343,7 @@ public class GameGUI {
             default:
                 break;
         }
-    }
+   }
 
    public void showDescriptionCardRent(Player player) {
 

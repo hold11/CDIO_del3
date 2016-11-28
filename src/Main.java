@@ -10,29 +10,37 @@
  */
 
 import GUI.GameGUI;
+import fields.Ownable;
 import models.GameBoard;
 import models.GameLogic;
 import models.Player;
+import strings.Lang;
 
 public class Main
 {
     public static void main(String[] args)
     {
+        Lang.setLanguage(args);
         Player p1 = new Player();
         Player p2 = new Player();
 
         GameLogic game = new GameLogic();
         GameGUI gui = new GameGUI();
+        GameBoard board = new GameBoard();
 
         // From version v1.2-stable
         while (true) {
             gui.playerRoll(game.getCurrentPlayer());
             game.playTurn(game.getCurrentPlayer());
-            game.purchaseField(game.getCurrentPlayer());
             gui.moveMovers(game.getCurrentPlayer());
+                if (game.purchaseField(game.getCurrentPlayer())) {
+                    if (gui.getPlayerPurchaseChoice(game.getCurrentPlayer())) {
+                        ((Ownable) board.getFields()[game.getCurrentPlayer().getCurrentField()]).purchaseField(game.getCurrentPlayer());
+                    }
+                }
             gui.updateBalance(game.getCurrentPlayer());
-            gui.setOwner(game.getCurrentPlayer());
-            gui.removeBankruptPlayer(game.getCurrentPlayer();
+            gui.removeBankruptPlayer(game.getCurrentPlayer());
+            game.checkBankruptcy(game.getCurrentPlayer());
 
             if (game.hasWon(game.getCurrentPlayer())) {
                 System.out.println("\n------------------------------\n\n");
