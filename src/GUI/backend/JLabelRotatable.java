@@ -13,8 +13,8 @@ public class JLabelRotatable extends JLabel {
 		Graphics2D g2 = (Graphics2D)g;
 		if(this.getIcon() != null) {
 			g2.rotate(Math.toRadians(this.getRotation()),
-				this.getIcon().getIconWidth()/2 + 5,
-				this.getIcon().getIconHeight()/2 + 5);
+					this.getIcon().getIconWidth()/2+10,
+					this.getIcon().getIconHeight()/2+10);
 		}
 		super.paintComponent(g);
 	}

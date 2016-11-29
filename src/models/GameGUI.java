@@ -1,12 +1,23 @@
-package GUI;
+package models;
 
+/*
+           ,                                             |
+          /#\         _         _     _    ___   ___     | Projekt: Landlordopoly - CDIO_del3
+         /###\       | |__   _ | | __| |  /_  | /_  |    | Version: v0.2.0
+        /#####\      | '_ \ / \| |/ _  |    | |   | |    |
+       /##,-,##\     | | | | O | | ( | |   _| |_ _| |_   | Anders Wiberg Olsen (s165241), Emil Johan Høg (s152282),
+      /##(   )##\    |_| |_|\_/|_|\__,_|  |_____|_____|  | Iman Chelhi (s165228), Troels Just Christoffersen (s120052)
+     /#.--   --.#\                                       | Sebastian Tibor Bakonyvári (s145918), Valentin Leon Christensen (s152735)
+    /`           ´\                                      |
+ */
+
+import GUI.GUI;
 import GUI.backend.Mover;
 import GUI.fields.*;
-import models.Player;
 import strings.Lang;
 
 import java.awt.*;
-import java.util.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameGUI {
@@ -268,18 +279,18 @@ public class GameGUI {
         if (player.getPlayerAccount().getBalance() == 0) {
             GUI.removeAllMovers(player);
 
-            List<Integer> ownablesInt = new ArrayList<>();
-            List<fields.Ownable> tmp = fields.Ownable.getPlayersOwnedFields(player);
-            models.GameBoard board = new models.GameBoard();
-
-            for (int i = 0; i > board.getFields().length; i++) {
-                for (int i2 = 0; i > tmp.size(); i2++) {
-                    if (board.getFields()[i].toString() == tmp.get(i2).toString())
-                        ownablesInt.add(i);
-                }
-            }
-            for (int i : ownablesInt)
-                GUI.removeOwner(i);
+//            List<Integer> ownablesInt = new ArrayList<>();
+//            List<fields.Ownable> tmp = fields.Ownable.getPlayersOwnedFields(player);
+//            models.GameBoard board = new models.GameBoard();
+//
+//            for (int i = 0; i > board.getFields().length; i++) {
+//                for (int i2 = 0; i > tmp.size(); i2++) {
+//                    if (board.getFields()[i].toString() == tmp.get(i2).toString())
+//                        ownablesInt.add(i);
+//                }
+//            }
+//            for (int i : ownablesInt)
+//                GUI.removeOwner(i);
         }
     }
 
@@ -330,7 +341,7 @@ public class GameGUI {
                     break;
             case 14: GUI.displayChanceCard(Lang.msg("desc_buy_HutsInTheMountains"));
                     break;
-            case 15: GUI.displayChanceCard(Lang.msg("desc_buy_ThePit1" + 100 + "desc_buy_ThePit2"));
+            case 15: GUI.displayChanceCard(Lang.msg("desc_buy_ThePit1") + " 100 " + Lang.msg("desc_buy_ThePit2"));
                     break;
             case 18: GUI.displayChanceCard(Lang.msg("desc_buy_SecondSail"));
                     break;
@@ -373,15 +384,15 @@ public class GameGUI {
                 break;
             case 14: GUI.displayChanceCard(Lang.msg("desc_rent_HutsInTheMountains"));
                 break;
-            case 15: GUI.displayChanceCard(Lang.msg("desc_rent_ThePit1" + 100 + "desc_rent_ThePit2"));
+            case 15: GUI.displayChanceCard(Lang.msg("desc_rent_ThePit1" + " 100 " + "desc_rent_ThePit2"));
                 break;
-            case 18: GUI.displayChanceCard(Lang.msg("desc_rent_fleet1" + 100 + "desc_rent_fleet2"));
+            case 18: GUI.displayChanceCard(Lang.msg("desc_rent_fleet1" + " 100 " + "desc_rent_fleet2"));
                 break;
-            case 19: GUI.displayChanceCard(Lang.msg("desc_rent_fleet1" + 100 + "desc_rent_fleet2"));
+            case 19: GUI.displayChanceCard(Lang.msg("desc_rent_fleet1" + " 100 " + "desc_rent_fleet2"));
                 break;
-            case 20: GUI.displayChanceCard(Lang.msg("desc_rent_fleet1" + 100 + "desc_rent_fleet2"));
+            case 20: GUI.displayChanceCard(Lang.msg("desc_rent_fleet1" + " 100 " + "desc_rent_fleet2"));
                 break;
-            case 21: GUI.displayChanceCard(Lang.msg("desc_rent_fleet1" + 100 + "desc_rent_fleet2"));
+            case 21: GUI.displayChanceCard(Lang.msg("desc_rent_fleet1" + " 100 " + "desc_rent_fleet2"));
                 break;
             default:
                 break;

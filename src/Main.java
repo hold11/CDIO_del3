@@ -9,7 +9,7 @@
     /`           ´\                                      |
  */
 
-import GUI.GameGUI;
+import models.GameGUI;
 import fields.Ownable;
 import models.GameBoard;
 import models.GameLogic;
@@ -28,18 +28,17 @@ public class Main
         GameGUI gui = new GameGUI();
         GameBoard board = new GameBoard();
 
-        // From version v1.2-stable
         while (true) {
             gui.playerRoll(game.getCurrentPlayer());
             game.playTurn(game.getCurrentPlayer());
             gui.moveMovers(game.getCurrentPlayer());
                 if (game.purchaseField(game.getCurrentPlayer())) {
                     if (gui.getPlayerPurchaseChoice(game.getCurrentPlayer())) {
-                        ((Ownable) board.getFields()[game.getCurrentPlayer().getCurrentField()]).purchaseField(game.getCurrentPlayer());
+                        ((Ownable) board.getFields()[game.getCurrentPlayer().getCurrentField() - 1]).purchaseField(game.getCurrentPlayer());
                     }
                 }
             gui.updateBalance(game.getCurrentPlayer());
-            gui.removeBankruptPlayer(game.getCurrentPlayer());
+            //gui.removeBankruptPlayer(game.getCurrentPlayer());
             game.checkBankruptcy(game.getCurrentPlayer());
 
             if (game.hasWon(game.getCurrentPlayer())) {

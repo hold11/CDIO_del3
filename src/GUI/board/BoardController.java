@@ -399,8 +399,7 @@ public final class BoardController {
 	 * @param x2 : int [0:10]
 	 * @param y2 : int [0:10]
 	 */
-	public void setDice(int faceValue1, int rotation1, int x1, int y1, int faceValue2,
-		int rotation2, int x2, int y2) {
+	public void setDice(int faceValue1, int rotation1, int x1, int y1, int faceValue2, int rotation2, int x2, int y2) {
 	    boolean faceValuesAreValid = areFaceValuesValid(faceValue1, faceValue2);
 	    boolean rotationsAreValid = areRotationsValid(rotation1, rotation2);
 	    boolean positionsAreValid = arePositionsValid(x1, y1, x2, y2);
@@ -442,7 +441,6 @@ public final class BoardController {
 	 * @param name The name of the player
 	 */
 	public void setMover(int fieldNumber, String name) {
-		// removeMover(name);
 		Field f = FieldFactory.fields.get(fieldNumber - 1);
 		if(this.board.getPlayer(name) != null) {
 			f.setMover(name, true);
