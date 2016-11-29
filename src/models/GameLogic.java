@@ -1,4 +1,5 @@
 package models;
+
 /*
            ,                                             |
           /#\         _         _     _    ___   ___     | Projekt: Landlordopoly - CDIO_del3
@@ -10,13 +11,9 @@ package models;
     /`           ´\                                      |
  */
 
-import GUI.GameGUI;
-import fields.LaborCamp;
 import fields.Ownable;
 
 import java.util.Collection;
-import java.util.Iterator;
-import java.util.Scanner;
 
 public class GameLogic
 {
@@ -51,8 +48,6 @@ public class GameLogic
         System.out.println(currentPlayer.getPlayerName() + " landed on " + board.getFields()[(currentPlayer.getCurrentField() - 1)]);
         System.out.println(currentPlayer.getPlayerName() + "'s balance is now " + currentPlayer.getPlayerAccount().getBalance());
         // TODO: Remove above, just for testing purposes
-
-        checkBankruptcy(currentPlayer);
     }
 
     public boolean purchaseField(Player currentPlayer) {
@@ -104,16 +99,13 @@ public class GameLogic
         if (board.getFields()[currentPlayer.getCurrentField() - 1] instanceof Ownable) {
             Ownable ownedField = (Ownable) board.getFields()[currentPlayer.getCurrentField() - 1];
 
-            if (ownedField.isOwned())
-            {
+            if (ownedField.isOwned()) {
                 System.out.println(ownedField.getOwner() + " is already owned by " + ownedField.getOwner().getPlayerName());
                 return false;
-            }
-            else
+            } else
                 if (ownedField.getPrice() <= currentPlayer.getPlayerAccount().getBalance())
                     return true;
-        }
-        else return false;
+        } else return false;
 
         return false;
     }

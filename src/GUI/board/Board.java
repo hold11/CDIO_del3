@@ -1,19 +1,12 @@
 package GUI.board;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.SwingConstants;
+import javax.swing.*;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
 
 import GUI.backend.*;
 import GUI.backend.Mover;
@@ -40,6 +33,7 @@ public final class Board extends javax.swing.JFrame {
 	private JLabel[] playerLabels = new JLabel[MAX_PLAYER_COUNT];
 	private JLabel[] iconLabels = new JLabel[MAX_PLAYER_COUNT];
 	private int die1x = 1, die1y = 1, die2x = 1, die2y = 1;
+//	private JTextPane messageArea = new JTextPane();
 	private JTextArea messageArea = new JTextArea();
 	private JPanel inputPanel = new JPanel();
 	private ImageIcon[] diceIcons = new ImageIcon[6];
@@ -114,6 +108,7 @@ public final class Board extends javax.swing.JFrame {
 		this.messageArea.setWrapStyleWord(true);
 		this.messageArea.setLineWrap(true);
 		this.messageArea.setSize(557, 10);
+		this.messageArea.setLayout(new FlowLayout());
 		this.messageArea.setOpaque(false);
 		this.messageArea.setEditable(false);
 		this.messageArea.setFocusable(false);
@@ -128,7 +123,12 @@ public final class Board extends javax.swing.JFrame {
 	 * @param components : input components (buttons, textfields, drop-down, etc.)
 	 */
 	public void getUserInput(String message, Component... components) {
+//		SimpleAttributeSet attribs = new SimpleAttributeSet();
+//		StyleConstants.setAlignment(attribs , StyleConstants.ALIGN_CENTER);
+//		this.messageArea.setParagraphAttributes(attribs,true);
 		this.messageArea.setText(message);
+		this.messageArea.setForeground(Color.WHITE);
+		this.messageArea.setFont(new Font(this.messageArea.getFont().getName(), Font.BOLD, 14));
 		for(Component c : components) {
 			this.inputPanel.add(c);
 		}
@@ -183,7 +183,7 @@ public final class Board extends javax.swing.JFrame {
 	private void makeCenter() {
 		this.base.setLayer(Center.getInstance().getCenterPanel(), 1);
 		this.base.add(Center.getInstance().getCenterPanel(),
-			this.factory.createGridBagConstraints(4, 3, 3, 4));
+			this.factory.createGridBagConstraints(4, 4, 3, 3));
 	}
 	/**
 	 * Makes the base
@@ -256,15 +256,14 @@ public final class Board extends javax.swing.JFrame {
 	 * @param facevalue2 value of die 2
 	 * @param rotation2 the angle [0:359] of die 2
 	 */
-	public void setDice(int x1, int y1, int facevalue1, int rotation1,
-		int x2, int y2, int facevalue2, int rotation2) {
-//		this.diceLabels[this.die1x][this.die1y].setIcon(null);
-//		this.diceLabels[this.die2x][this.die2y].setIcon(null);
-//		this.die1x = x1;
-//		this.die1y = y1;
-//		this.die2x = x2;
-//		this.die2y = y2;
-		
+	public void setDice(int x1, int y1, int facevalue1, int rotation1, int x2, int y2, int facevalue2, int rotation2) {
+		this.diceLabels[this.die1x][this.die1y].setIcon(null);
+		this.diceLabels[this.die2x][this.die2y].setIcon(null);
+		this.die1x = x1;
+		this.die1y = y1;
+		this.die2x = x2;
+		this.die2y = y2;
+
 		this.diceLabels[x1][y1].setRotation(rotation1);
 		this.diceLabels[x1][y1].setHorizontalAlignment(SwingConstants.CENTER);
 		this.diceLabels[x1][y1].setVerticalAlignment(SwingConstants.CENTER);

@@ -123,8 +123,7 @@ public final class GUI {
      * @param falseButton The text that should appear on the right button.
      * @return True if the left button is pressed by the user. False otherwise.
      */
-    public static boolean getUserLeftButtonPressed(String msg, 
-        String trueButton, String falseButton) {
+    public static boolean getUserLeftButtonPressed(String msg, String trueButton, String falseButton) {
         return getBC().getUserButtonPressed(msg, trueButton, 
             falseButton).equals(trueButton);
     }
@@ -204,8 +203,7 @@ public final class GUI {
      * @param y2 : int [0:11]<br>
      *        (If a parameter is out of bounds nothing will happen!)
      */
-    public static void setDice(int faceValue1, int rotation1, int x1, int y1,
-        int faceValue2, int rotation2, int x2, int y2) {
+    public static void setDice(int faceValue1, int rotation1, int x1, int y1, int faceValue2, int rotation2, int x2, int y2) {
         getBC().setDice(faceValue1, rotation1, x1, y1, faceValue2, rotation2,
             x2, y2);
     }
@@ -220,8 +218,7 @@ public final class GUI {
      * @param y2 : int [0:11]<br>
      *        (If a parameter is out of bounds nothing will happen!)
      */
-    public static void setDice(int faceValue1, int x1, int y1, int faceValue2,
-        int x2, int y2) {
+    public static void setDice(int faceValue1, int x1, int y1, int faceValue2, int x2, int y2) {
         getBC().setDice(faceValue1, x1, y1, faceValue2, x2, y2);
     }
     /**
@@ -233,8 +230,7 @@ public final class GUI {
      * @param rotation2 : int [0:360[<br>
      *        (If a parameter is out of bounds nothing will happen!)
      */
-    public static void setDice(int faceValue1, int rotation1, int faceValue2,
-        int rotation2) {
+    public static void setDice(int faceValue1, int rotation1, int faceValue2, int rotation2) {
         getBC().setDice(faceValue1, rotation1, faceValue2, rotation2);
     }
     /**

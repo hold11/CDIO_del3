@@ -1,4 +1,6 @@
-package models;/*
+package models;
+
+/*
            ,                                             |
           /#\         _         _     _    ___   ___     | Projekt: Landlordopoly - CDIO_del3
          /###\       | |__   _ | | __| |  /_  | /_  |    |

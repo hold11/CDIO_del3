@@ -1,4 +1,5 @@
 package models;
+
 /*
            ,                                             |
           /#\         _         _     _    ___   ___     | Projekt: Landlordopoly - CDIO_del3
@@ -23,10 +24,9 @@ public class Player
     private int playerID;
     private String playerName;
     private BankAccount playerAccount;
-//    private Field currentField;
+    private DiceCup diceCup;
     private int currentField;
     private int previousField;
-    private DiceCup diceCup;
     private final int STARTING_BALANCE = 30000;
 
     private static int nextPlayerID = 1; // This variable is used to specify the next ID for the next player that gets constructed
@@ -101,11 +101,6 @@ public class Player
         return playerName;
     }
 
-//    public Field getCurrentField()
-//    {
-//        return this.currentField;
-//    }
-
     public void moveCurrentField(int diceCount) {
         models.GameBoard board = new models.GameBoard();
         if (this.currentField + diceCount > board.getFields().length)
@@ -131,11 +126,6 @@ public class Player
     }
 
     public DiceCup getDiceCup() { return this.diceCup; }
-
-//    public void moveCurrentField(Field f)
-//    {
-//        this.currentField = f;
-//    }
 
     public static Player findPlayer(int playerID)
     {
