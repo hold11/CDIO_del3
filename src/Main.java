@@ -21,12 +21,18 @@ public class Main
     public static void main(String[] args)
     {
         Lang.setLanguage(args);
-        Player p1 = new Player();
-        Player p2 = new Player();
 
         GameLogic game = new GameLogic();
         GameGUI gui = new GameGUI();
         GameBoard board = new GameBoard();
+
+        gui.createBoardWithFields();
+
+        int players = gui.selectPlayerCount();
+            for (int i = 2 ; i <= players; i++)
+                gui.getPlayerNames();
+
+        gui.createPlayers();
 
         while (true) {
             gui.playerRoll(game.getCurrentPlayer());
