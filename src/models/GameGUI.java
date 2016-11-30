@@ -18,14 +18,12 @@ import strings.Lang;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.InputMismatchException;
 
 public class GameGUI {
     private Mover[] movers = new Mover[6];
 
     public GameGUI() {
-        createBoardWithFields();
-        createPlayers();
     }
 
     public void initMovers() {
@@ -73,8 +71,12 @@ public class GameGUI {
                 .build();
     }
 
-    public void getPlayerNames() {
+    public int selectPlayerCount() {
+        return Integer.parseInt(GUI.getUserSelection("Select players", "2", "3", "4", "5", "6"));
+    }
 
+    public void getPlayerNames() {
+        Player player = new Player(GUI.getUserString(" please type your name"));
     }
 
     public void createBoardWithFields() {

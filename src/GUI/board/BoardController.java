@@ -2,10 +2,7 @@ package GUI.board;
 
 import java.awt.Color;
 import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -77,8 +74,19 @@ public final class BoardController {
 		final CountDownLatch latch = new CountDownLatch(1);
 		final JTextField tf = new JTextField(20);
 		JButton okButton = new JButton("OK");
+		tf.addKeyListener(new KeyAdapter() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					BoardController.userInput = tf.getText();
+					BoardController.this.board.clearInputPanel();
+					latch.countDown();
+				}
+			}
+		});
 		okButton.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(@SuppressWarnings("unused") ActionEvent e) {
 				BoardController.userInput = tf.getText();
@@ -87,7 +95,7 @@ public final class BoardController {
 			}
 		});
 		this.board.getUserInput(msg, tf, okButton);
-		
+
 		try {
 			latch.await();
 			return BoardController.userInput;

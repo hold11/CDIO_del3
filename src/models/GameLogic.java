@@ -31,13 +31,11 @@ public class GameLogic
     {
         if (hasWon(currentPlayer))
             return;
-
+        // TODO: Remove below, just for testing purposes
         System.out.println("--------------- " + currentPlayer.getPlayerName() + " ---------------");
         Ownable.printOwnedOwnables(currentPlayer);
 
-        // TODO: Remove below, just for testing purposes
         System.out.println(currentPlayer.getPlayerName() + "'s turn. Current balance: " + currentPlayer.getPlayerAccount().getBalance());
-
         System.out.println(currentPlayer.getPlayerName() + " rolled " + currentPlayer.getDiceCup().getResultArr()[0] + " and " + currentPlayer.getDiceCup().getResultArr()[1] + " (" + currentPlayer.getDiceCup().getTotalEyes() + ").");
         // TODO: Remove above, just for testing purposes
 
@@ -204,7 +202,6 @@ public class GameLogic
      * or mark player as bankrupt so that player will not get any more turns for the rest of the game.
      * @param player
      */
-    //TODO: Make this method private again
     public void checkBankruptcy(Player player)
     {
         if (player.getPlayerAccount().getBalance() == 0) {
