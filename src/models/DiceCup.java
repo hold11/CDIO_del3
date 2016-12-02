@@ -19,11 +19,11 @@ import java.lang.*;
  * @version 1.1.1
  */
 public class DiceCup {
-    private Collection<Die> dice = new ArrayList<Die>();
-    private Collection<Integer> results = new ArrayList<Integer>();
+    protected Collection<Die> dice = new ArrayList<Die>();
+    protected Collection<Integer> results = new ArrayList<Integer>();
 
-    private static int diceCount;
-    private static int faceCount;
+    protected static int diceCount;
+    protected static int faceCount;
 
     public DiceCup() {
         this.diceCount = 2;
@@ -62,7 +62,7 @@ public class DiceCup {
         initDice(dice);
     }
 
-    private void initDice() {
+    protected void initDice() {
         for (int i = 0; i < diceCount; i++)
             this.dice.add(new Die(faceCount));
     }

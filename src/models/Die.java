@@ -19,8 +19,8 @@ import java.util.*;
  */
 public class Die
 {
-    private int faceCount;
-    private int result;
+    protected int faceCount;
+    protected int result;
 
     private static Random rand;
 

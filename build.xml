@@ -2,8 +2,8 @@
 <project name="CDIO_del3" default="tests" basedir=".">
   <property name="main.build.dir" value="build/main" />
   <property name="main.src.dir" value="src" />
-  <property name="test.build.dir" value="build/tests" />
-  <property name="test.src.dir" value="tests" />
+  <property name="testClasses.build.dir" value="build/tests" />
+  <property name="testClasses.src.dir" value="tests" />
 
   <path id="classpath.base" />
 
