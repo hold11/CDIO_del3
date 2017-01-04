@@ -29,7 +29,7 @@ public class Main
         gui.createBoardWithFields();
 
         int players = gui.selectPlayerCount();
-            for (int i = 2 ; i <= players; i++)
+            for (int i = 1 ; i <= players; i++)
                 gui.getPlayerNames();
 
         gui.createPlayers();
